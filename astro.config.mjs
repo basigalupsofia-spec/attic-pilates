@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://attic-pilates.vercel.app',
+  site: 'https://basigalupsofia-spec.github.io',
+  base: '/attic-pilates',
   output: 'static',
 });
