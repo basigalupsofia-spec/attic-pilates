@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local media (served from Cloudinary)
+*.mov
+*.mp4
+Captura de pantalla*
+
+# supabase local
+supabase/.temp/
