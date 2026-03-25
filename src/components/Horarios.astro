@@ -1,0 +1,244 @@
+---
+const horarios = [
+  { hora: '8:00',  lun: null,             mar: 'Pilates\nLorena',  mie: 'Pilates\nNacho',  jue: 'Pilates\nLorena',  vie: 'Pilates\nNacho',  sab: null },
+  { hora: '9:00',  lun: null,             mar: 'Pilates\nLorena',  mie: 'Pilates\nNacho',  jue: 'Pilates\nLorena',  vie: 'Pilates\nNacho',  sab: null },
+  { hora: '10:00', lun: null,             mar: 'Pilates\nLorena',  mie: 'Pilates\nNacho',  jue: 'Pilates\nLorena',  vie: 'Pilates\nNacho',  sab: 'Pilates\nNacho' },
+  { hora: '11:00', lun: null,             mar: null,               mie: null,               jue: null,               vie: null,               sab: 'Pilates\nNacho' },
+  { hora: '12:00', lun: null,             mar: null,               mie: null,               jue: null,               vie: null,               sab: 'Pilates\nNacho' },
+  { hora: '17:00', lun: 'Pilates\nNacho', mar: 'Pilates\nLorena', mie: 'Pilates\nLorena', jue: 'Pilates\nLorena', vie: 'Pilates\nCamila', sab: null },
+  { hora: '18:00', lun: 'Pilates\nNacho', mar: 'Barre\nLorena',   mie: 'Pilates\nLorena', jue: 'Pilates\nLorena', vie: 'Pilates\nCamila', sab: null },
+  { hora: '19:00', lun: 'Pilates\nNacho', mar: 'Pilates\nLorena', mie: 'Pilates\nLorena', jue: 'Pilates\nLorena', vie: 'Pilates\nCamila', sab: null },
+  { hora: '20:00', lun: null,             mar: null,               mie: 'Pilates\nLorena', jue: 'Pilates\nLorena', vie: null,               sab: null },
+];
+
+const dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+const diasKeys = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'] as const;
+---
+
+<section class="section horarios" id="horarios">
+  <div class="container">
+    <div class="horarios-header">
+      <p class="subtitle">Planificá tu semana</p>
+      <h2>Horarios de clases</h2>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="horarios-table">
+        <thead>
+          <tr>
+            <th class="hora-col"></th>
+            {dias.map((dia) => <th>{dia}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {horarios.map((row) => (
+            <tr>
+              <td class="hora-cell">{row.hora}</td>
+              {diasKeys.map((key) => {
+                const val = row[key];
+                const isBarre = val?.includes('Barre');
+                return (
+                  <td class={`clase-cell ${val ? 'activa' : ''} ${isBarre ? 'barre' : ''}`}>
+                    {val ? (
+                      <div class="cell-content">
+                        <span class="cell-tipo">{val.split('\n')[0]}</span>
+                        <span class="cell-profe">{val.split('\n')[1]}</span>
+                      </div>
+                    ) : null}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="horarios-mobile">
+      {horarios.map((row) => {
+        const clases = diasKeys.map((key, i) => ({ dia: dias[i], val: row[key] })).filter(c => c.val);
+        if (clases.length === 0) return null;
+        return (
+          <div class="mobile-hora-block">
+            <h4 class="mobile-hora">{row.hora}</h4>
+            <div class="mobile-clases">
+              {clases.map((c) => (
+                <div class={`mobile-clase ${c.val?.includes('Barre') ? 'barre' : ''}`}>
+                  <span class="mobile-dia">{c.dia}</span>
+                  <span class="mobile-tipo">{c.val!.split('\n')[0]}</span>
+                  <span class="mobile-profe">{c.val!.split('\n')[1]}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .horarios {
+    background: var(--color-cream);
+  }
+
+  .horarios-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .horarios-header .subtitle {
+    justify-content: center;
+  }
+
+  .horarios-header .subtitle::before {
+    display: none;
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: var(--border-radius-lg);
+    background: var(--color-cream-light);
+    padding: var(--space-md);
+  }
+
+  .horarios-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 6px;
+    min-width: 700px;
+  }
+
+  .horarios-table th {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-dark-soft);
+    padding: 0.75rem 1rem;
+    text-align: center;
+  }
+
+  .hora-cell {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-dark);
+    text-align: center;
+    padding: 0.75rem;
+    min-width: 65px;
+  }
+
+  .clase-cell {
+    text-align: center;
+    padding: 0.6rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    min-height: 55px;
+    transition: all var(--transition);
+  }
+
+  .clase-cell.activa {
+    background: var(--color-gold);
+    cursor: pointer;
+  }
+
+  .clase-cell.activa:hover {
+    background: var(--color-gold-light);
+    transform: scale(1.05);
+  }
+
+  .clase-cell.barre {
+    background: var(--color-sage);
+  }
+
+  .clase-cell.barre:hover {
+    background: var(--color-sage-light);
+  }
+
+  .cell-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cell-tipo {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: 0.02em;
+  }
+
+  .cell-profe {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* Mobile cards */
+  .horarios-mobile {
+    display: none;
+  }
+
+  .mobile-hora-block {
+    margin-bottom: var(--space-md);
+  }
+
+  .mobile-hora {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-beige);
+  }
+
+  .mobile-clases {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .mobile-clase {
+    background: var(--color-gold);
+    border-radius: 12px;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .mobile-clase.barre {
+    background: var(--color-sage);
+  }
+
+  .mobile-dia {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .mobile-tipo {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .mobile-profe {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  @media (max-width: 768px) {
+    .table-wrapper {
+      display: none;
+    }
+
+    .horarios-mobile {
+      display: block;
+    }
+  }
+</style>

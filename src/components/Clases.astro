@@ -1,0 +1,143 @@
+---
+const base = import.meta.env.BASE_URL;
+
+const clases = [
+  {
+    title: 'Reformer',
+    description: 'Fortalecé y tonificá todo tu cuerpo con ejercicios de resistencia controlada sobre el Reformer. Ideal para todos los niveles.',
+    icon: '01',
+  },
+  {
+    title: 'Cadillac',
+    description: 'Trabajá flexibilidad, fuerza y alineación postural con el equipo más versátil de Pilates. Sesiones personalizadas.',
+    icon: '02',
+  },
+  {
+    title: 'Barre',
+    description: 'Fusión de ballet, Pilates y fitness. Clases dinámicas que esculpen, alargan y definen tu musculatura.',
+    icon: '03',
+  },
+];
+---
+
+<section class="section clases" id="clases">
+  <div class="container">
+    <div class="clases-header">
+      <p class="subtitle">Nuestras disciplinas</p>
+      <h2>Elegí tu experiencia</h2>
+    </div>
+
+    <div class="clases-grid">
+      {clases.map((clase) => (
+        <div class="clase-card">
+          <span class="clase-number">{clase.icon}</span>
+          <h3>{clase.title}</h3>
+          <p>{clase.description}</p>
+          <a href="#contacto" class="clase-link">
+            Reservar
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .clases {
+    background-color: var(--color-cream-light);
+  }
+
+  .clases-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .clases-header .subtitle {
+    justify-content: center;
+  }
+
+  .clases-header .subtitle::before {
+    display: none;
+  }
+
+  .clases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .clase-card {
+    background: var(--color-cream);
+    padding: var(--space-xl) var(--space-lg);
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .clase-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .clase-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
+  }
+
+  .clase-card:hover::before {
+    opacity: 1;
+  }
+
+  .clase-number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--color-gold-light);
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .clase-card h3 {
+    margin-bottom: var(--space-sm);
+    font-weight: 500;
+  }
+
+  .clase-card p {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .clase-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-gold);
+    transition: gap var(--transition);
+  }
+
+  .clase-link:hover {
+    gap: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    .clases-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .clase-card {
+      padding: var(--space-lg);
+    }
+  }
+</style>

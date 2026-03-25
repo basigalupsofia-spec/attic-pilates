@@ -1,0 +1,85 @@
+---
+const cdn = 'https://res.cloudinary.com/dot4vmp1c/image/upload';
+---
+
+<section class="section experiencia" id="experiencia">
+  <div class="container experiencia-grid">
+    <div class="experiencia-image">
+      <img src={`${cdn}/f_auto,q_auto,w_800/attic-pilates/studio1`} alt="Estudio Attic Pilates" />
+    </div>
+    <div class="experiencia-content">
+      <p class="subtitle">Encuentra tu camino</p>
+      <h2>&iquest;Nueva en Attic Pilates?</h2>
+      <p>
+        Tanto si sos experta como si es tu primera vez en Pilates Reformer, estamos
+        acá para acompañarte en cada paso. Nuestras clases están diseñadas para
+        adaptarse a vos, para que te resulte fácil y empieces a notar los beneficios
+        desde las primeras sesiones.
+      </p>
+      <p>
+        En Attic creamos un espacio íntimo y cálido en el corazón de Palermo Soho,
+        donde cada detalle está pensado para que disfrutes del movimiento.
+      </p>
+      <div class="experiencia-buttons">
+        <a href="#clases" class="btn btn-primary">
+          Descubrí más
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="#contacto" class="btn btn-outline">
+          Contactanos
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .experiencia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .experiencia-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: var(--border-radius-lg);
+  }
+
+  .experiencia-content {
+    padding: var(--space-lg) 0;
+  }
+
+  .experiencia-content h2 {
+    margin-bottom: var(--space-md);
+    color: var(--color-gold);
+  }
+
+  .experiencia-content p {
+    margin-bottom: var(--space-sm);
+  }
+
+  .experiencia-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .experiencia-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .experiencia-image img {
+      height: 350px;
+    }
+
+    .experiencia-content {
+      padding: 0;
+    }
+  }
+</style>

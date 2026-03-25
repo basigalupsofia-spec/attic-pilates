@@ -1,0 +1,180 @@
+/* ===== ATTIC PILATES — Global Styles ===== */
+
+/* Google Fonts: Cormorant Garamond (serif headlines) + Inter (body) */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Pastel palette inspired by PILAT3S */
+  --color-cream: #f5f0e8;
+  --color-cream-light: #faf7f2;
+  --color-beige: #e8dfd3;
+  --color-gold: #c9a36b;
+  --color-gold-light: #dbc29d;
+  --color-dark: #2a2a2a;
+  --color-dark-soft: #4a4a4a;
+  --color-sage: #8a9a7e;
+  --color-sage-light: #b5c4a8;
+  --color-rose: #d4a5a5;
+  --color-white: #ffffff;
+  --color-gray: #9a9a9a;
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 8rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --border-radius: 16px;
+  --border-radius-lg: 24px;
+
+  /* Transitions */
+  --transition: 0.3s ease;
+  --transition-slow: 0.6s ease;
+}
+
+/* Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-dark);
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.3rem, 2.5vw, 1.75rem); }
+
+p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-dark-soft);
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul { list-style: none; }
+
+/* Container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold-light);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(201, 163, 107, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--color-dark);
+  color: var(--color-dark);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-dark);
+  color: var(--color-cream);
+  transform: translateY(-3px);
+}
+
+/* Section spacing */
+.section {
+  padding: var(--space-3xl) 0;
+}
+
+/* Subtitle line */
+.subtitle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+  margin-bottom: var(--space-sm);
+}
+
+.subtitle::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1.5px;
+  background-color: var(--color-gold);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+
+  .section {
+    padding: var(--space-xl) 0;
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
+  }
+}

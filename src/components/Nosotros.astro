@@ -1,0 +1,220 @@
+---
+const base = import.meta.env.BASE_URL;
+const cdn = 'https://res.cloudinary.com/dot4vmp1c/image/upload';
+
+const profes = [
+  { nombre: 'Lorena', rol: 'Instructora de Pilates & Barre' },
+  { nombre: 'Nacho', rol: 'Instructor de Pilates' },
+  { nombre: 'Camila', rol: 'Instructora de Pilates' },
+];
+---
+
+<section class="section nosotros" id="nosotros">
+  <div class="container">
+    <div class="nosotros-grid">
+      <div class="nosotros-content">
+        <p class="subtitle">Sobre nosotros</p>
+        <h2>Un espacio pensado para vos</h2>
+        <p>
+          Attic Pilates nació con la idea de crear un refugio de bienestar en Palermo Soho.
+          Un lugar íntimo donde cada clase es una experiencia personalizada, con equipos de
+          primera línea y profesionales apasionados por el movimiento.
+        </p>
+        <p>
+          Creemos que el Pilates es para todos los cuerpos y todos los niveles. Nuestro
+          objetivo es que salgas de cada clase sintiéndote más fuerte, más flexible y
+          con más energía.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Disciplinas</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Profesionales</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">6</span>
+            <span class="stat-label">Días a la semana</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="nosotros-image">
+        <img src={`${cdn}/f_auto,q_auto,w_800/attic-pilates/studio2`} alt="Interior Attic Pilates" />
+      </div>
+    </div>
+
+    <div class="equipo">
+      <h3>Nuestro equipo</h3>
+      <div class="profes-grid">
+        {profes.map((profe) => (
+          <div class="profe-card">
+            <div class="profe-avatar">
+              <span>{profe.nombre[0]}</span>
+            </div>
+            <h4>{profe.nombre}</h4>
+            <p>{profe.rol}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nosotros {
+    background: var(--color-cream-light);
+  }
+
+  .nosotros-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+    margin-bottom: var(--space-3xl);
+  }
+
+  .nosotros-content h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .nosotros-content p {
+    margin-bottom: var(--space-sm);
+  }
+
+  .nosotros-image img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: var(--border-radius-lg);
+  }
+
+  .stats {
+    display: flex;
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-beige);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--color-gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--color-gray);
+    letter-spacing: 0.02em;
+  }
+
+  .equipo h3 {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .profes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .profe-card {
+    text-align: center;
+    padding: var(--space-lg);
+    background: var(--color-cream);
+    border-radius: var(--border-radius-lg);
+    transition: all var(--transition);
+  }
+
+  .profe-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+  }
+
+  .profe-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-sm);
+  }
+
+  .profe-avatar span {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: white;
+    font-weight: 500;
+  }
+
+  .profe-card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .profe-card p {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+  }
+
+  @media (max-width: 768px) {
+    .nosotros-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+
+    .nosotros-image {
+      order: -1;
+    }
+
+    .nosotros-image img {
+      height: 300px;
+    }
+
+    .stats {
+      gap: var(--space-lg);
+    }
+
+    .profes-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+
+    .profe-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      text-align: left;
+      padding: var(--space-sm) var(--space-md);
+    }
+
+    .profe-avatar {
+      width: 48px;
+      height: 48px;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .profe-avatar span {
+      font-size: 1.2rem;
+    }
+  }
+</style>

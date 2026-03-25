@@ -1,0 +1,265 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner container">
+    <a href={`${base}`} class="navbar-logo">
+      <img src="https://res.cloudinary.com/dot4vmp1c/image/upload/f_auto,q_auto,w_80/attic-pilates/logo" alt="Attic Pilates" class="logo-img" />
+      <div class="logo-text">
+        <span class="logo-name">ATTIC</span>
+        <span class="logo-sub">PILATES</span>
+      </div>
+    </a>
+
+    <ul class="navbar-links">
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#clases">Clases</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <div class="navbar-actions">
+      <a href="https://www.instagram.com/attic.pilates/" target="_blank" rel="noopener" class="nav-icon" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </a>
+      <a href="#contacto" class="btn btn-primary btn-nav">Reservar</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#experiencia">Experiencia</a></li>
+      <li><a href="#clases">Clases</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#contacto" class="btn btn-primary" style="margin-top: 1rem; justify-content: center;">Reservar</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(245, 240, 232, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201, 163, 107, 0.1);
+    transition: all var(--transition);
+  }
+
+  .navbar.scrolled {
+    background: rgba(245, 240, 232, 0.95);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem var(--space-md);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .logo-name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--color-dark);
+  }
+
+  .logo-sub {
+    font-family: var(--font-body);
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    color: var(--color-gold);
+    text-transform: uppercase;
+  }
+
+  .navbar-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .navbar-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: var(--color-dark-soft);
+    position: relative;
+  }
+
+  .navbar-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: var(--color-gold);
+    transition: width var(--transition);
+  }
+
+  .navbar-links a:hover::after {
+    width: 100%;
+  }
+
+  .navbar-links a:hover {
+    color: var(--color-dark);
+  }
+
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-icon {
+    color: var(--color-dark-soft);
+    transition: color var(--transition);
+  }
+
+  .nav-icon:hover {
+    color: var(--color-gold);
+  }
+
+  .btn-nav {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background-color: var(--color-dark);
+    transition: all var(--transition);
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 4px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -4px);
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-cream);
+    padding: var(--space-lg);
+    z-index: 999;
+  }
+
+  .mobile-menu.open {
+    display: block;
+  }
+
+  .mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .mobile-menu a {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: var(--color-dark);
+  }
+
+  @media (max-width: 768px) {
+    .navbar-links,
+    .navbar-actions {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+  });
+
+  hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu?.classList.toggle('open');
+    document.body.style.overflow = mobileMenu?.classList.contains('open') ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger?.classList.remove('active');
+      mobileMenu?.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>

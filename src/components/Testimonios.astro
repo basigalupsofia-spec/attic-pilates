@@ -1,0 +1,121 @@
+---
+const testimonios = [
+  {
+    texto: 'Desde que empecé en Attic no puedo dejar de ir. El estudio es hermoso, las profes son increíbles y las clases se adaptan perfecto a mi nivel.',
+    nombre: 'Valentina M.',
+    detalle: 'Alumna hace 6 meses',
+  },
+  {
+    texto: 'Nunca había hecho Pilates y me daba miedo no poder seguir el ritmo. Desde la primera clase me sentí súper cómoda. Lo recomiendo 100%.',
+    nombre: 'Carolina R.',
+    detalle: 'Alumna hace 3 meses',
+  },
+  {
+    texto: 'El mejor estudio de Palermo, sin dudas. El espacio, los equipos, la atención... todo es de primera. Attic se convirtió en mi momento del día.',
+    nombre: 'Lucía G.',
+    detalle: 'Alumna hace 1 año',
+  },
+];
+---
+
+<section class="section testimonios">
+  <div class="container">
+    <div class="testimonios-header">
+      <p class="subtitle">Lo que dicen nuestras alumnas</p>
+      <h2>Experiencias reales</h2>
+    </div>
+
+    <div class="testimonios-grid">
+      {testimonios.map((t) => (
+        <div class="testimonio-card">
+          <div class="quote-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+              <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" fill="var(--color-gold-light)" opacity="0.4"/>
+              <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" fill="var(--color-gold-light)" opacity="0.4"/>
+            </svg>
+          </div>
+          <p class="testimonio-texto">{t.texto}</p>
+          <div class="testimonio-autor">
+            <span class="autor-nombre">{t.nombre}</span>
+            <span class="autor-detalle">{t.detalle}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonios {
+    background: var(--color-cream);
+  }
+
+  .testimonios-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .testimonios-header .subtitle {
+    justify-content: center;
+  }
+
+  .testimonios-header .subtitle::before {
+    display: none;
+  }
+
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .testimonio-card {
+    background: var(--color-cream-light);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    transition: all var(--transition);
+  }
+
+  .testimonio-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+  }
+
+  .testimonio-texto {
+    font-size: 0.95rem;
+    font-style: italic;
+    line-height: 1.7;
+    flex-grow: 1;
+  }
+
+  .testimonio-autor {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-beige);
+  }
+
+  .autor-nombre {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-dark);
+  }
+
+  .autor-detalle {
+    font-size: 0.75rem;
+    color: var(--color-gray);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 768px) {
+    .testimonios-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+</style>
