@@ -1,10 +1,21 @@
 ---
-const cdn = 'https://res.cloudinary.com/dot4vmp1c/image/upload';
+const videoCdn = 'https://res.cloudinary.com/dot4vmp1c/video/upload';
+const imageCdn = 'https://res.cloudinary.com/dot4vmp1c/image/upload';
 ---
 
 <section class="hero">
   <div class="hero-bg">
-    <img src={`${cdn}/f_auto,q_auto,w_1600/attic-pilates/hero`} alt="Attic Pilates Studio" class="hero-image" />
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      class="hero-video"
+      poster={`${imageCdn}/f_auto,q_auto,w_1600/attic-pilates/hero`}
+    >
+      <source src={`${videoCdn}/f_auto,q_auto/attic-pilates/hero-video`} type="video/mp4" />
+    </video>
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content container">
@@ -40,7 +51,7 @@ const cdn = 'https://res.cloudinary.com/dot4vmp1c/image/upload';
     z-index: 0;
   }
 
-  .hero-image {
+  .hero-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
