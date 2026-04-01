@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attic Pilates — Proyecto</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #FFFFFF;
+    --cream: #FAF7F2;
+    --cream-warm: #F3EDE3;
+    --sand: #E8DFCF;
+    --taupe: #B5A897;
+    --cacao: #6B5B4E;
+    --cacao-dark: #4A3E35;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--cacao-dark);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--cacao);
+    display: flex; justify-content: center; gap: 2rem;
+    padding: 0.85rem 2rem; flex-wrap: wrap;
+  }
+  nav a {
+    color: var(--cream); text-decoration: none;
+    font-size: 0.63rem; letter-spacing: 0.2em;
+    text-transform: uppercase; font-weight: 500;
+    opacity: 0.7; transition: opacity 0.2s;
+  }
+  nav a:hover { opacity: 1; }
+
+  header {
+    background: var(--cacao-dark);
+    padding: 4.5rem 2rem 3.5rem;
+    text-align: center; color: var(--cream);
+  }
+  .studio-label {
+    font-size: 0.62rem; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--taupe);
+    margin-bottom: 1rem; font-weight: 400;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 300; font-style: italic;
+    color: var(--cream); line-height: 1.05; margin-bottom: 1.5rem;
+  }
+  .header-meta {
+    display: flex; justify-content: center;
+    gap: 2rem; flex-wrap: wrap;
+  }
+  .header-meta span {
+    font-size: 0.63rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--taupe); font-weight: 400;
+  }
+
+  .stage-banner {
+    background: var(--cacao);
+    padding: 0.9rem 2rem;
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .stage-banner-label {
+    font-size: 0.58rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--taupe); font-weight: 500;
+  }
+  .stage-pill {
+    background: var(--cream-warm); color: var(--cacao-dark);
+    font-size: 0.63rem; letter-spacing: 0.15em;
+    text-transform: uppercase; font-weight: 700;
+    padding: 4px 14px; border-radius: 20px;
+  }
+
+  #roadmap { background: var(--cream); padding: 4rem 2rem; }
+  .roadmap-inner { max-width: 900px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.62rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--taupe);
+    font-weight: 500; margin-bottom: 0.6rem;
+  }
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700; font-style: normal;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--cacao-dark); line-height: 1.2; margin-bottom: 2.5rem;
+  }
+
+  .roadmap-track {
+    display: flex; align-items: flex-start;
+    position: relative; overflow-x: auto; padding-bottom: 0.5rem;
+  }
+  .roadmap-step {
+    flex: 1; min-width: 105px;
+    display: flex; flex-direction: column;
+    align-items: center; position: relative;
+  }
+  .roadmap-step:not(:last-child)::after {
+    content: ''; position: absolute; top: 17px; left: 50%;
+    width: 100%; height: 1px; background: var(--sand);
+  }
+  .step-dot {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--white); border: 1.5px solid var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.62rem; font-weight: 700; color: var(--taupe);
+    position: relative; z-index: 1; flex-shrink: 0;
+  }
+  .roadmap-step.done .step-dot { background: var(--sand); border-color: var(--sand); color: var(--cacao-dark); }
+  .roadmap-step.active .step-dot {
+    background: var(--cacao); border-color: var(--cacao); color: var(--cream);
+    box-shadow: 0 0 0 4px rgba(107,91,78,0.14);
+  }
+  .step-content { text-align: center; margin-top: 0.7rem; padding: 0 0.3rem; }
+  .step-name {
+    font-size: 0.63rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--taupe); margin-bottom: 0.15rem;
+  }
+  .roadmap-step.active .step-name { color: var(--cacao-dark); }
+  .step-timing { font-size: 0.57rem; color: var(--taupe); opacity: 0.7; }
+  .active-badge {
+    display: inline-block; background: var(--cacao); color: var(--cream);
+    font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 20px; margin-top: 0.4rem; font-weight: 600;
+  }
+
+  /* PHASES */
+  .phases-wrap { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 4rem; }
+
+  .phase-block { border-bottom: 1px solid var(--sand); padding: 2.5rem 0; }
+  .phase-block:last-of-type { border-bottom: none; }
+
+  .phase-block.active {
+    background: var(--cream);
+    border-radius: 6px; border: none;
+    border-left: 3px solid var(--cacao);
+    padding: 2rem 2rem 2.5rem;
+    margin: 0 -2rem 0; position: relative;
+  }
+
+  .phase-top {
+    display: flex; align-items: baseline;
+    gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;
+  }
+  .phase-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300; font-style: italic;
+    color: var(--sand); flex-shrink: 0; line-height: 1;
+  }
+  .phase-title {
+    font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--cacao-dark);
+  }
+  .phase-subtitle {
+    font-size: 0.62rem; color: var(--taupe);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 0.15rem;
+  }
+  .current-badge {
+    display: inline-block; background: var(--cacao); color: var(--cream);
+    font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 20px; margin-left: 0.6rem;
+    font-weight: 600; vertical-align: middle;
+  }
+
+  .phase-objetivo {
+    background: var(--white); border: 1px solid var(--sand);
+    border-radius: 4px; padding: 0.9rem 1.15rem; margin-bottom: 1.5rem;
+  }
+  .obj-label {
+    font-size: 0.57rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--taupe); font-weight: 600; margin-bottom: 0.35rem;
+  }
+  .obj-text { font-size: 0.8rem; color: var(--cacao); line-height: 1.6; }
+
+  .block-label {
+    font-size: 0.57rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--taupe); font-weight: 600; margin-bottom: 0.6rem;
+  }
+
+  /* NEXT STEPS TABLE */
+  .steps-table { width: 100%; border-collapse: collapse; margin-bottom: 0; }
+  .steps-table th {
+    font-size: 0.53rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--taupe); font-weight: 600; text-align: left;
+    padding: 0 0.75rem 0.45rem; border-bottom: 1px solid var(--sand);
+  }
+  .steps-table th:first-child { padding-left: 0; }
+  .steps-table td {
+    font-size: 0.77rem; color: var(--cacao);
+    padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--sand); vertical-align: middle;
+  }
+  .steps-table td:first-child { padding-left: 0; }
+  .steps-table tr:last-child td { border-bottom: none; }
+
+  .owner-tag {
+    display: inline-block; font-size: 0.56rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 8px; border-radius: 12px;
+    font-weight: 600; white-space: nowrap;
+  }
+  .owner-us { background: var(--cream-warm); color: var(--cacao-dark); }
+  .owner-client { background: var(--sand); color: var(--cacao-dark); }
+  .owner-both { background: #e8e0f0; color: #4a3589; }
+
+  .status-tag {
+    display: inline-block; font-size: 0.53rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 9px; border-radius: 12px;
+    font-weight: 700; white-space: nowrap;
+  }
+  .s-done { background: #EAF3DE; color: #3B6D11; }
+  .s-wip  { background: #FAEEDA; color: #854F0B; }
+  .s-pending { background: #F1EFE8; color: #5F5E5A; }
+  .s-blocked { background: #FAECE7; color: #993C1D; }
+
+  .eta-text { font-size: 0.7rem; color: var(--taupe); white-space: nowrap; }
+
+  /* DELIVERABLES */
+  .deliverables-block { margin-top: 1.5rem; border-top: 1px solid var(--sand); padding-top: 1.1rem; }
+  .del-item {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.45rem 0; border-bottom: 1px solid var(--sand);
+  }
+  .del-item:last-child { border-bottom: none; }
+  .del-icon {
+    width: 26px; height: 26px; border-radius: 4px;
+    background: var(--cream-warm); border: 1px solid var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; flex-shrink: 0;
+  }
+  .del-name { font-size: 0.77rem; color: var(--cacao-dark); font-weight: 500; flex: 1; }
+  .del-name a { color: var(--cacao); text-decoration: underline; text-underline-offset: 3px; }
+  .del-name a:hover { color: var(--cacao-dark); }
+  .del-date { font-size: 0.62rem; color: var(--taupe); white-space: nowrap; }
+  .del-empty { font-size: 0.73rem; color: var(--taupe); font-style: italic; padding: 0.2rem 0; }
+
+  /* NOT INCLUDED */
+  .not-included {
+    background: var(--cream-warm); border: 1px solid var(--sand);
+    border-radius: 4px; padding: 1.25rem 1.5rem; margin-top: 2.5rem;
+  }
+  .not-label {
+    font-size: 0.57rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--taupe); font-weight: 600; margin-bottom: 0.6rem;
+  }
+  .not-item {
+    font-size: 0.77rem; color: var(--cacao);
+    padding: 0.18rem 0 0.18rem 1rem; position: relative;
+  }
+  .not-item::before { content: '×'; position: absolute; left: 0; color: var(--taupe); }
+
+  /* INVESTMENT */
+  #inversion { background: var(--cacao-dark); padding: 5rem 2rem; text-align: center; color: var(--cream); }
+  .inv-inner { max-width: 860px; margin: 0 auto; }
+  .inv-label {
+    font-size: 0.62rem; letter-spacing: 0.28em;
+    text-transform: uppercase; color: var(--taupe); margin-bottom: 0.8rem;
+  }
+  .inv-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    font-weight: 300; font-style: italic; color: var(--cream); line-height: 1; margin-bottom: 0.4rem;
+  }
+  .inv-sub { font-size: 0.68rem; color: var(--taupe); letter-spacing: 0.1em; margin-bottom: 2.5rem; }
+  .inv-divider { width: 36px; height: 1px; background: var(--taupe); opacity: 0.3; margin: 2.5rem auto 0; }
+  .inv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; text-align: left; margin-top: 2rem; }
+  @media (max-width: 560px) { .inv-grid { grid-template-columns: 1fr; } }
+  .inv-col-label {
+    font-size: 0.57rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--taupe); font-weight: 600;
+    border-bottom: 1px solid rgba(229,223,207,0.2);
+    padding-bottom: 0.5rem; margin-bottom: 0.7rem;
+  }
+  .inv-item {
+    font-size: 0.77rem; color: rgba(250,247,242,0.8);
+    padding: 0.2rem 0 0.2rem 1rem; position: relative;
+  }
+  .inv-item::before { content: '—'; position: absolute; left: 0; color: var(--taupe); font-size: 0.7rem; }
+
+  /* CTA */
+  #cta { background: var(--cream-warm); padding: 5rem 2rem; text-align: center; }
+  .cta-inner { max-width: 860px; margin: 0 auto; }
+  #cta h2 { margin-bottom: 0.8rem; }
+  .cta-desc { color: var(--taupe); font-size: 0.82rem; max-width: 380px; margin: 0 auto 2rem; }
+  .cta-btn {
+    display: inline-block; background: var(--cacao); color: var(--cream);
+    padding: 0.9rem 2.2rem; font-size: 0.65rem; letter-spacing: 0.2em;
+    text-transform: uppercase; font-weight: 700; text-decoration: none;
+    font-family: 'Montserrat', sans-serif; transition: background 0.2s;
+  }
+  .cta-btn:hover { background: var(--cacao-dark); }
+
+  footer {
+    background: var(--cacao-dark); text-align: center; padding: 1.8rem;
+    font-size: 0.58rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--taupe);
+  }
+
+  @media (max-width: 600px) {
+    .phase-block.active { margin: 0; padding: 1.5rem 1rem; }
+    .steps-table th:nth-child(4), .steps-table td:nth-child(4) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#roadmap">Hoja de ruta</a>
+  <a href="#fases">Fases</a>
+  <a href="#inversion">Inversión</a>
+  <a href="#cta">Arranquemos</a>
+</nav>
+
+<header>
+  <p class="studio-label">Forme Studio — Proyecto</p>
+  <h1>Attic Pilates</h1>
+  <div class="header-meta">
+    <span>Landing Page</span>
+    <span>·</span>
+    <span>Abril 2026</span>
+    <span>·</span>
+    <span>5 semanas</span>
+  </div>
+</header>
+
+<div class="stage-banner">
+  <span class="stage-banner-label">Etapa actual</span>
+  <span class="stage-pill">01 · Discovery</span>
+</div>
+
+<!-- ROADMAP -->
+<div id="roadmap">
+  <div class="roadmap-inner">
+    <h2>Roadmap</h2>
+    <div class="roadmap-track">
+      <div class="roadmap-step active">
+        <div class="step-dot">1</div>
+        <div class="step-content">
+          <div class="step-name">Discovery</div>
+          <div class="step-timing">Semana 1</div>
+          <div class="active-badge">Estamos acá</div>
+        </div>
+      </div>
+      <div class="roadmap-step">
+        <div class="step-dot">2</div>
+        <div class="step-content">
+          <div class="step-name">Propuesta</div>
+          <div class="step-timing">Semana 1</div>
+        </div>
+      </div>
+      <div class="roadmap-step">
+        <div class="step-dot">3</div>
+        <div class="step-content">
+          <div class="step-name">Producción</div>
+          <div class="step-timing">Sem. 2–3</div>
+        </div>
+      </div>
+      <div class="roadmap-step">
+        <div class="step-dot">4</div>
+        <div class="step-content">
+          <div class="step-name">Revisión</div>
+          <div class="step-timing">Semana 4</div>
+        </div>
+      </div>
+      <div class="roadmap-step">
+        <div class="step-dot">5</div>
+        <div class="step-content">
+          <div class="step-name">Entrega</div>
+          <div class="step-timing">Semana 5</div>
+        </div>
+      </div>
+      <div class="roadmap-step">
+        <div class="step-dot">6</div>
+        <div class="step-content">
+          <div class="step-name">Seguimiento</div>
+          <div class="step-timing">+3–5 días</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASES -->
+<div id="fases">
+<div class="phases-wrap">
+
+  <h2>Detalle de fases</h2>
+
+  <!-- FASE 1 — ACTIVE -->
+  <div class="phase-block active">
+    <div class="phase-top">
+      <span class="phase-num">01</span>
+      <div>
+        <div class="phase-title">Discovery <span class="current-badge">En curso</span></div>
+        <div class="phase-subtitle">Semana 1 · Abril 2026</div>
+      </div>
+    </div>
+
+    <div class="phase-objetivo">
+      <div class="obj-label">Objetivo</div>
+      <div class="obj-text">Entender a fondo el estudio, el público y qué tiene que lograr la web — para arrancar producción sin sorpresas.</div>
+    </div>
+
+    <div class="block-label">Next steps</div>
+    <table class="steps-table">
+      <thead><tr><th style="width:42%">Tarea</th><th>Owner</th><th>Estado</th><th>ETA</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Compartir el form de discovery</td>
+          <td><span class="owner-tag owner-us">Forme Studio</span></td>
+          <td><span class="status-tag s-done">Listo</span></td>
+          <td class="eta-text">—</td>
+        </tr>
+        <tr>
+          <td>Completar el form de discovery</td>
+          <td><span class="owner-tag owner-client">Attic</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">A definir</td>
+        </tr>
+        <tr>
+          <td>Compartir logo + colores + fotos</td>
+          <td><span class="owner-tag owner-client">Attic</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">A definir</td>
+        </tr>
+        <tr>
+          <td>Definir estructura de la landing</td>
+          <td><span class="owner-tag owner-us">Forme Studio</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">Tras el form</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="deliverables-block">
+      <div class="block-label">Entregables de esta fase</div>
+      <div class="del-item">
+        <div class="del-icon">📋</div>
+        <div class="del-name"><a href="LINK_FORM_AQUI" target="_blank">Form de Discovery — Attic Pilates</a></div>
+        <div class="del-date">Abr 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 2 -->
+  <div class="phase-block">
+    <div class="phase-top">
+      <span class="phase-num">02</span>
+      <div>
+        <div class="phase-title">Propuesta y presupuesto</div>
+        <div class="phase-subtitle">Semana 1</div>
+      </div>
+    </div>
+    <div class="phase-objetivo">
+      <div class="obj-label">Objetivo</div>
+      <div class="obj-text">Cerrar el alcance, el precio y las condiciones antes de arrancar. Sin señal no arrancamos.</div>
+    </div>
+    <div class="block-label">Next steps</div>
+    <table class="steps-table">
+      <thead><tr><th style="width:42%">Tarea</th><th>Owner</th><th>Estado</th><th>ETA</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Revisar esta propuesta</td>
+          <td><span class="owner-tag owner-client">Attic</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">—</td>
+        </tr>
+        <tr>
+          <td>Confirmar avance + señal del 50%</td>
+          <td><span class="owner-tag owner-client">Attic</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">—</td>
+        </tr>
+        <tr>
+          <td>Acordar canal de comunicación</td>
+          <td><span class="owner-tag owner-both">Ambos</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">—</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="deliverables-block">
+      <div class="block-label">Entregables de esta fase</div>
+      <p class="del-empty">Nada entregado aún.</p>
+    </div>
+  </div>
+
+  <!-- FASE 3 -->
+  <div class="phase-block">
+    <div class="phase-top">
+      <span class="phase-num">03</span>
+      <div>
+        <div class="phase-title">Creación / Producción</div>
+        <div class="phase-subtitle">Semanas 2–3</div>
+      </div>
+    </div>
+    <div class="phase-objetivo">
+      <div class="obj-label">Objetivo</div>
+      <div class="obj-text">Diseñar y desarrollar la landing completa — estructura, textos, visual y funcionalidad. Responsive y lista para revisar.</div>
+    </div>
+    <div class="block-label">Next steps</div>
+    <table class="steps-table">
+      <thead><tr><th style="width:42%">Tarea</th><th>Owner</th><th>Estado</th><th>ETA</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Diseño y desarrollo de la landing</td>
+          <td><span class="owner-tag owner-us">Forme Studio</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">Sem. 2–3</td>
+        </tr>
+        <tr>
+          <td>Proveer fotos y material visual final</td>
+          <td><span class="owner-tag owner-client">Attic</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">Inicio sem. 2</td>
+        </tr>
+        <tr>
+          <td>Integrar sistema de reservas</td>
+          <td><span class="owner-tag owner-us">Forme Studio</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">Sem. 3</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="deliverables-block">
+      <div class="block-label">Entregables de esta fase</div>
+      <p class="del-empty">Nada entregado aún.</p>
+    </div>
+  </div>
+
+  <!-- FASE 4 -->
+  <div class="phase-block">
+    <div class="phase-top">
+      <span class="phase-num">04</span>
+      <div>
+        <div class="phase-title">Revisión / Feedback</div>
+        <div class="phase-subtitle">Semana 4</div>
+      </div>
+    </div>
+    <div class="phase-objetivo">
+      <div class="obj-label">Objetivo</div>
+      <div class="obj-text">Revisar la versión preview de la landing, consolidar feedback y cerrar ajustes. Máximo 2 rondas incluidas.</div>
+    </div>
+    <div class="block-label">Next steps</div>
+    <table class="steps-table">
+      <thead><tr><th style="width:42%">Tarea</th><th>Owner</th><th>Estado</th><th>ETA</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Compartir link de preview</td>
+          <td><span class="owner-tag owner-us">Forme Studio</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">Sem. 4</td>
+        </tr>
+        <tr>
+          <td>Feedback consolidado ronda 1</td>
+          <td><span class="owner-tag owner-client">Attic</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">48–72 hs post-preview</td>
+        </tr>
+        <tr>
+          <td>Incorporar cambios y cerrar</td>
+          <td><span class="owner-tag owner-us">Forme Studio</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">Sem. 4</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="deliverables-block">
+      <div class="block-label">Entregables de esta fase</div>
+      <p class="del-empty">Nada entregado aún.</p>
+    </div>
+  </div>
+
+  <!-- FASE 5 -->
+  <div class="phase-block">
+    <div class="phase-top">
+      <span class="phase-num">05</span>
+      <div>
+        <div class="phase-title">Entrega final</div>
+        <div class="phase-subtitle">Semana 5</div>
+      </div>
+    </div>
+    <div class="phase-objetivo">
+      <div class="obj-label">Objetivo</div>
+      <div class="obj-text">Entregar los archivos finales listos para publicar, con guía de publicación y checklist de lanzamiento.</div>
+    </div>
+    <div class="block-label">Next steps</div>
+    <table class="steps-table">
+      <thead><tr><th style="width:42%">Tarea</th><th>Owner</th><th>Estado</th><th>ETA</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Pago del 50% restante</td>
+          <td><span class="owner-tag owner-client">Attic</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">Antes de la entrega</td>
+        </tr>
+        <tr>
+          <td>Entrega de archivos finales + guía</td>
+          <td><span class="owner-tag owner-us">Forme Studio</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">Sem. 5</td>
+        </tr>
+        <tr>
+          <td>Publicar el sitio</td>
+          <td><span class="owner-tag owner-both">Ambos</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">Sem. 5</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="deliverables-block">
+      <div class="block-label">Entregables de esta fase</div>
+      <p class="del-empty">Nada entregado aún.</p>
+    </div>
+  </div>
+
+  <!-- FASE 6 -->
+  <div class="phase-block">
+    <div class="phase-top">
+      <span class="phase-num">06</span>
+      <div>
+        <div class="phase-title">Seguimiento post-entrega</div>
+        <div class="phase-subtitle">+3–5 días del lanzamiento</div>
+      </div>
+    </div>
+    <div class="phase-objetivo">
+      <div class="obj-label">Objetivo</div>
+      <div class="obj-text">Confirmar que todo funciona en el mundo real. Ajustes menores sin costo dentro de los primeros 7 días.</div>
+    </div>
+    <div class="block-label">Next steps</div>
+    <table class="steps-table">
+      <thead><tr><th style="width:42%">Tarea</th><th>Owner</th><th>Estado</th><th>ETA</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Check-in de funcionamiento</td>
+          <td><span class="owner-tag owner-us">Forme Studio</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">3–5 días post-lanzamiento</td>
+        </tr>
+        <tr>
+          <td>Reportar issues o ajustes finales</td>
+          <td><span class="owner-tag owner-client">Attic</span></td>
+          <td><span class="status-tag s-pending">Pendiente</span></td>
+          <td class="eta-text">Dentro de 7 días</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="deliverables-block">
+      <div class="block-label">Entregables de esta fase</div>
+      <p class="del-empty">Nada entregado aún.</p>
+    </div>
+  </div>
+
+  <!-- NO INCLUYE -->
+  <div class="not-included">
+    <div class="not-label">Qué NO incluye este proyecto</div>
+    <p class="not-item">Fotografía profesional del espacio o clases</p>
+    <p class="not-item">Dominio y hosting (podemos orientarlas, pero van por su cuenta)</p>
+    <p class="not-item">SEO avanzado ni campañas de publicidad</p>
+    <p class="not-item">Más de 2 rondas de revisión (las adicionales se cotizan aparte)</p>
+    <p class="not-item">Desarrollo de sistema de reservas o pagos propio</p>
+  </div>
+
+</div>
+</div>
+
+<!-- INVERSIÓN -->
+<div id="inversion">
+  <div class="inv-inner">
+    <p class="inv-label">Inversión</p>
+    <div class="inv-amount">× euros</div>
+    <p class="inv-sub">Landing page completa · Entrega en 5 semanas</p>
+    <div class="inv-divider"></div>
+    <div class="inv-grid">
+      <div>
+        <div class="inv-col-label">Incluye</div>
+        <p class="inv-item">Landing page responsive (mobile + desktop)</p>
+        <p class="inv-item">Diseño visual alineado a la identidad de Attic</p>
+        <p class="inv-item">Textos de cada sección (con ayuda de ustedes)</p>
+        <p class="inv-item">Integración con sistema de reservas actual</p>
+        <p class="inv-item">Hasta 2 rondas de revisión y feedback</p>
+        <p class="inv-item">Guía de publicación y handoff de archivos</p>
+        <p class="inv-item">Seguimiento post-entrega por 7 días</p>
+      </div>
+      <div>
+        <div class="inv-col-label">Forma de pago</div>
+        <p class="inv-item">50% al confirmar el proyecto</p>
+        <p class="inv-item">50% antes de recibir la entrega final</p>
+        <p class="inv-item">Transferencia o el medio que prefieran</p>
+        <div class="inv-col-label" style="margin-top:1.5rem;">Canal de comunicación</div>
+        <p class="inv-item">WhatsApp para consultas rápidas</p>
+        <p class="inv-item">Calls de check-in al inicio y al cierre</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div id="cta">
+  <div class="cta-inner" style="padding:5rem 2rem;text-align:center;">
+    <h2>¿Arrancamos?</h2>
+    <p class="cta-desc">Respondé este mail para confirmar y coordinar el primer pago. El resto lo resolvemos juntas.</p>
+    <a href="mailto:hola@formestudio.com?subject=Attic%20Pilates%20%E2%80%94%20Arrancamos" class="cta-btn">Escribinos</a>
+  </div>
+</div>
+
+<footer>Crafted by Forme Studio &nbsp;·&nbsp; Clarity, crafted.</footer>
+
+</body>
+</html>
