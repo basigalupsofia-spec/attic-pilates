@@ -224,6 +224,10 @@
         <label><input type="checkbox" name="Servicios" value="Clases privadas"> Clases privadas / individuales</label>
         <label><input type="checkbox" name="Servicios" value="Retiros o workshops"> Retiros o workshops</label>
         <label><input type="checkbox" name="Servicios" value="Clases online"> Clases online</label>
+        <label style="flex-direction:column; align-items:flex-start; gap:6px; border:none; background:none; padding:0;">
+          <span style="font-size:0.78rem; font-weight:400; color:var(--taupe);">Otro</span>
+          <input type="text" id="servicios-otro-input" name="Servicios otro" placeholder="Especificá...">
+        </label>
       </div>
     </div>
 
@@ -261,6 +265,10 @@
         <label><input type="checkbox" name="Como las encuentra la gente" value="Google"> Google</label>
         <label><input type="checkbox" name="Como las encuentra la gente" value="Facebook"> Facebook</label>
         <label><input type="checkbox" name="Como las encuentra la gente" value="TikTok"> TikTok</label>
+        <label style="flex-direction:column; align-items:flex-start; gap:6px;">
+          <span style="display:flex;align-items:center;gap:10px;"><input type="checkbox" id="encuentra-otro-check" onchange="toggleOtro('encuentra-otro-check','encuentra-otro-input')"> Otro</span>
+          <input type="text" id="encuentra-otro-input" name="Como las encuentra otro" placeholder="Especificá..." style="display:none; margin-top:4px;">
+        </label>
       </div>
     </div>
 
@@ -282,6 +290,10 @@
         <label><input type="radio" name="Objetivo de la web" value="Visibilidad en Google"> Que nos encuentren en Google</label>
         <label><input type="radio" name="Objetivo de la web" value="Transmitir identidad"> Transmitir quiénes somos y generar confianza</label>
         <label><input type="radio" name="Objetivo de la web" value="Todo lo anterior"> Todo lo anterior</label>
+        <label style="flex-direction:column; align-items:flex-start; gap:6px;">
+          <span style="display:flex;align-items:center;gap:10px;"><input type="radio" name="Objetivo de la web" value="__otro__" onchange="toggleOtro('objetivo-otro-radio','objetivo-otro-input', true)"> Otro</span>
+          <input type="text" id="objetivo-otro-input" name="Objetivo de la web otro" placeholder="Especificá..." style="display:none; margin-top:4px;">
+        </label>
       </div>
     </div>
 
@@ -323,6 +335,16 @@
         <label><input type="radio" name="Colores" value="Referencias"> Más o menos, tenemos referencias</label>
         <label><input type="radio" name="Colores" value="Abierto"> No, está abierto</label>
       </div>
+      <div style="margin-top:0.9rem;">
+        <div class="hint">Si tienen colores, ponelos acá (nombre, HEX, o descripción):</div>
+        <input type="text" id="colores_detalle" name="Colores detalle" placeholder="Ej: verde salvia #8A9E7A, crema #FAF7F2...">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Tienen tipografía definida?</label>
+      <div class="hint">La fuente o letra que usan en sus comunicaciones, si tienen.</div>
+      <input type="text" id="tipografia" name="Tipografia" placeholder="Ej: Montserrat, Garamond, no tenemos...">
     </div>
 
     <div class="field">
@@ -396,6 +418,28 @@
 <footer>Crafted by Handled &nbsp;·&nbsp; We run it. You grow it.</footer>
 
 <script>
+  function toggleOtro(checkId, inputId, isRadio) {
+    const check = isRadio
+      ? document.querySelector(`input[name="Objetivo de la web"][value="__otro__"]`)
+      : document.getElementById(checkId);
+    const input = document.getElementById(inputId);
+    if (!input) return;
+    input.style.display = check.checked ? 'block' : 'none';
+    if (!check.checked) input.value = '';
+  }
+
+  // Show/hide objetivo otro on any radio change in that group
+  document.addEventListener('change', function(e) {
+    if (e.target.name === 'Objetivo de la web') {
+      const input = document.getElementById('objetivo-otro-input');
+      if (input) {
+        const isOtro = e.target.value === '__otro__';
+        input.style.display = isOtro ? 'block' : 'none';
+        if (!isOtro) input.value = '';
+      }
+    }
+  });
+
   function getChecked(name) {
     return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
       .map(i => i.value).join(', ') || null;
@@ -417,7 +461,7 @@
       { val: getVal('q5'),                                    label: 'Público típico' },
       { val: getChecked('Como las encuentra la gente'),       label: 'Cómo las encuentra la gente' },
       { val: getVal('q7'),                                    label: 'Reservas actuales' },
-      { val: getRadio('Objetivo de la web'),                  label: 'Objetivo de la web' },
+      { val: getRadio('Objetivo de la web'),                  label: 'Objetivo de la web (incluyendo Otro)' },
       { val: getRadio('Logo'),                                label: 'Logo' },
       { val: getRadio('Colores'),                             label: 'Colores' },
       { val: getVal('q15'),                                   label: '3 palabras' },
@@ -440,20 +484,34 @@
     btn.disabled = true;
     btn.textContent = 'Enviando...';
 
+    const encuentraOtroCheck = document.getElementById('encuentra-otro-check');
+    const objetivoRadio = getRadio('Objetivo de la web');
+
+    let servicios = [getChecked('Servicios'), getVal('servicios-otro-input')].filter(Boolean).join(', ');
+    let encuentraGente = getChecked('Como las encuentra la gente');
+    if (encuentraOtroCheck?.checked && getVal('encuentra-otro-input')) {
+      encuentraGente = [encuentraGente, getVal('encuentra-otro-input')].filter(Boolean).join(', ');
+    }
+    let objetivoWeb = objetivoRadio === '__otro__'
+      ? (getVal('objetivo-otro-input') || 'Otro')
+      : objetivoRadio;
+
     const data = {
       'Descripcion del estudio':        getVal('q1'),
-      'Servicios':                      getChecked('Servicios'),
+      'Servicios':                      servicios,
       'Ubicacion':                      getVal('q3'),
       'Antiguedad':                     getRadio('Antiguedad') || '—',
       'Publico tipico':                 getVal('q5'),
-      'Como las encuentra la gente':    getChecked('Como las encuentra la gente'),
+      'Como las encuentra la gente':    encuentraGente,
       'Reservas actuales':              getVal('q7'),
-      'Objetivo de la web':             getRadio('Objetivo de la web'),
+      'Objetivo de la web':             objetivoWeb,
       'Sistema de reservas':            getVal('q9') || '—',
       'No puede faltar':                getVal('q10') || '—',
       'No quieren':                     getVal('q11') || '—',
       'Logo':                           getRadio('Logo'),
       'Colores':                        getRadio('Colores'),
+      'Colores detalle':                getVal('colores_detalle') || '—',
+      'Tipografia':                     getVal('tipografia') || '—',
       'Referencias visuales':           getVal('q14') || '—',
       '3 palabras':                     getVal('q15'),
       'Textos':                         getRadio('Textos'),
