@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attic Pilates × Handled — Discovery</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --white: #FFFFFF;
+    --cream: #FAF7F2;
+    --cream-warm: #F3EDE3;
+    --sand: #E8DFCF;
+    --taupe: #B5A897;
+    --cacao: #6B5B4E;
+    --cacao-dark: #4A3E35;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--cream);
+    color: var(--cacao-dark);
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  .page-header {
+    background: var(--cacao-dark);
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .page-header .studio { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--taupe); margin-bottom: 0.5rem; }
+  .page-header h1 { font-size: 1.4rem; font-weight: 600; color: var(--cream); letter-spacing: 0.05em; }
+
+  .form-wrap {
+    max-width: 660px;
+    margin: 2.5rem auto 4rem;
+    padding: 0 1.5rem;
+  }
+
+  .form-intro {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.82rem;
+    color: var(--cacao);
+    line-height: 1.7;
+  }
+
+  .section {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 6px;
+    padding: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-title {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--sand);
+  }
+
+  .field { margin-bottom: 1.4rem; }
+  .field:last-child { margin-bottom: 0; }
+
+  .field label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--cacao-dark);
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+  .field .hint {
+    font-size: 0.72rem;
+    color: var(--taupe);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+  .req { color: #c0392b; margin-left: 2px; }
+
+  input[type="text"],
+  input[type="url"],
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--cacao-dark);
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s;
+    line-height: 1.5;
+  }
+  input[type="text"]:focus,
+  input[type="url"]:focus,
+  textarea:focus { border-color: var(--cacao); background: var(--white); }
+  textarea { min-height: 90px; resize: vertical; }
+
+  .checkbox-group, .radio-group {
+    display: flex; flex-direction: column; gap: 8px;
+    margin-top: 4px;
+  }
+  .checkbox-group label, .radio-group label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.78rem; font-weight: 400;
+    color: var(--cacao); cursor: pointer;
+    padding: 8px 10px;
+    border: 1px solid var(--sand);
+    border-radius: 4px;
+    background: var(--cream);
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .checkbox-group label:hover, .radio-group label:hover {
+    background: var(--cream-warm); border-color: var(--taupe);
+  }
+  .checkbox-group input[type="checkbox"],
+  .radio-group input[type="radio"] {
+    width: 16px; height: 16px;
+    accent-color: var(--cacao);
+    cursor: pointer; flex-shrink: 0;
+  }
+
+  .submit-section {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 6px;
+    padding: 1.75rem;
+    margin-top: 1.25rem;
+    text-align: center;
+  }
+
+  .submit-btn {
+    background: var(--cacao);
+    color: var(--cream);
+    border: none;
+    padding: 14px 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+  }
+  .submit-btn:hover { background: var(--cacao-dark); }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .success-card {
+    background: #EAF3DE;
+    border: 1px solid #C0DD97;
+    border-radius: 6px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 1.25rem;
+  }
+  .success-card h2 { font-size: 0.9rem; font-weight: 600; color: #3B6D11; margin-bottom: 0.4rem; }
+  .success-card p { font-size: 0.78rem; color: #3B6D11; }
+
+  .error-card {
+    background: #FAECE7;
+    border: 1px solid #F0997B;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: #993C1D;
+  }
+  .error-card ul { padding-left: 1.2rem; margin-top: 0.4rem; }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <p class="studio">Handled — We run it. You grow it.</p>
+  <h1>Attic Pilates — Discovery</h1>
+</div>
+
+<div class="form-wrap">
+
+  <div class="form-intro">
+    Hola! Estas preguntas nos ayudan a entender tu estudio y lo que necesitás de la web. No hay respuestas correctas o incorrectas — mientras más detalle, mejor podemos trabajar. Calculá unos 10 minutos para completarlo.
+  </div>
+
+  <!-- SECCIÓN 1 -->
+  <div class="section">
+    <div class="section-title">01 — El estudio</div>
+
+    <div class="field">
+      <label>¿Cómo describirías Attic Pilates en 2–3 oraciones? ¿Qué las hace distintas? <span class="req">*</span></label>
+      <textarea id="q1" name="Descripcion del estudio" placeholder="Somos un estudio de pilates reformer..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>¿Qué servicios ofrecen? <span class="req">*</span></label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="Servicios" value="Clases de reformer"> Clases de reformer</label>
+        <label><input type="checkbox" name="Servicios" value="Clases de mat"> Clases de mat</label>
+        <label><input type="checkbox" name="Servicios" value="Clases grupales"> Clases grupales</label>
+        <label><input type="checkbox" name="Servicios" value="Clases privadas"> Clases privadas / individuales</label>
+        <label><input type="checkbox" name="Servicios" value="Retiros o workshops"> Retiros o workshops</label>
+        <label><input type="checkbox" name="Servicios" value="Clases online"> Clases online</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Dónde están ubicadas? <span class="req">*</span></label>
+      <input type="text" id="q3" name="Ubicacion" placeholder="Ciudad, barrio o dirección">
+    </div>
+
+    <div class="field">
+      <label>¿Cuánto tiempo llevan en actividad?</label>
+      <div class="radio-group">
+        <label><input type="radio" name="Antiguedad" value="Menos de 1 año"> Menos de 1 año</label>
+        <label><input type="radio" name="Antiguedad" value="1–3 años"> 1–3 años</label>
+        <label><input type="radio" name="Antiguedad" value="3–5 años"> 3–5 años</label>
+        <label><input type="radio" name="Antiguedad" value="Más de 5 años"> Más de 5 años</label>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2 -->
+  <div class="section">
+    <div class="section-title">02 — El público</div>
+
+    <div class="field">
+      <label>¿Quién es tu alumna/alumno típico? <span class="req">*</span></label>
+      <div class="hint">Edad, perfil, nivel de experiencia, qué busca.</div>
+      <textarea id="q5" name="Publico tipico" placeholder="Mujeres de 25–45 años, profesionales..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>¿Cómo las encuentra la gente hoy? <span class="req">*</span></label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="Como las encuentra la gente" value="Instagram"> Instagram</label>
+        <label><input type="checkbox" name="Como las encuentra la gente" value="Boca a boca"> Boca a boca / recomendaciones</label>
+        <label><input type="checkbox" name="Como las encuentra la gente" value="Google"> Google</label>
+        <label><input type="checkbox" name="Como las encuentra la gente" value="Facebook"> Facebook</label>
+        <label><input type="checkbox" name="Como las encuentra la gente" value="TikTok"> TikTok</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Cómo pueden reservar una clase en este momento? <span class="req">*</span></label>
+      <input type="text" id="q7" name="Reservas actuales" placeholder="WhatsApp, DM de Instagram, sistema online...">
+    </div>
+  </div>
+
+  <!-- SECCIÓN 3 -->
+  <div class="section">
+    <div class="section-title">03 — La web</div>
+
+    <div class="field">
+      <label>¿Cuál es el objetivo principal de la web? <span class="req">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="Objetivo de la web" value="Reservas online"> Que la gente pueda reservar clases online</label>
+        <label><input type="radio" name="Objetivo de la web" value="Info y contacto"> Que se informen y nos contacten</label>
+        <label><input type="radio" name="Objetivo de la web" value="Visibilidad en Google"> Que nos encuentren en Google</label>
+        <label><input type="radio" name="Objetivo de la web" value="Transmitir identidad"> Transmitir quiénes somos y generar confianza</label>
+        <label><input type="radio" name="Objetivo de la web" value="Todo lo anterior"> Todo lo anterior</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Tienen algún sistema de reservas que ya usen o quieran integrar?</label>
+      <div class="hint">Mindbody, Vagaro, Fresha, Google Calendar, WhatsApp, etc.</div>
+      <input type="text" id="q9" name="Sistema de reservas" placeholder="Usamos Mindbody / no tenemos, lo definimos...">
+    </div>
+
+    <div class="field">
+      <label>¿Qué no puede faltar en la web?</label>
+      <div class="hint">¿Algo que vieron en otra página y dijeron "eso lo quiero"?</div>
+      <textarea id="q10" name="No puede faltar" placeholder="Un carrusel de fotos del espacio, testimonios, precios visibles..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>¿Hay algo que definitivamente NO quieren?</label>
+      <textarea id="q11" name="No quieren" placeholder="Nada muy recargado, sin videos en autoplay..."></textarea>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 4 -->
+  <div class="section">
+    <div class="section-title">04 — El look</div>
+
+    <div class="field">
+      <label>¿Tienen logo? <span class="req">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="Logo" value="Sí, listo"> Sí, tenemos logo listo</label>
+        <label><input type="radio" name="Logo" value="En proceso"> Tenemos algo pero no está terminado</label>
+        <label><input type="radio" name="Logo" value="No tenemos"> No tenemos logo</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Tienen colores definidos para la marca? <span class="req">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="Colores" value="Sí, paleta definida"> Sí, tenemos paleta definida</label>
+        <label><input type="radio" name="Colores" value="Referencias"> Más o menos, tenemos referencias</label>
+        <label><input type="radio" name="Colores" value="Abierto"> No, está abierto</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Hay webs o marcas que les gusten visualmente?</label>
+      <div class="hint">Pueden ser de pilates o de cualquier industria. Links o nombres.</div>
+      <textarea id="q14" name="Referencias visuales" placeholder="pilat3s.com, la web de X marca, el Instagram de Y..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>¿Cómo quieren que las perciban? Escribí 3 palabras. <span class="req">*</span></label>
+      <input type="text" id="q15" name="3 palabras" placeholder="Ej: minimalista, cálida, profesional">
+    </div>
+  </div>
+
+  <!-- SECCIÓN 5 -->
+  <div class="section">
+    <div class="section-title">05 — Contenido y logística</div>
+
+    <div class="field">
+      <label>¿Quién escribe los textos del sitio? <span class="req">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="Textos" value="Nosotras"> Nosotras los escribimos</label>
+        <label><input type="radio" name="Textos" value="Necesitan ayuda"> Necesitamos ayuda para redactarlos</label>
+        <label><input type="radio" name="Textos" value="Tenemos borrador"> Tenemos algo escrito pero hay que pulirlo</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>¿Tienen fotos del espacio y las clases? <span class="req">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="Fotos" value="Fotos profesionales"> Sí, tenemos fotos profesionales</label>
+        <label><input type="radio" name="Fotos" value="Fotos de celular"> Tenemos fotos pero son de celular</label>
+        <label><input type="radio" name="Fotos" value="No tenemos"> No tenemos, hay que conseguirlas</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Links al contenido que quieran usar</label>
+      <div class="hint">Google Drive, Dropbox, WeTransfer, fotos, docs con textos — todo lo que tengan disponible.</div>
+      <textarea id="q_links" name="Links a contenido" placeholder="https://drive.google.com/...&#10;https://dropbox.com/..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>¿Tienen deadline para tener la web lista? <span class="req">*</span></label>
+      <div class="radio-group">
+        <label><input type="radio" name="Deadline" value="Sí, hay fecha"> Sí, hay una fecha concreta</label>
+        <label><input type="radio" name="Deadline" value="Sin apuro"> No, sin apuro</label>
+        <label><input type="radio" name="Deadline" value="Cuanto antes"> Cuanto antes mejor</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Si tienen deadline, ¿cuál es?</label>
+      <input type="text" id="q_deadline_fecha" name="Fecha deadline" placeholder="Ej: fin de mayo, 15 de junio...">
+    </div>
+
+    <div class="field">
+      <label>¿Algo más que quieran contarnos?</label>
+      <textarea id="q_extra" name="Notas adicionales" placeholder="Cualquier cosa que no entrara en las preguntas anteriores..."></textarea>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-section">
+    <button class="submit-btn" id="submitBtn" onclick="submitForm()">Enviar respuestas</button>
+    <div id="feedback"></div>
+  </div>
+
+</div>
+
+<footer>Crafted by Handled &nbsp;·&nbsp; We run it. You grow it.</footer>
+
+<script>
+  function getChecked(name) {
+    return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+      .map(i => i.value).join(', ') || null;
+  }
+  function getRadio(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : null;
+  }
+  function getVal(id) {
+    const el = document.getElementById(id);
+    return el && el.value.trim() ? el.value.trim() : null;
+  }
+
+  async function submitForm() {
+    const requiredFields = [
+      { val: getVal('q1'),                                    label: 'Descripción del estudio' },
+      { val: getChecked('Servicios'),                         label: 'Servicios' },
+      { val: getVal('q3'),                                    label: 'Ubicación' },
+      { val: getVal('q5'),                                    label: 'Público típico' },
+      { val: getChecked('Como las encuentra la gente'),       label: 'Cómo las encuentra la gente' },
+      { val: getVal('q7'),                                    label: 'Reservas actuales' },
+      { val: getRadio('Objetivo de la web'),                  label: 'Objetivo de la web' },
+      { val: getRadio('Logo'),                                label: 'Logo' },
+      { val: getRadio('Colores'),                             label: 'Colores' },
+      { val: getVal('q15'),                                   label: '3 palabras' },
+      { val: getRadio('Textos'),                              label: 'Textos' },
+      { val: getRadio('Fotos'),                               label: 'Fotos' },
+      { val: getRadio('Deadline'),                            label: 'Deadline' },
+    ];
+
+    const missing = requiredFields.filter(f => !f.val).map(f => f.label);
+    if (missing.length) {
+      document.getElementById('feedback').innerHTML = `
+        <div class="error-card">
+          <strong>Faltan algunos campos obligatorios:</strong>
+          <ul>${missing.map(m => `<li>${m}</li>`).join('')}</ul>
+        </div>`;
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+
+    const data = {
+      'Descripcion del estudio':        getVal('q1'),
+      'Servicios':                      getChecked('Servicios'),
+      'Ubicacion':                      getVal('q3'),
+      'Antiguedad':                     getRadio('Antiguedad') || '—',
+      'Publico tipico':                 getVal('q5'),
+      'Como las encuentra la gente':    getChecked('Como las encuentra la gente'),
+      'Reservas actuales':              getVal('q7'),
+      'Objetivo de la web':             getRadio('Objetivo de la web'),
+      'Sistema de reservas':            getVal('q9') || '—',
+      'No puede faltar':                getVal('q10') || '—',
+      'No quieren':                     getVal('q11') || '—',
+      'Logo':                           getRadio('Logo'),
+      'Colores':                        getRadio('Colores'),
+      'Referencias visuales':           getVal('q14') || '—',
+      '3 palabras':                     getVal('q15'),
+      'Textos':                         getRadio('Textos'),
+      'Fotos':                          getRadio('Fotos'),
+      'Links a contenido':              getVal('q_links') || '—',
+      'Deadline':                       getRadio('Deadline'),
+      'Fecha deadline':                 getVal('q_deadline_fecha') || '—',
+      'Notas adicionales':              getVal('q_extra') || '—',
+    };
+
+    try {
+      const response = await fetch('https://formspree.io/f/xkopbdza', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        document.getElementById('feedback').innerHTML = `
+          <div class="success-card">
+            <h2>¡Gracias! Recibimos todo.</h2>
+            <p>En los próximos días te contactamos con los próximos pasos.</p>
+            <p style="margin-top:0.5rem; font-size:0.7rem; opacity:0.7;">— Handled</p>
+          </div>`;
+        btn.textContent = 'Enviado';
+      } else {
+        throw new Error('Error en el envío');
+      }
+    } catch {
+      document.getElementById('feedback').innerHTML = `
+        <div class="error-card">Hubo un problema al enviar. Intentá de nuevo.</div>`;
+      btn.disabled = false;
+      btn.textContent = 'Enviar respuestas';
+    }
+  }
+</script>
+</body>
+</html>
