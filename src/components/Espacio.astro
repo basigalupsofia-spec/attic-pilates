@@ -1,0 +1,100 @@
+---
+const cdn = 'https://res.cloudinary.com/dot4vmp1c/image/upload';
+
+const fotos = [
+  { src: `${cdn}/f_auto,q_auto,w_900/attic-pilates/studio1`, alt: 'Estudio Attic Pilates' },
+  { src: `${cdn}/f_auto,q_auto,w_900/attic-pilates/studio2`, alt: 'Interior Attic Pilates' },
+  { src: `${cdn}/f_auto,q_auto,w_900/attic-pilates/hero`,    alt: 'Attic Pilates' },
+  { src: `${cdn}/f_auto,q_auto,w_900/attic-pilates/studio1`, alt: 'Estudio Attic Pilates' },
+  { src: `${cdn}/f_auto,q_auto,w_900/attic-pilates/studio2`, alt: 'Interior Attic Pilates' },
+];
+---
+
+<section class="espacio section" id="espacio">
+  <div class="container">
+    <div class="espacio-header">
+      <p class="subtitle">El lugar</p>
+      <h2>Nuestro Espacio<br /><em>& Comunidad</em></h2>
+    </div>
+  </div>
+
+  <div class="carrusel-wrapper">
+    <div class="carrusel-track" id="carrusel-track">
+      {fotos.map((foto) => (
+        <div class="carrusel-slide">
+          <img src={foto.src} alt={foto.alt} loading="lazy" />
+        </div>
+      ))}
+      {/* Duplicado para loop infinito */}
+      {fotos.map((foto) => (
+        <div class="carrusel-slide" aria-hidden="true">
+          <img src={foto.src} alt="" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .espacio-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .espacio-header h2 {
+    line-height: 1.2;
+  }
+
+  .espacio-header h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--color-taupe);
+  }
+
+  .carrusel-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .carrusel-track {
+    display: flex;
+    gap: 1rem;
+    animation: slide 28s linear infinite;
+    width: max-content;
+  }
+
+  .carrusel-wrapper:hover .carrusel-track {
+    animation-play-state: paused;
+  }
+
+  .carrusel-slide {
+    flex-shrink: 0;
+    width: 420px;
+    height: 560px;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+  }
+
+  .carrusel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .carrusel-slide:hover img {
+    transform: scale(1.03);
+  }
+
+  @keyframes slide {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    .carrusel-slide {
+      width: 300px;
+      height: 400px;
+    }
+  }
+</style>
