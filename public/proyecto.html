@@ -259,6 +259,37 @@
   }
   .not-item::before { content: '×'; position: absolute; left: 0; color: var(--taupe); }
 
+  /* DISCOVERY */
+  #discovery { background: var(--cream); padding: 4rem 2rem; }
+  .discovery-inner { max-width: 900px; margin: 0 auto; }
+  .disc-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  @media (max-width: 620px) { .disc-grid { grid-template-columns: 1fr; } }
+  .disc-card {
+    background: var(--white); border: 1px solid var(--sand);
+    border-radius: 6px; padding: 1.1rem 1.25rem;
+  }
+  .disc-card.full { grid-column: 1 / -1; }
+  .disc-q {
+    font-size: 0.57rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--taupe); font-weight: 600; margin-bottom: 0.4rem;
+  }
+  .disc-a {
+    font-size: 0.82rem; color: var(--cacao-dark); line-height: 1.6;
+  }
+  .disc-tag {
+    display: inline-block; background: var(--cream-warm);
+    border: 1px solid var(--sand); border-radius: 20px;
+    font-size: 0.65rem; color: var(--cacao-dark);
+    padding: 2px 10px; margin: 2px 2px 0 0;
+  }
+  .disc-swatch {
+    display: inline-block; width: 20px; height: 20px;
+    border-radius: 50%; border: 1px solid var(--sand);
+    vertical-align: middle; margin-right: 4px;
+  }
+
   /* INVESTMENT */
   #inversion { background: var(--cacao-dark); padding: 5rem 2rem; text-align: center; color: var(--cream); }
   .inv-inner { max-width: 860px; margin: 0 auto; }
@@ -317,6 +348,7 @@
 <nav>
   <a href="#roadmap">Hoja de ruta</a>
   <a href="#fases">Fases</a>
+  <a href="#discovery">Discovery</a>
   <a href="#inversion">Inversión</a>
   <a href="#cta">Arranquemos</a>
 </nav>
@@ -671,6 +703,129 @@
   </div>
 
 </div>
+</div>
+
+<!-- DISCOVERY -->
+<div id="discovery">
+  <div class="discovery-inner">
+    <h2>Discovery — Respuestas</h2>
+    <div class="disc-grid">
+
+      <div class="disc-card full">
+        <div class="disc-q">El estudio</div>
+        <div class="disc-a">Attic es un estudio de pilates en el corazón de Palermo Soho. Lo que los diferencia es la calidad de los profesores y la adaptabilidad de sus equipos y clases.</div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Servicios</div>
+        <div class="disc-a">
+          <span class="disc-tag">Reformer</span>
+          <span class="disc-tag">Grupales</span>
+          <span class="disc-tag">Privadas</span>
+          <span class="disc-tag">Barre</span>
+          <span class="disc-tag">Cadillac personalizado</span>
+          <span class="disc-tag">Yoga</span>
+        </div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Ubicación</div>
+        <div class="disc-a">Palermo Soho</div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Antigüedad</div>
+        <div class="disc-a">Menos de 1 año</div>
+      </div>
+
+      <div class="disc-card full">
+        <div class="disc-q">Público objetivo</div>
+        <div class="disc-a">Mujeres de 20–30 años principalmente, con intención de atraer también hombres. Buscan un público deportista y activo, aunque ya tienen alumnos de mayor edad.</div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Cómo las encuentran</div>
+        <div class="disc-a">
+          <span class="disc-tag">Instagram</span>
+          <span class="disc-tag">Boca a boca</span>
+          <span class="disc-tag">Google</span>
+          <span class="disc-tag">TikTok</span>
+        </div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Reservas actuales</div>
+        <div class="disc-a">WhatsApp</div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Objetivo de la web</div>
+        <div class="disc-a">Todo lo anterior</div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Sistema de reservas</div>
+        <div class="disc-a">Siguefield — integrar o reemplazar</div>
+      </div>
+
+      <div class="disc-card full">
+        <div class="disc-q">No puede faltar</div>
+        <div class="disc-a">Info de los profesores, diferencia entre tipos de clases, posibilidad de reservar desde la web.</div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Logo</div>
+        <div class="disc-a">Sí, listo</div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Colores</div>
+        <div class="disc-a">
+          <span class="disc-swatch" style="background:#F2EFE6;"></span>#F2EFE6
+          <span class="disc-swatch" style="background:#B6A89A; margin-left:6px;"></span>#B6A89A
+          <span class="disc-swatch" style="background:#ECECEC; margin-left:6px;"></span>#ECECEC
+          <span class="disc-swatch" style="background:#2D2926; margin-left:6px;"></span>#2D2926
+          <span class="disc-swatch" style="background:#333C24; margin-left:6px;"></span>#333C24
+          <br><span style="font-size:0.72rem; color:var(--taupe); margin-top:0.4rem; display:block;">Off B&W — no tan duro como blanco y negro pero lo emula</span>
+        </div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Tipografía</div>
+        <div class="disc-a">Garet</div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">3 palabras</div>
+        <div class="disc-a">
+          <span class="disc-tag">Minimalista</span>
+          <span class="disc-tag">Deportista</span>
+          <span class="disc-tag">Clean</span>
+        </div>
+      </div>
+
+      <div class="disc-card full">
+        <div class="disc-q">Referencias visuales</div>
+        <div class="disc-a">Onomy · <a href="https://bravawellclub.com/" target="_blank" style="color:var(--cacao);">bravawellclub.com</a></div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Textos</div>
+        <div class="disc-a">Los escriben ellas</div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Fotos</div>
+        <div class="disc-a">Sí, profesionales</div>
+      </div>
+
+      <div class="disc-card">
+        <div class="disc-q">Deadline</div>
+        <div class="disc-a">Cuanto antes</div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <!-- INVERSIÓN -->
