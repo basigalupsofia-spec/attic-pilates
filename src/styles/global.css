@@ -20,7 +20,7 @@
   --color-bg-alt:      var(--color-light-gray);
   --color-text:        var(--color-dark);
   --color-text-soft:   #6B6460;
-  --color-accent:      var(--color-dark-green);
+  --color-accent:      var(--color-dark);
   --color-accent-soft: var(--color-taupe);
   --color-white:       #FFFFFF;
 
@@ -50,7 +50,7 @@
   --font-body:        var(--font-sans);
   --color-cream-light: var(--color-bg-alt);
   --color-beige:      rgba(45, 41, 38, 0.1);
-  --color-gold:       var(--color-dark-green);
+  --color-gold:       var(--color-dark);
   --color-gold-light: var(--color-taupe);
   --color-sage:       var(--color-taupe);
   --color-sage-light: var(--color-taupe);
