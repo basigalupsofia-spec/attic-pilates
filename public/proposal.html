@@ -323,6 +323,31 @@
 
     .info-card-value { font-size: 0.85rem; font-weight: 500; color: var(--cacao-dark); line-height: 1.5; }
 
+    /* ── PROPOSAL DIVIDER ── */
+    .proposal-divider {
+      background: var(--cacao-dark);
+      padding: 56px max(40px, calc(50% - 580px)) 48px;
+      text-align: center;
+    }
+
+    .proposal-divider-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 20px;
+    }
+
+    .proposal-divider-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      color: var(--cream-soft);
+      line-height: 1.0;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--cacao-dark);
@@ -373,9 +398,8 @@
   <a href="#summary">Summary</a>
   <a href="#strategy">Strategy</a>
   <a href="#scope">Scope</a>
-  <a href="#architecture">Architecture</a>
-  <a href="#technical">Technical</a>
   <a href="#identity">Identity</a>
+  <a href="#architecture">Architecture</a>
 </nav>
 
 
@@ -455,74 +479,16 @@
 </section>
 
 
-<!-- 04 INFORMATION ARCHITECTURE -->
-<section id="architecture">
-  <div class="section-num">04</div>
-  <h2>Information Architecture — Site Map</h2>
-  <p>Proposed structure for a clean, conversion-focused, mobile-first website.</p>
-
-  <div class="sitemap">
-    <div><span class="route">/</span> &nbsp;&nbsp;<span class="desc">Home — Visual impact, value proposition, and booking CTAs</span></div>
-    <div><span class="route">/classes</span> &nbsp;&nbsp;<span class="desc">Reformer, Barre, Cadillac, Yoga — group vs. private explained</span></div>
-    <div><span class="route">/team</span> &nbsp;&nbsp;<span class="desc">Instructor profiles to build authority and trust</span></div>
-    <div><span class="route">/pricing</span> &nbsp;&nbsp;<span class="desc">SigueFit integration for packs and class booking</span></div>
-    <div><span class="route">/contact</span> &nbsp;&nbsp;<span class="desc">Interactive map of Palermo Soho + WhatsApp for direct inquiries</span></div>
-  </div>
-
-  <ul class="num-list" style="margin-top:32px;">
-    <li>
-      <span class="num">01</span>
-      <span><strong>Home:</strong> Visual impact with professional studio photography, value proposition (Attic in 3 sentences), and clear booking CTAs.</span>
-    </li>
-    <li>
-      <span class="num">02</span>
-      <span><strong>Classes:</strong> Detail on Reformer, Barre, Cadillac, and Yoga. Explaining the differences between modalities is a key client requirement.</span>
-    </li>
-    <li>
-      <span class="num">03</span>
-      <span><strong>Team:</strong> Instructor profiles to build authority and trust — identified by the client as a core differentiator.</span>
-    </li>
-    <li>
-      <span class="num">04</span>
-      <span><strong>Pricing / Booking:</strong> SigueFit integration for pack purchases and class reservations.</span>
-    </li>
-    <li>
-      <span class="num">05</span>
-      <span><strong>Contact / Location:</strong> Interactive map of Palermo Soho and direct WhatsApp link for specific inquiries.</span>
-    </li>
-  </ul>
-</section>
+<!-- PROPOSAL DIVIDER -->
+<div class="proposal-divider">
+  <div class="proposal-divider-label">What we are building</div>
+  <div class="proposal-divider-title">Proposal</div>
+</div>
 
 
-<!-- 05 TECHNICAL REQUIREMENTS -->
-<section id="technical">
-  <div class="section-num">05</div>
-  <h2>Technical &amp; Functional Requirements</h2>
-
-  <ul class="num-list">
-    <li>
-      <span class="num">01</span>
-      <span><strong>Booking System:</strong> SigueFit widget integration. Must feel seamless and not disrupt the minimalist aesthetic.</span>
-    </li>
-    <li>
-      <span class="num">02</span>
-      <span><strong>Responsive Design:</strong> 100% mobile-first priority — the 20–30 year old Instagram-driven audience overwhelmingly arrives on mobile.</span>
-    </li>
-    <li>
-      <span class="num">03</span>
-      <span><strong>Local SEO:</strong> On-page optimization for searches like "Pilates Palermo Soho", "Barre Classes Palermo", etc.</span>
-    </li>
-    <li>
-      <span class="num">04</span>
-      <span><strong>Copywriting:</strong> Copy provided by the client — Handled will adapt tone and structure to speak to the active, athletic audience they want to capture.</span>
-    </li>
-  </ul>
-</section>
-
-
-<!-- 06 VISUAL IDENTITY -->
+<!-- VISUAL IDENTITY -->
 <section id="identity">
-  <div class="section-num">06</div>
+  <div class="section-num">04</div>
   <h2>Visual Identity &amp; Look and Feel</h2>
 
   <p>"Off-B&W" palette — warm creams and soft grays to avoid the coldness of pure white. Dark green serves as a sporting/organic accent.</p>
@@ -583,6 +549,65 @@
     <li>
       <span class="num">02</span>
       <span><strong>Onomy</strong> — Visual cleanliness. Mentioned in the brief — pending confirmation of whether it's a pilates or wellness brand.</span>
+    </li>
+  </ul>
+</section>
+
+
+<!-- INFORMATION ARCHITECTURE -->
+<section id="architecture">
+  <div class="section-num">05</div>
+  <h2>Information Architecture — Site Map</h2>
+  <p>Proposed structure for a clean, conversion-focused, mobile-first website.</p>
+
+  <div class="sitemap">
+    <div><span class="route">/</span> &nbsp;&nbsp;<span class="desc">Home</span></div>
+    <div><span class="route">/classes</span> &nbsp;&nbsp;<span class="desc">Classes</span></div>
+    <div><span class="route">/team</span> &nbsp;&nbsp;<span class="desc">Team</span></div>
+    <div><span class="route">/pricing</span> &nbsp;&nbsp;<span class="desc">Pricing &amp; Booking</span></div>
+    <div><span class="route">/contact</span> &nbsp;&nbsp;<span class="desc">Contact</span></div>
+  </div>
+
+  <ul class="num-list" style="margin-top:32px;">
+    <li>
+      <span class="num">01</span>
+      <div>
+        <strong>Home</strong>
+        <p style="margin:6px 0 4px; font-size:0.78rem; font-weight:400; color:var(--taupe);">Objective</p>
+        <p style="margin:0; font-size:0.83rem;">First impression and primary conversion point. Professional studio photography leads — the space does the selling. Value proposition in three sentences max, with a persistent booking CTA above the fold on mobile.</p>
+      </div>
+    </li>
+    <li>
+      <span class="num">02</span>
+      <div>
+        <strong>Classes</strong>
+        <p style="margin:6px 0 4px; font-size:0.78rem; font-weight:400; color:var(--taupe);">Objective</p>
+        <p style="margin:0; font-size:0.83rem;">Inform and remove doubt. Clearly differentiate Reformer, Barre, Cadillac, and Yoga — and explain group vs. private. This page resolves the most common pre-booking hesitation: "Which class is right for me?"</p>
+      </div>
+    </li>
+    <li>
+      <span class="num">03</span>
+      <div>
+        <strong>Team</strong>
+        <p style="margin:6px 0 4px; font-size:0.78rem; font-weight:400; color:var(--taupe);">Objective</p>
+        <p style="margin:0; font-size:0.83rem;">Build authority and trust. Instructor profiles are a declared differentiator — quality of the teaching staff is why clients choose Attic over a generic studio. This page makes that concrete.</p>
+      </div>
+    </li>
+    <li>
+      <span class="num">04</span>
+      <div>
+        <strong>Pricing &amp; Booking</strong>
+        <p style="margin:6px 0 4px; font-size:0.78rem; font-weight:400; color:var(--taupe);">Objective</p>
+        <p style="margin:0; font-size:0.83rem;">Convert intent into a confirmed reservation. Pack options are presented clearly, and the booking flow is embedded directly — no redirects, no friction. This is where the WhatsApp bottleneck gets eliminated.</p>
+      </div>
+    </li>
+    <li>
+      <span class="num">05</span>
+      <div>
+        <strong>Contact</strong>
+        <p style="margin:6px 0 4px; font-size:0.78rem; font-weight:400; color:var(--taupe);">Objective</p>
+        <p style="margin:0; font-size:0.83rem;">Capture the undecided. Interactive map of Palermo Soho for local SEO and in-person discovery. Direct WhatsApp link for specific questions — kept as a secondary channel, not the default.</p>
+      </div>
     </li>
   </ul>
 </section>
