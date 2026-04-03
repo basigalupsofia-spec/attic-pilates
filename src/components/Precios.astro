@@ -1,14 +1,11 @@
 ---
-const sueltas = [
-  { nombre: 'Clase prueba',  precio: '$20.000' },
-  { nombre: 'Clase suelta',  precio: '$24.000' },
-  { nombre: 'Clase Cadillac', precio: '$30.000' },
-];
-
-const packs = [
-  { nombre: 'Pack 4 clases',  precio: '$78.000',  popular: false },
-  { nombre: 'Pack 8 clases',  precio: '$126.000', popular: true  },
-  { nombre: 'Pack 12 clases', precio: '$145.000', popular: false },
+const precios = [
+  { nombre: 'Clase prueba',   precio: '$20.000', grupo: 'Clases' },
+  { nombre: 'Clase suelta',   precio: '$24.000', grupo: 'Clases' },
+  { nombre: 'Clase Cadillac', precio: '$30.000', grupo: 'Clases' },
+  { nombre: 'Pack 4 clases',  precio: '$78.000', grupo: 'Packs'  },
+  { nombre: 'Pack 8 clases',  precio: '$126.000', grupo: 'Packs', popular: true },
+  { nombre: 'Pack 12 clases', precio: '$145.000', grupo: 'Packs' },
 ];
 ---
 
@@ -20,54 +17,38 @@ const packs = [
       <h2>Elegí cómo moverte</h2>
     </div>
 
-    <div class="precios-cols">
-
-      <div class="precios-grupo">
-        <p class="grupo-label">Clases</p>
-        <ul class="precios-lista">
-          {sueltas.map((item) => (
-            <li>
-              <span class="item-nombre">{item.nombre}</span>
-              <span class="item-precio">{item.precio}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div class="precios-divider" aria-hidden="true"></div>
-
-      <div class="precios-grupo">
-        <p class="grupo-label">Packs</p>
-        <ul class="precios-lista">
-          {packs.map((item) => (
-            <li class={item.popular ? 'item-popular' : ''}>
-              <span class="item-nombre">
+    <div class="precios-tabla">
+      {['Clases', 'Packs'].map((grupo) => (
+        <div class="precio-grupo">
+          <p class="grupo-label">{grupo}</p>
+          {precios.filter(p => p.grupo === grupo).map((item) => (
+            <div class={`precio-fila ${item.popular ? 'es-popular' : ''}`}>
+              <span class="precio-nombre">
                 {item.nombre}
-                {item.popular && <span class="badge">Popular</span>}
+                {item.popular && <span class="badge-popular">Popular</span>}
               </span>
-              <span class="item-precio">{item.precio}</span>
-            </li>
+              <span class="precio-valor">{item.precio}</span>
+            </div>
           ))}
-        </ul>
-      </div>
-
+        </div>
+      ))}
     </div>
 
     <div class="precios-info">
       <div class="info-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <p>A partir de la compra, las clases tienen <strong>una validez de 1 mes</strong> para ser utilizadas. Una vez vencido ese plazo, no podrán ser recuperadas.</p>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <p>A partir de la compra, las clases tienen <strong>validez de 1 mes</strong>. Una vez vencido ese plazo no pueden recuperarse.</p>
       </div>
       <div class="info-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <p>Las cancelaciones deben realizarse con <strong>al menos 12 horas de anticipación</strong>. De lo contrario, la clase se considerará tomada.</p>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <p>Cancelaciones con <strong>al menos 12hs de anticipación</strong>. De lo contrario la clase se considera tomada.</p>
       </div>
     </div>
 
     <div class="precios-cta">
       <a href="https://www.siguefit.com" target="_blank" rel="noopener" class="btn btn-primary">
         Reservar en Siguefit
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
     </div>
 
@@ -77,69 +58,57 @@ const packs = [
 <style>
   .precios-header {
     text-align: center;
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
   }
 
-  .precios-cols {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    gap: var(--space-xl);
-    max-width: 720px;
-    margin: 0 auto var(--space-xl);
-  }
-
-  .precios-divider {
-    background: rgba(45, 41, 38, 0.1);
-    width: 1px;
+  .precios-tabla {
+    max-width: 540px;
+    margin: 0 auto var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
   }
 
   .grupo-label {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--color-taupe);
-    margin-bottom: var(--space-md);
+    margin-bottom: 0.5rem;
   }
 
-  .precios-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .precios-lista li {
+  .precio-fila {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.875rem 0;
+    padding: 0.8rem 0;
     border-bottom: 1px solid rgba(45, 41, 38, 0.07);
-    gap: var(--space-sm);
+    gap: 1rem;
   }
 
-  .item-nombre {
+  .precio-nombre {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     font-size: 0.95rem;
-    font-weight: 400;
     color: var(--color-dark);
   }
 
-  .item-precio {
+  .precio-valor {
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--color-dark);
     white-space: nowrap;
   }
 
-  .item-popular .item-nombre,
-  .item-popular .item-precio {
+  .es-popular .precio-nombre,
+  .es-popular .precio-valor {
     font-weight: 600;
   }
 
-  .badge {
-    font-size: 0.62rem;
+  .badge-popular {
+    font-size: 0.6rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -150,12 +119,12 @@ const packs = [
   }
 
   .precios-info {
-    max-width: 720px;
-    margin: 0 auto var(--space-xl);
+    max-width: 540px;
+    margin: 0 auto var(--space-lg);
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
-    padding: var(--space-lg);
+    gap: 0.75rem;
+    padding: var(--space-md);
     background: rgba(45, 41, 38, 0.03);
     border-radius: var(--border-radius);
     border: 1px solid rgba(45, 41, 38, 0.07);
@@ -163,19 +132,19 @@ const packs = [
 
   .info-item {
     display: flex;
-    gap: 0.75rem;
+    gap: 0.6rem;
     align-items: flex-start;
   }
 
   .info-item svg {
     flex-shrink: 0;
     color: var(--color-taupe);
-    margin-top: 3px;
+    margin-top: 2px;
   }
 
   .info-item p {
-    font-size: 0.85rem;
-    line-height: 1.65;
+    font-size: 0.82rem;
+    line-height: 1.6;
     color: var(--color-text-soft);
   }
 
@@ -186,16 +155,5 @@ const packs = [
 
   .precios-cta {
     text-align: center;
-  }
-
-  @media (max-width: 600px) {
-    .precios-cols {
-      grid-template-columns: 1fr;
-      gap: var(--space-lg);
-    }
-
-    .precios-divider {
-      display: none;
-    }
   }
 </style>
