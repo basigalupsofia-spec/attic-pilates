@@ -34,7 +34,7 @@
     header {
       background: var(--cacao-dark);
       color: var(--cream-soft);
-      padding: 72px 40px 56px;
+      padding: 72px max(40px, calc(50% - 580px)) 56px;
       text-align: center;
     }
 
@@ -80,7 +80,7 @@
     /* ── ROADMAP STRIP ── */
     .roadmap-strip {
       background: var(--cacao);
-      padding: 32px 40px 28px;
+      padding: 32px max(40px, calc(50% - 580px)) 28px;
       overflow-x: auto;
     }
 
@@ -187,7 +187,7 @@
     /* ── NAV ── */
     nav {
       background: var(--cacao-dark);
-      padding: 0 40px;
+      padding: 0 max(40px, calc(50% - 580px));
       position: sticky;
       top: 0;
       z-index: 100;
@@ -215,7 +215,7 @@
     }
 
     /* ── SECTIONS ── */
-    section { padding: 64px 40px; }
+    section { padding: 64px max(40px, calc(50% - 580px)); }
     section:nth-child(odd)  { background: var(--white); }
     section:nth-child(even) { background: var(--cream-soft); }
     #timeline { background: var(--cream-warm) !important; }
@@ -460,7 +460,7 @@
     /* ── FOOTER ── */
     footer {
       background: var(--cacao-dark);
-      padding: 28px 40px;
+      padding: 28px max(40px, calc(50% - 580px));
       display: flex;
       justify-content: space-between;
       align-items: center;
