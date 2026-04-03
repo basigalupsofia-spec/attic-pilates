@@ -17,7 +17,7 @@
 
   /* Aliases funcionales */
   --color-bg:          var(--color-cream);
-  --color-bg-alt:      var(--color-light-gray);
+  --color-bg-alt:      var(--color-cream);
   --color-text:        var(--color-dark);
   --color-text-soft:   #6B6460;
   --color-accent:      var(--color-dark);
