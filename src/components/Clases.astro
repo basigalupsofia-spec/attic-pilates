@@ -4,18 +4,27 @@ const base = import.meta.env.BASE_URL;
 const clases = [
   {
     title: 'Reformer',
-    description: 'Fortalecé y tonificá todo tu cuerpo con ejercicios de resistencia controlada sobre el Reformer. Ideal para todos los niveles.',
+    description: 'Fortalecé y tonificá todo tu cuerpo con ejercicios de resistencia controlada. Grupal o privado, todos los niveles.',
     icon: '01',
-  },
-  {
-    title: 'Cadillac',
-    description: 'Trabajá flexibilidad, fuerza y alineación postural con el equipo más versátil de Pilates. Sesiones personalizadas.',
-    icon: '02',
+    modalidad: 'Grupal / Privado',
   },
   {
     title: 'Barre',
     description: 'Fusión de ballet, Pilates y fitness. Clases dinámicas que esculpen, alargan y definen tu musculatura.',
+    icon: '02',
+    modalidad: 'Grupal',
+  },
+  {
+    title: 'Yoga',
+    description: 'Movimiento consciente, respiración y fuerza. Clases para conectar cuerpo y mente con base técnica.',
     icon: '03',
+    modalidad: 'Grupal',
+  },
+  {
+    title: 'Cadillac',
+    description: 'El equipo más versátil de Pilates. Trabajá flexibilidad, fuerza y alineación postural en sesiones personalizadas.',
+    icon: '04',
+    modalidad: 'Privado',
   },
 ];
 ---
@@ -30,10 +39,13 @@ const clases = [
     <div class="clases-grid">
       {clases.map((clase) => (
         <div class="clase-card">
-          <span class="clase-number">{clase.icon}</span>
+          <div class="clase-top">
+            <span class="clase-number">{clase.icon}</span>
+            <span class="clase-badge">{clase.modalidad}</span>
+          </div>
           <h3>{clase.title}</h3>
           <p>{clase.description}</p>
-          <a href="#horarios" class="clase-link">
+          <a href="https://www.siguefit.com" target="_blank" rel="noopener" class="clase-link">
             Reservar
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </a>
@@ -63,8 +75,26 @@ const clases = [
 
   .clases-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-lg);
+  }
+
+  .clase-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+  }
+
+  .clase-badge {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-taupe);
+    border: 1px solid var(--color-taupe);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
   }
 
   .clase-card {

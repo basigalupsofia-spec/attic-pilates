@@ -1,747 +1,157 @@
 ---
-const dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-const diasKeys = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
-const horas = ['8:00', '9:00', '10:00', '11:00', '12:00', '17:00', '18:00', '19:00', '20:00'];
+type Clase = { tipo: string; profe: string } | null;
+
+const horarios: Record<string, Record<string, Clase>> = {
+  '8:00':  { lun: {tipo:'Pilates',profe:'Camila'}, mar: {tipo:'Pilates',profe:'Lorena'}, mie: {tipo:'Pilates',profe:'Nacho'}, jue: {tipo:'Pilates',profe:'Lorena'}, vie: {tipo:'Pilates',profe:'Nacho'}, sab: null },
+  '9:00':  { lun: {tipo:'Pilates',profe:'Camila'}, mar: {tipo:'Pilates',profe:'Lorena'}, mie: {tipo:'Pilates',profe:'Nacho'}, jue: {tipo:'Pilates',profe:'Lorena'}, vie: {tipo:'Pilates',profe:'Nacho'}, sab: null },
+  '10:00': { lun: {tipo:'Pilates',profe:'Camila'}, mar: {tipo:'Pilates',profe:'Lorena'}, mie: {tipo:'Pilates',profe:'Nacho'}, jue: {tipo:'Pilates',profe:'Lorena'}, vie: {tipo:'Pilates',profe:'Nacho'}, sab: {tipo:'Pilates',profe:'Nacho'} },
+  '11:00': { lun: null, mar: {tipo:'Cadillac',profe:'Lorena'}, mie: null, jue: null, vie: null, sab: {tipo:'Pilates',profe:'Nacho'} },
+  '12:00': { lun: null, mar: null, mie: null, jue: null, vie: null, sab: {tipo:'Pilates',profe:'Nacho'} },
+  '13:00': { lun: null, mar: null, mie: null, jue: null, vie: null, sab: {tipo:'Cadillac',profe:'Lorena'} },
+  '16:00': { lun: null, mar: null, mie: null, jue: null, vie: {tipo:'Cadillac',profe:'Camila'}, sab: null },
+  '17:00': { lun: {tipo:'Pilates',profe:'Nacho'}, mar: {tipo:'Pilates',profe:'Lorena'}, mie: {tipo:'Pilates',profe:'Lorena'}, jue: {tipo:'Pilates',profe:'Lorena'}, vie: {tipo:'Pilates',profe:'Camila'}, sab: null },
+  '18:00': { lun: {tipo:'Pilates',profe:'Nacho'}, mar: {tipo:'Barre',profe:'Lorena'}, mie: {tipo:'Pilates',profe:'Lorena'}, jue: {tipo:'Pilates',profe:'Lorena'}, vie: {tipo:'Pilates',profe:'Camila'}, sab: null },
+  '19:00': { lun: {tipo:'Pilates',profe:'Nacho'}, mar: {tipo:'Pilates',profe:'Lorena'}, mie: {tipo:'Pilates',profe:'Lorena'}, jue: {tipo:'Pilates',profe:'Lorena'}, vie: {tipo:'Pilates',profe:'Camila'}, sab: null },
+  '20:00': { lun: null, mar: null, mie: {tipo:'Pilates',profe:'Lorena'}, jue: {tipo:'Pilates',profe:'Lorena'}, vie: null, sab: null },
+};
+
+const dias = [
+  { key: 'lun', label: 'Lunes' },
+  { key: 'mar', label: 'Martes' },
+  { key: 'mie', label: 'Miércoles' },
+  { key: 'jue', label: 'Jueves' },
+  { key: 'vie', label: 'Viernes' },
+  { key: 'sab', label: 'Sábado' },
+];
 ---
 
 <section class="section horarios" id="horarios">
   <div class="container">
     <div class="horarios-header">
       <p class="subtitle">Planificá tu semana</p>
-      <h2>Horarios de clases</h2>
-      <div class="week-nav">
-        <button id="prev-week" class="week-btn" aria-label="Semana anterior">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
-        <span id="week-label" class="week-label"></span>
-        <button id="next-week" class="week-btn" aria-label="Semana siguiente">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
-      </div>
+      <h2>Horarios</h2>
     </div>
 
     <div class="table-wrapper">
-      <table class="horarios-table">
+      <table class="tabla">
         <thead>
           <tr>
-            <th class="hora-col"></th>
-            {dias.map((dia, i) => (
-              <th>
-                <span class="dia-nombre">{dia}</span>
-                <span class="dia-fecha" data-dia-idx={i}></span>
-              </th>
-            ))}
+            <th class="th-hora"></th>
+            {dias.map(d => <th>{d.label}</th>)}
           </tr>
         </thead>
         <tbody>
-          {horas.map((hora) => (
+          {Object.entries(horarios).map(([hora, fila]) => (
             <tr>
-              <td class="hora-cell">{hora}</td>
-              {diasKeys.map((diaKey, i) => (
-                <td class="clase-cell" data-dia={diaKey} data-hora={hora}></td>
-              ))}
+              <td class="td-hora">{hora}</td>
+              {dias.map(d => {
+                const c = fila[d.key];
+                return (
+                  <td class={`td-clase ${c ? 'has-clase' : ''} ${c?.tipo === 'Cadillac' ? 'is-cadillac' : ''} ${c?.tipo === 'Barre' ? 'is-barre' : ''}`}>
+                    {c && (
+                      <span class="clase-info">
+                        <span class="clase-tipo">{c.tipo}</span>
+                        <span class="clase-profe">{c.profe}</span>
+                      </span>
+                    )}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-
-    <div class="horarios-mobile" id="horarios-mobile"></div>
   </div>
 </section>
 
-<!-- Modal de reserva -->
-<div id="booking-modal" class="modal-overlay" style="display:none">
-  <div class="modal">
-    <button id="modal-close" class="modal-close" aria-label="Cerrar">&times;</button>
-    <div id="modal-header">
-      <h3 id="modal-title"></h3>
-      <p id="modal-subtitle" class="modal-subtitle"></p>
-      <div id="modal-availability" class="modal-availability"></div>
-    </div>
-    <form id="booking-form">
-      <input type="hidden" id="booking-clase-id" />
-      <input type="hidden" id="booking-fecha" />
-      <div class="form-group">
-        <label for="booking-nombre">Nombre completo</label>
-        <input type="text" id="booking-nombre" required placeholder="Tu nombre" />
-      </div>
-      <div class="form-group">
-        <label for="booking-telefono">Teléfono</label>
-        <input type="tel" id="booking-telefono" required placeholder="11 1234-5678" />
-      </div>
-      <div class="form-group">
-        <label for="booking-email">Email (opcional)</label>
-        <input type="email" id="booking-email" placeholder="tu@email.com" />
-      </div>
-      <button type="submit" id="booking-submit" class="btn btn-primary btn-block">Reservar cama</button>
-    </form>
-    <div id="booking-success" style="display:none">
-      <div class="success-icon">&#10003;</div>
-      <h3>Reserva confirmada</h3>
-      <p id="success-details"></p>
-      <button id="success-close" class="btn btn-outline btn-block">Cerrar</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  import { createClient } from '@supabase/supabase-js';
-
-  const supabase = createClient(
-    import.meta.env.PUBLIC_SUPABASE_URL,
-    import.meta.env.PUBLIC_SUPABASE_ANON_KEY
-  );
-
-  const diasKeys = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
-  const diasNombres = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-
-  let currentWeekStart = getMonday(new Date());
-  let clases: any[] = [];
-
-  function getMonday(d: Date) {
-    const date = new Date(d);
-    const day = date.getDay();
-    const diff = date.getDate() - day + (day === 0 ? -6 : 1);
-    date.setDate(diff);
-    date.setHours(0, 0, 0, 0);
-    return date;
-  }
-
-  function formatDate(d: Date) {
-    return d.toISOString().split('T')[0];
-  }
-
-  function getDateForDia(weekStart: Date, diaIdx: number) {
-    const d = new Date(weekStart);
-    d.setDate(d.getDate() + diaIdx);
-    return d;
-  }
-
-  function updateWeekLabel() {
-    const end = new Date(currentWeekStart);
-    end.setDate(end.getDate() + 5);
-    const opts: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
-    const label = `${currentWeekStart.toLocaleDateString('es-AR', opts)} — ${end.toLocaleDateString('es-AR', opts)}`;
-    document.getElementById('week-label')!.textContent = label;
-
-    document.querySelectorAll('.dia-fecha').forEach((el) => {
-      const idx = parseInt((el as HTMLElement).dataset.diaIdx!);
-      const date = getDateForDia(currentWeekStart, idx);
-      el.textContent = date.toLocaleDateString('es-AR', { day: 'numeric', month: 'numeric' });
-    });
-  }
-
-  async function loadClases() {
-    const { data } = await supabase.from('clases').select('*').eq('activa', true);
-    clases = data || [];
-  }
-
-  async function getReservasCount(claseId: number, fecha: string) {
-    const { count } = await supabase
-      .from('reservas')
-      .select('*', { count: 'exact', head: true })
-      .eq('clase_id', claseId)
-      .eq('fecha', fecha);
-    return count || 0;
-  }
-
-  async function renderGrid() {
-    updateWeekLabel();
-
-    // Fetch reservas for the whole week
-    const weekDates = diasKeys.map((_, i) => formatDate(getDateForDia(currentWeekStart, i)));
-    const { data: reservas } = await supabase
-      .from('reservas')
-      .select('clase_id, fecha')
-      .in('fecha', weekDates);
-
-    const reservasMap = new Map<string, number>();
-    (reservas || []).forEach((r: any) => {
-      const key = `${r.clase_id}-${r.fecha}`;
-      reservasMap.set(key, (reservasMap.get(key) || 0) + 1);
-    });
-
-    // Build lookup: dia+hora -> clase
-    const claseMap = new Map<string, any>();
-    clases.forEach(c => claseMap.set(`${c.dia}-${c.hora}`, c));
-
-    // Desktop grid
-    document.querySelectorAll('.clase-cell[data-dia]').forEach((cell) => {
-      const el = cell as HTMLElement;
-      const dia = el.dataset.dia!;
-      const hora = el.dataset.hora!;
-      const clase = claseMap.get(`${dia}-${hora}`);
-
-      el.className = 'clase-cell';
-      el.innerHTML = '';
-      el.onclick = null;
-
-      if (clase) {
-        const diaIdx = diasKeys.indexOf(dia);
-        const fecha = formatDate(getDateForDia(currentWeekStart, diaIdx));
-        const reservasCount = reservasMap.get(`${clase.id}-${fecha}`) || 0;
-        const disponibles = clase.camas_total - reservasCount;
-        const isBarre = clase.tipo === 'Barre';
-        const llena = disponibles <= 0;
-
-        el.className = `clase-cell activa ${isBarre ? 'barre' : ''} ${llena ? 'llena' : ''}`;
-        el.innerHTML = `
-          <div class="cell-content">
-            <span class="cell-tipo">${clase.tipo}</span>
-            <span class="cell-profe">${clase.profesor}</span>
-            <span class="cell-dispo">${llena ? 'Completa' : `${disponibles} disponibles`}</span>
-          </div>
-        `;
-
-        if (!llena) {
-          el.onclick = () => openBookingModal(clase, fecha, disponibles);
-        }
-      }
-    });
-
-    // Mobile view
-    renderMobile(claseMap, reservasMap);
-  }
-
-  function renderMobile(claseMap: Map<string, any>, reservasMap: Map<string, number>) {
-    const container = document.getElementById('horarios-mobile')!;
-    const horas = ['8:00', '9:00', '10:00', '11:00', '12:00', '17:00', '18:00', '19:00', '20:00'];
-    let html = '';
-
-    horas.forEach(hora => {
-      const items: string[] = [];
-      diasKeys.forEach((dia, i) => {
-        const clase = claseMap.get(`${dia}-${hora}`);
-        if (!clase) return;
-        const fecha = formatDate(getDateForDia(currentWeekStart, i));
-        const reservasCount = reservasMap.get(`${clase.id}-${fecha}`) || 0;
-        const disponibles = clase.camas_total - reservasCount;
-        const llena = disponibles <= 0;
-        const isBarre = clase.tipo === 'Barre';
-
-        items.push(`
-          <div class="mobile-clase ${isBarre ? 'barre' : ''} ${llena ? 'llena' : ''}"
-               data-clase-id="${clase.id}" data-fecha="${fecha}" data-dispo="${disponibles}">
-            <span class="mobile-dia">${diasNombres[i]}</span>
-            <span class="mobile-tipo">${clase.tipo}</span>
-            <span class="mobile-profe">${clase.profesor}</span>
-            <span class="mobile-dispo">${llena ? 'Completa' : `${disponibles} disp.`}</span>
-          </div>
-        `);
-      });
-
-      if (items.length > 0) {
-        html += `
-          <div class="mobile-hora-block">
-            <h4 class="mobile-hora">${hora}</h4>
-            <div class="mobile-clases">${items.join('')}</div>
-          </div>
-        `;
-      }
-    });
-
-    container.innerHTML = html;
-
-    // Attach click events
-    container.querySelectorAll('.mobile-clase:not(.llena)').forEach(el => {
-      const htmlEl = el as HTMLElement;
-      htmlEl.style.cursor = 'pointer';
-      htmlEl.onclick = () => {
-        const claseId = parseInt(htmlEl.dataset.claseId!);
-        const fecha = htmlEl.dataset.fecha!;
-        const dispo = parseInt(htmlEl.dataset.dispo!);
-        const clase = clases.find(c => c.id === claseId);
-        if (clase) openBookingModal(clase, fecha, dispo);
-      };
-    });
-  }
-
-  function openBookingModal(clase: any, fecha: string, disponibles: number) {
-    const modal = document.getElementById('booking-modal')!;
-    const diaIdx = diasKeys.indexOf(clase.dia);
-    const fechaDate = new Date(fecha + 'T12:00:00');
-    const fechaStr = fechaDate.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' });
-
-    document.getElementById('modal-title')!.textContent = `${clase.tipo} con ${clase.profesor}`;
-    document.getElementById('modal-subtitle')!.textContent = `${fechaStr} — ${clase.hora} hs`;
-    document.getElementById('modal-availability')!.innerHTML = `
-      <span class="dispo-badge">${disponibles} de ${clase.camas_total} camas disponibles</span>
-    `;
-    (document.getElementById('booking-clase-id') as HTMLInputElement).value = clase.id;
-    (document.getElementById('booking-fecha') as HTMLInputElement).value = fecha;
-
-    // Reset form state
-    (document.getElementById('booking-form') as HTMLFormElement).reset();
-    document.getElementById('booking-form')!.style.display = 'block';
-    document.getElementById('modal-header')!.style.display = 'block';
-    document.getElementById('booking-success')!.style.display = 'none';
-    (document.getElementById('booking-submit') as HTMLButtonElement).disabled = false;
-    (document.getElementById('booking-submit') as HTMLButtonElement).textContent = 'Reservar cama';
-
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeModal() {
-    document.getElementById('booking-modal')!.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-
-  // Event listeners
-  document.getElementById('modal-close')!.onclick = closeModal;
-  document.getElementById('success-close')!.onclick = closeModal;
-  document.getElementById('booking-modal')!.onclick = (e) => {
-    if ((e.target as HTMLElement).id === 'booking-modal') closeModal();
-  };
-
-  document.getElementById('prev-week')!.onclick = () => {
-    currentWeekStart.setDate(currentWeekStart.getDate() - 7);
-    renderGrid();
-  };
-
-  document.getElementById('next-week')!.onclick = () => {
-    currentWeekStart.setDate(currentWeekStart.getDate() + 7);
-    renderGrid();
-  };
-
-  document.getElementById('booking-form')!.onsubmit = async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById('booking-submit') as HTMLButtonElement;
-    btn.disabled = true;
-    btn.textContent = 'Reservando...';
-
-    const claseId = parseInt((document.getElementById('booking-clase-id') as HTMLInputElement).value);
-    const fecha = (document.getElementById('booking-fecha') as HTMLInputElement).value;
-    const nombre = (document.getElementById('booking-nombre') as HTMLInputElement).value.trim();
-    const telefono = (document.getElementById('booking-telefono') as HTMLInputElement).value.trim();
-    const email = (document.getElementById('booking-email') as HTMLInputElement).value.trim();
-
-    // Check availability one more time
-    const count = await getReservasCount(claseId, fecha);
-    const clase = clases.find(c => c.id === claseId);
-    if (clase && count >= clase.camas_total) {
-      btn.textContent = 'Clase completa';
-      return;
-    }
-
-    const { error } = await supabase.from('reservas').insert({
-      clase_id: claseId,
-      fecha,
-      nombre,
-      telefono,
-      email: email || null,
-    });
-
-    if (error) {
-      btn.textContent = 'Error, intentá de nuevo';
-      btn.disabled = false;
-      return;
-    }
-
-    // Show success
-    document.getElementById('booking-form')!.style.display = 'none';
-    document.getElementById('modal-header')!.style.display = 'none';
-    const fechaDate = new Date(fecha + 'T12:00:00');
-    document.getElementById('success-details')!.textContent =
-      `${clase!.tipo} con ${clase!.profesor} — ${fechaDate.toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' })} a las ${clase!.hora} hs`;
-    document.getElementById('booking-success')!.style.display = 'flex';
-
-    // Refresh grid
-    renderGrid();
-  };
-
-  // Init
-  loadClases().then(() => renderGrid());
-</script>
-
 <style>
-  .horarios {
-    background: var(--color-cream);
-  }
-
   .horarios-header {
     text-align: center;
     margin-bottom: var(--space-xl);
   }
 
-  .horarios-header .subtitle {
-    justify-content: center;
-  }
-
-  .horarios-header .subtitle::before {
-    display: none;
-  }
-
-  .week-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-md);
-    margin-top: var(--space-md);
-  }
-
-  .week-btn {
-    background: none;
-    border: 1.5px solid var(--color-beige);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--color-dark);
-    transition: all var(--transition);
-  }
-
-  .week-btn:hover {
-    background: var(--color-gold);
-    border-color: var(--color-gold);
-    color: white;
-  }
-
-  .week-label {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    color: var(--color-dark);
-    min-width: 200px;
-    text-align: center;
-  }
-
   .table-wrapper {
     overflow-x: auto;
-    border-radius: var(--border-radius-lg);
-    background: var(--color-cream-light);
-    padding: var(--space-md);
+    -webkit-overflow-scrolling: touch;
   }
 
-  .horarios-table {
+  .tabla {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 6px;
-    min-width: 700px;
-  }
-
-  .horarios-table th {
-    font-family: var(--font-body);
+    border-collapse: collapse;
+    min-width: 600px;
     font-size: 0.8rem;
+  }
+
+  .tabla thead th {
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-dark-soft);
-    padding: 0.5rem 1rem;
+    color: var(--color-taupe);
+    padding: 0 0.5rem 1rem;
     text-align: center;
   }
 
-  .dia-fecha {
-    display: block;
-    font-size: 0.7rem;
-    font-weight: 400;
-    color: var(--color-gray);
-    margin-top: 2px;
+  .th-hora {
+    width: 56px;
   }
 
-  .hora-cell {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--color-dark);
-    text-align: center;
-    padding: 0.75rem;
-    min-width: 65px;
+  .tabla tbody tr:not(:last-child) td {
+    border-bottom: 1px solid rgba(45, 41, 38, 0.06);
   }
 
-  .clase-cell {
-    text-align: center;
-    padding: 0.6rem;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.5);
-    min-height: 55px;
-    transition: all var(--transition);
-  }
-
-  .clase-cell.activa {
-    background: var(--color-gold);
-    cursor: pointer;
-  }
-
-  .clase-cell.activa:hover {
-    background: var(--color-gold-light);
-    transform: scale(1.05);
-  }
-
-  .clase-cell.barre {
-    background: var(--color-sage);
-  }
-
-  .clase-cell.barre:hover {
-    background: var(--color-sage-light);
-  }
-
-  .clase-cell.llena {
-    background: var(--color-beige);
-    cursor: default;
-    opacity: 0.7;
-  }
-
-  .clase-cell.llena:hover {
-    transform: none;
-  }
-
-  .cell-content {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .cell-tipo {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--color-white);
-    letter-spacing: 0.02em;
-  }
-
-  .cell-profe {
-    font-size: 0.7rem;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.85);
-  }
-
-  .cell-dispo {
-    font-size: 0.6rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.7);
-    margin-top: 2px;
-  }
-
-  .llena .cell-tipo,
-  .llena .cell-profe,
-  .llena .cell-dispo {
-    color: var(--color-dark-soft);
-  }
-
-  /* Mobile cards */
-  .horarios-mobile {
-    display: none;
-  }
-
-  :global(.mobile-hora-block) {
-    margin-bottom: var(--space-md);
-  }
-
-  :global(.mobile-hora) {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    color: var(--color-dark);
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-beige);
-  }
-
-  :global(.mobile-clases) {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.5rem;
-  }
-
-  :global(.mobile-clase) {
-    background: var(--color-gold);
-    border-radius: 12px;
-    padding: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  :global(.mobile-clase.barre) {
-    background: var(--color-sage);
-  }
-
-  :global(.mobile-clase.llena) {
-    background: var(--color-beige);
-    opacity: 0.7;
-  }
-
-  :global(.mobile-dia) {
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  :global(.mobile-tipo) {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: white;
-  }
-
-  :global(.mobile-profe) {
+  .td-hora {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    color: var(--color-taupe);
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    white-space: nowrap;
+    vertical-align: middle;
   }
 
-  :global(.mobile-dispo) {
+  .td-clase {
+    padding: 0.4rem 0.3rem;
+    text-align: center;
+    vertical-align: middle;
+    height: 52px;
+  }
+
+  .clase-info {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(45, 41, 38, 0.06);
+    border-radius: 8px;
+    padding: 0.4rem 0.6rem;
+    width: 100%;
+    max-width: 100px;
+    gap: 1px;
+  }
+
+  .is-cadillac .clase-info {
+    background: rgba(182, 168, 154, 0.25);
+  }
+
+  .is-barre .clase-info {
+    background: rgba(182, 168, 154, 0.18);
+    border: 1px solid rgba(182, 168, 154, 0.4);
+  }
+
+  .clase-tipo {
+    font-weight: 600;
+    color: var(--color-dark);
+    font-size: 0.75rem;
+  }
+
+  .clase-profe {
     font-size: 0.65rem;
-    color: rgba(255, 255, 255, 0.65);
-    margin-top: 2px;
-  }
-
-  :global(.mobile-clase.llena .mobile-dia),
-  :global(.mobile-clase.llena .mobile-tipo),
-  :global(.mobile-clase.llena .mobile-profe),
-  :global(.mobile-clase.llena .mobile-dispo) {
-    color: var(--color-dark-soft);
+    color: var(--color-taupe);
   }
 
   @media (max-width: 768px) {
-    .table-wrapper {
-      display: none;
+    .tabla {
+      font-size: 0.72rem;
     }
-
-    .horarios-mobile {
-      display: block;
-    }
-  }
-
-  /* Modal */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-md);
-    backdrop-filter: blur(4px);
-  }
-
-  .modal {
-    background: var(--color-cream-light);
-    border-radius: var(--border-radius-lg);
-    padding: var(--space-xl);
-    max-width: 440px;
-    width: 100%;
-    position: relative;
-    animation: modalIn 0.3s ease;
-  }
-
-  @keyframes modalIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--color-gray);
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all var(--transition);
-  }
-
-  .modal-close:hover {
-    background: var(--color-beige);
-    color: var(--color-dark);
-  }
-
-  .modal h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .modal-subtitle {
-    font-size: 0.9rem;
-    color: var(--color-gray);
-    text-transform: capitalize;
-  }
-
-  .modal-availability {
-    margin: var(--space-sm) 0 var(--space-md);
-  }
-
-  :global(.dispo-badge) {
-    display: inline-block;
-    background: var(--color-gold);
-    color: white;
-    padding: 0.3rem 0.75rem;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-weight: 500;
-  }
-
-  .form-group {
-    margin-bottom: var(--space-sm);
-  }
-
-  .form-group label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--color-dark-soft);
-    margin-bottom: 0.3rem;
-  }
-
-  .form-group input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1.5px solid var(--color-beige);
-    border-radius: 12px;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    background: white;
-    transition: border-color var(--transition);
-    outline: none;
-  }
-
-  .form-group input:focus {
-    border-color: var(--color-gold);
-  }
-
-  .btn-block {
-    width: 100%;
-    justify-content: center;
-    margin-top: var(--space-md);
-  }
-
-  /* Success state */
-  #booking-success {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: var(--space-sm);
-    padding: var(--space-md) 0;
-  }
-
-  .success-icon {
-    width: 56px;
-    height: 56px;
-    background: var(--color-gold);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
-  #booking-success h3 {
-    font-size: 1.3rem;
-  }
-
-  #booking-success p {
-    font-size: 0.85rem;
   }
 </style>

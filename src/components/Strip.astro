@@ -1,0 +1,61 @@
+---
+const items = ['Reformer', 'Barre', 'Yoga', 'Cadillac', 'Mat Pilates', 'Privadas'];
+---
+
+<div class="strip">
+  <div class="strip-inner">
+    {items.map((item) => (
+      <span class="strip-item">
+        {item}
+        <span class="strip-dot" aria-hidden="true">·</span>
+      </span>
+    ))}
+    {/* Duplicado para loop visual continuo */}
+    {items.map((item) => (
+      <span class="strip-item" aria-hidden="true">
+        {item}
+        <span class="strip-dot">·</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .strip {
+    background: var(--color-dark);
+    overflow: hidden;
+    padding: 0.875rem 0;
+  }
+
+  .strip-inner {
+    display: flex;
+    gap: 0;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+  }
+
+  .strip:hover .strip-inner {
+    animation-play-state: paused;
+  }
+
+  .strip-item {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-taupe);
+    padding: 0 2rem;
+  }
+
+  .strip-dot {
+    margin-left: 2rem;
+    color: rgba(182, 168, 154, 0.35);
+  }
+
+  @keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
