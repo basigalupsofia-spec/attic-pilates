@@ -156,6 +156,16 @@
 
     .rm-node.active .rm-week { color: var(--taupe); }
 
+    .rm-node.done .rm-circle {
+      background: rgba(168, 201, 152, 0.2);
+      border-color: rgba(168, 201, 152, 0.5);
+      color: #A8C998;
+      font-size: 0.75rem;
+    }
+
+    .rm-node.done .rm-label { color: #A8C998; }
+    .rm-node.done .rm-week { color: rgba(168, 201, 152, 0.5); }
+
     .rm-badge {
       display: inline-block;
       background: rgba(168, 201, 152, 0.2);
@@ -404,6 +414,12 @@
       color: var(--cream-soft);
     }
 
+    .badge-done {
+      background: rgba(168, 201, 152, 0.18);
+      color: #6a9e4f;
+      border: 1px solid rgba(168, 201, 152, 0.4);
+    }
+
     /* ── DISCOVERY LINK CARD ── */
     .discovery-link-card {
       display: inline-flex;
@@ -503,17 +519,17 @@
 <div class="roadmap-strip">
   <div class="roadmap-strip-inner">
 
-    <div class="rm-node active">
-      <div class="rm-circle">1</div>
+    <div class="rm-node done">
+      <div class="rm-circle">✓</div>
       <div class="rm-label">Discovery</div>
       <div class="rm-week">Week 1</div>
-      <div class="rm-badge">Current state</div>
     </div>
 
-    <div class="rm-node">
+    <div class="rm-node active">
       <div class="rm-circle">2</div>
       <div class="rm-label">Proposal</div>
       <div class="rm-week">Week 1</div>
+      <div class="rm-badge">Current state</div>
     </div>
 
     <div class="rm-node">
@@ -678,17 +694,17 @@
       <tbody>
         <tr>
           <td>01</td>
-          <td><strong>Discovery</strong></td>
+          <td><strong><a href="discovery-doc.html" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Discovery</a></strong></td>
           <td>Week 1</td>
           <td>Studio audit, target audience definition, and site requirements gathering</td>
-          <td><span class="badge badge-active">In Progress</span></td>
+          <td><span class="badge badge-done">Done</span></td>
         </tr>
         <tr>
           <td>02</td>
           <td><strong>Proposal &amp; Budget</strong></td>
           <td>Week 1</td>
           <td>Scope definition, investment structure, and project conditions</td>
-          <td><span class="badge badge-pending">Pending</span></td>
+          <td><span class="badge badge-active">In Progress</span></td>
         </tr>
         <tr>
           <td>03</td>
