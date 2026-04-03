@@ -45,7 +45,7 @@ const clases = [
 
 <style>
   .clases {
-    background-color: var(--color-cream-light);
+    background-color: var(--color-bg-alt);
   }
 
   .clases-header {
@@ -74,6 +74,7 @@ const clases = [
     transition: all var(--transition);
     position: relative;
     overflow: hidden;
+    border: 1px solid transparent;
   }
 
   .clase-card::before {
@@ -82,15 +83,15 @@ const clases = [
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+    height: 2px;
+    background: var(--color-dark-green);
     opacity: 0;
     transition: opacity var(--transition);
   }
 
   .clase-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(45, 41, 38, 0.07);
   }
 
   .clase-card:hover::before {
@@ -98,12 +99,13 @@ const clases = [
   }
 
   .clase-number {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 2rem;
     font-weight: 300;
-    color: var(--color-gold-light);
+    color: var(--color-taupe);
     display: block;
     margin-bottom: var(--space-sm);
+    letter-spacing: 0.05em;
   }
 
   .clase-card h3 {
@@ -122,7 +124,7 @@ const clases = [
     gap: 0.4rem;
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--color-gold);
+    color: var(--color-dark-green);
     transition: gap var(--transition);
   }
 

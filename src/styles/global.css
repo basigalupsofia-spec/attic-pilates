@@ -1,44 +1,62 @@
 /* ===== ATTIC PILATES — Global Styles ===== */
 
-/* Google Fonts: Cormorant Garamond (serif headlines) + Inter (body) */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+/*
+  Tipografía: Outfit (Google Fonts) — sustituto geométrico de Garet.
+  Cuando tengas los archivos de Garet, reemplazá el @import y
+  cambiá --font-sans a 'Garet', Outfit, sans-serif.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Pastel palette inspired by PILAT3S */
-  --color-cream: #f5f0e8;
-  --color-cream-light: #faf7f2;
-  --color-beige: #e8dfd3;
-  --color-gold: #c9a36b;
-  --color-gold-light: #dbc29d;
-  --color-dark: #2a2a2a;
-  --color-dark-soft: #4a4a4a;
-  --color-sage: #8a9a7e;
-  --color-sage-light: #b5c4a8;
-  --color-rose: #d4a5a5;
-  --color-white: #ffffff;
-  --color-gray: #9a9a9a;
+  /* Paleta oficial Attic Pilates */
+  --color-cream:       #F2EFE6;
+  --color-taupe:       #B6A89A;
+  --color-light-gray:  #ECECEC;
+  --color-dark:        #2D2926;
+  --color-dark-green:  #333C24;
 
-  /* Typography */
-  --font-heading: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Inter', -apple-system, sans-serif;
+  /* Aliases funcionales */
+  --color-bg:          var(--color-cream);
+  --color-bg-alt:      var(--color-light-gray);
+  --color-text:        var(--color-dark);
+  --color-text-soft:   #6B6460;
+  --color-accent:      var(--color-dark-green);
+  --color-accent-soft: var(--color-taupe);
+  --color-white:       #FFFFFF;
 
-  /* Spacing */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2.5rem;
-  --space-xl: 4rem;
+  /* Tipografía */
+  --font-sans: 'Outfit', sans-serif;
+
+  /* Espaciado */
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+  --space-xl:  4rem;
   --space-2xl: 6rem;
   --space-3xl: 8rem;
 
   /* Layout */
-  --max-width: 1200px;
-  --border-radius: 16px;
-  --border-radius-lg: 24px;
+  --max-width:       1200px;
+  --border-radius:   12px;
+  --border-radius-lg: 20px;
 
-  /* Transitions */
-  --transition: 0.3s ease;
-  --transition-slow: 0.6s ease;
+  /* Transiciones */
+  --transition:      0.25s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Aliases de compatibilidad — mapean vars viejas a tokens de marca */
+  --font-heading:     var(--font-sans);
+  --font-body:        var(--font-sans);
+  --color-cream-light: var(--color-bg-alt);
+  --color-beige:      rgba(45, 41, 38, 0.1);
+  --color-gold:       var(--color-dark-green);
+  --color-gold-light: var(--color-taupe);
+  --color-sage:       var(--color-taupe);
+  --color-sage-light: var(--color-taupe);
+  --color-rose:       var(--color-taupe);
+  --color-dark-soft:  var(--color-text-soft);
+  --color-gray:       var(--color-taupe);
 }
 
 /* Reset */
@@ -54,29 +72,30 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-cream);
-  color: var(--color-dark);
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 400;
-  line-height: 1.2;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  line-height: 1.15;
   color: var(--color-dark);
+  letter-spacing: -0.02em;
 }
 
-h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
-h2 { font-size: clamp(2rem, 4vw, 3rem); }
-h3 { font-size: clamp(1.3rem, 2.5vw, 1.75rem); }
+h1 { font-size: clamp(2.4rem, 5vw, 4rem);   font-weight: 600; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.75rem); }
+h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); }
 
 p {
   font-size: 1rem;
-  line-height: 1.7;
-  color: var(--color-dark-soft);
+  line-height: 1.75;
+  color: var(--color-text-soft);
   font-weight: 300;
 }
 
@@ -107,25 +126,24 @@ ul { list-style: none; }
   align-items: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
-  border-radius: 100px;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   cursor: pointer;
   transition: all var(--transition);
   border: none;
 }
 
 .btn-primary {
-  background-color: var(--color-gold);
+  background-color: var(--color-dark-green);
   color: var(--color-white);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-gold-light);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(201, 163, 107, 0.3);
+  background-color: var(--color-dark);
+  transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -137,7 +155,7 @@ ul { list-style: none; }
 .btn-outline:hover {
   background-color: var(--color-dark);
   color: var(--color-cream);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 /* Section spacing */
@@ -145,25 +163,26 @@ ul { list-style: none; }
   padding: var(--space-3xl) 0;
 }
 
-/* Subtitle line */
+/* Eyebrow / overline label */
 .subtitle {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  font-size: 0.85rem;
+  gap: 0.75rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-gray);
+  color: var(--color-taupe);
   margin-bottom: var(--space-sm);
 }
 
 .subtitle::before {
   content: '';
   display: block;
-  width: 40px;
-  height: 1.5px;
-  background-color: var(--color-gold);
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-taupe);
+  flex-shrink: 0;
 }
 
 /* Responsive */
