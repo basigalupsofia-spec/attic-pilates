@@ -323,6 +323,221 @@
 
     .info-card-value { font-size: 0.85rem; font-weight: 500; color: var(--cacao-dark); line-height: 1.5; }
 
+    /* ── EXAMPLES ── */
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .example-card {
+      background: var(--white);
+      border: 1px solid var(--sand);
+      overflow: hidden;
+    }
+
+    .example-img {
+      width: 100%;
+      height: 180px;
+      background: var(--cream-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      color: var(--taupe);
+      text-transform: uppercase;
+    }
+
+    .example-body { padding: 20px 22px; }
+
+    .example-tag {
+      font-family: var(--font-mono);
+      font-size: 0.54rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 6px;
+    }
+
+    .example-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--cacao-dark);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .example-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--cacao);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ── INVESTMENT ── */
+    .investment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 700px) { .investment-grid { grid-template-columns: 1fr; } }
+
+    .investment-card {
+      border: 1px solid var(--sand);
+      padding: 28px 28px 24px;
+      background: var(--white);
+    }
+
+    .investment-card.primary {
+      border-color: var(--cacao);
+      background: var(--cream-soft);
+    }
+
+    .investment-phase {
+      font-family: var(--font-mono);
+      font-size: 0.54rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 6px;
+    }
+
+    .investment-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--cacao-dark);
+      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+    }
+
+    .investment-price {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--cacao-dark);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .investment-note {
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: var(--taupe);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+
+    .investment-divider { height: 1px; background: var(--sand); margin: 16px 0; }
+
+    .investment-includes {
+      font-family: var(--font-mono);
+      font-size: 0.54rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 10px;
+    }
+
+    .investment-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .investment-list li {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--cacao);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--sand);
+      line-height: 1.5;
+    }
+
+    .investment-list li:last-child { border-bottom: none; }
+
+    .investment-list li::before {
+      content: '— ';
+      color: var(--taupe);
+    }
+
+    /* ── TOOLS TABLE ── */
+    .tools-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      font-size: 0.82rem;
+    }
+
+    .tools-table thead tr { background: var(--cacao-dark); }
+
+    .tools-table thead th {
+      color: var(--cream-soft);
+      font-size: 0.56rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 10px 16px;
+      text-align: left;
+    }
+
+    .tools-table tbody tr { border-bottom: 1px solid var(--sand); }
+    .tools-table tbody tr:last-child { background: var(--cream-warm); font-weight: 500; }
+
+    .tools-table tbody td {
+      padding: 10px 16px;
+      font-weight: 300;
+      color: var(--cacao);
+      font-size: 0.8rem;
+    }
+
+    /* ── CTA ── */
+    .cta-block {
+      background: var(--cacao-dark);
+      padding: 64px max(40px, calc(50% - 580px));
+      text-align: center;
+    }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--cream-soft);
+      margin-bottom: 12px;
+    }
+
+    .cta-sub {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--taupe);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--cream-soft);
+      color: var(--cacao-dark);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .cta-btn:hover {
+      background: var(--sand);
+    }
+
     /* ── PROPOSAL DIVIDER ── */
     .proposal-divider {
       background: var(--cacao-dark);
@@ -400,6 +615,8 @@
   <a href="#scope">Scope</a>
   <a href="#identity">Identity</a>
   <a href="#architecture">Architecture</a>
+  <a href="#examples">Examples</a>
+  <a href="#investment">Investment</a>
 </nav>
 
 
@@ -611,6 +828,129 @@
     </li>
   </ul>
 </section>
+
+
+<!-- EXAMPLES -->
+<section id="examples">
+  <div class="section-num">06</div>
+  <h2>Real Examples</h2>
+  <p>Reference projects that inform the direction — in aesthetic, structure, and experience.</p>
+
+  <div class="examples-grid">
+    <div class="example-card">
+      <div class="example-img">[ Example 01 ]</div>
+      <div class="example-body">
+        <div class="example-tag">Studio · Website</div>
+        <div class="example-name">Project Name</div>
+        <p class="example-desc">Brief description of the project — what was built, what problem it solved, and what makes it relevant as a reference for Attic.</p>
+      </div>
+    </div>
+    <div class="example-card">
+      <div class="example-img">[ Example 02 ]</div>
+      <div class="example-body">
+        <div class="example-tag">Studio · Website + Booking</div>
+        <div class="example-name">Project Name</div>
+        <p class="example-desc">Brief description of the project — what was built, what problem it solved, and what makes it relevant as a reference for Attic.</p>
+      </div>
+    </div>
+    <div class="example-card">
+      <div class="example-img">[ Example 03 ]</div>
+      <div class="example-body">
+        <div class="example-tag">Brand · Identity + Web</div>
+        <div class="example-name">Project Name</div>
+        <p class="example-desc">Brief description of the project — what was built, what problem it solved, and what makes it relevant as a reference for Attic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- INVESTMENT -->
+<section id="investment">
+  <div class="section-num">07</div>
+  <h2>Investment</h2>
+  <p>The project is structured in two independent phases. Phase A can be confirmed and delivered standalone — Phase B is available once Phase A is live.</p>
+
+  <div class="investment-grid">
+    <div class="investment-card primary">
+      <div class="investment-phase">Phase A — Foundation</div>
+      <div class="investment-title">Full Website</div>
+      <div class="investment-price">—</div>
+      <div class="investment-note">Single payment · Delivery: 3–4 weeks</div>
+      <div class="investment-divider"></div>
+      <div class="investment-includes">Includes</div>
+      <ul class="investment-list">
+        <li>Responsive design and development (mobile-first)</li>
+        <li>5 sections: Home, Classes, Team, Pricing &amp; Booking, Contact</li>
+        <li>On-page SEO — structure and metadata</li>
+        <li>Visual alignment with brand identity</li>
+        <li>Booking system integration</li>
+        <li>1 round of revisions</li>
+        <li>Launch support</li>
+      </ul>
+    </div>
+
+    <div class="investment-card">
+      <div class="investment-phase">Phase B — Infrastructure</div>
+      <div class="investment-title">Proprietary Booking System</div>
+      <div class="investment-price">—</div>
+      <div class="investment-note">Available after Phase A · Scope to be defined</div>
+      <div class="investment-divider"></div>
+      <div class="investment-includes">Includes</div>
+      <ul class="investment-list">
+        <li>Client-facing booking panel</li>
+        <li>Studio admin panel</li>
+        <li>Package and class credit management</li>
+        <li>WhatsApp flow fully replaced</li>
+        <li>Custom development scoped post Phase A</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p style="margin-bottom:16px;"><strong>Monthly tool costs</strong> — contracted directly by Attic, not included in project investment.</p>
+
+  <table class="tools-table">
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>Purpose</th>
+        <th>Monthly Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Hosting</td>
+        <td>Site deployment and infrastructure</td>
+        <td>~$X / mo</td>
+      </tr>
+      <tr>
+        <td>Domain</td>
+        <td>atticpilates.com (or equivalent)</td>
+        <td>~$X / yr</td>
+      </tr>
+      <tr>
+        <td>Booking platform (Phase A)</td>
+        <td>Class reservation system</td>
+        <td>Variable</td>
+      </tr>
+      <tr>
+        <td><strong>Estimated total</strong></td>
+        <td></td>
+        <td><strong>~$XX / mo</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+<!-- CTA -->
+<div class="cta-block">
+  <div class="cta-title">Ready to build.</div>
+  <p class="cta-sub">We need the materials and the green light to get started.<br>Once confirmed, we begin within the week.</p>
+  <a href="mailto:hola@handled.com" class="cta-btn">Confirm Project</a>
+</div>
 
 
 <!-- FOOTER -->
