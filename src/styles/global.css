@@ -160,7 +160,7 @@ ul { list-style: none; }
 
 /* Section spacing */
 .section {
-  padding: var(--space-3xl) 0;
+  padding: var(--space-xl) 0;
 }
 
 /* Eyebrow / overline label */
@@ -190,7 +190,7 @@ ul { list-style: none; }
   html { font-size: 15px; }
 
   .section {
-    padding: var(--space-xl) 0;
+    padding: var(--space-lg) 0;
   }
 
   .container {
