@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+const photo = (name: string) => `${base}photos/${name}`;
+const wa = 'https://api.whatsapp.com/send/?phone=5491171451598&text&type=phone_number&app_absent=0';
+---
+
+<Layout title="Equipo — ATTIC Pilates" description="Camila, Lorena y Nacho — el equipo de instructores de Attic Pilates en Palermo Soho.">
+  <Navbar active="equipo" />
+
+  <header class="page-hero">
+    <div class="container">
+      <div class="num">— Sección 04 / Equipo</div>
+      <h1 class="display">Nuestros<br />instructores.</h1>
+      <p class="lede mt-48" style="max-width: 56ch;">La razón por la que la gente vuelve. Tres profesionales con formación técnica, especialización en distintos métodos y una forma de enseñar que prioriza la corrección por sobre la repetición.</p>
+    </div>
+  </header>
+
+  <div class="container" style="padding: 0 var(--gutter);"><div class="divider"></div></div>
+
+  <!-- CAMILA -->
+  <section class="teacher-row">
+    <div class="container">
+      <div class="t-grid">
+        <div class="t-photo">
+          <div class="photo" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('p08.jpg')}'); background-size: cover; background-position: center`}></div>
+        </div>
+        <div class="t-body">
+          <div class="num">— 01 / Instructora</div>
+          <h2 class="h-xl mt-24">Camila</h2>
+          <p class="meta mt-16">Reformer · Cadillac</p>
+          <p class="body mt-32" style="max-width: 56ch;">Formada en el método clásico y certificada en Reformer y Cadillac. Llegó al pilates desde la danza contemporánea, lo que se traduce en una mirada particular sobre alineación, fluidez y precisión del movimiento.</p>
+          <p class="body mt-16" style="max-width: 56ch;">Da clases grupales matutinas y privados los fines de semana.</p>
+          <div class="t-tags mt-48">
+            <span class="tag">Reformer clásico</span>
+            <span class="tag">Cadillac</span>
+            <span class="tag">Pre y post parto</span>
+            <span class="tag">Postura</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="padding: 0 var(--gutter);"><div class="divider"></div></div>
+
+  <!-- LORENA -->
+  <section class="teacher-row alt">
+    <div class="container">
+      <div class="t-grid">
+        <div class="t-body">
+          <div class="num">— 02 / Instructora</div>
+          <h2 class="h-xl mt-24">Lorena</h2>
+          <p class="meta mt-16">Reformer · Barre · Cadillac</p>
+          <p class="body mt-32" style="max-width: 56ch;">Especializada en trabajo de fuerza y resistencia. Llegó a Attic desde el fitness funcional y aporta una mirada más atlética al método. Sus clases de Barre son de las más buscadas del estudio.</p>
+          <p class="body mt-16" style="max-width: 56ch;">Lidera la grilla de tarde y noche.</p>
+          <div class="t-tags mt-48">
+            <span class="tag">Barre</span>
+            <span class="tag">Fuerza</span>
+            <span class="tag">Performance</span>
+            <span class="tag">Cadillac</span>
+          </div>
+        </div>
+        <div class="t-photo">
+          <div class="photo light-tone" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('p09.jpg')}'); background-size: cover; background-position: center`}></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="padding: 0 var(--gutter);"><div class="divider"></div></div>
+
+  <!-- NACHO -->
+  <section class="teacher-row">
+    <div class="container">
+      <div class="t-grid">
+        <div class="t-photo">
+          <div class="photo dark-tone" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('p10.jpg')}'); background-size: cover; background-position: center`}></div>
+        </div>
+        <div class="t-body">
+          <div class="num">— 03 / Instructor</div>
+          <h2 class="h-xl mt-24">Nacho</h2>
+          <p class="meta mt-16">Reformer · Yoga</p>
+          <p class="body mt-32" style="max-width: 56ch;">Profesor de educación física con formación en yoga y pilates. Atiende especialmente al público masculino que recién se acerca al método y a deportistas que buscan complementar su entrenamiento.</p>
+          <p class="body mt-16" style="max-width: 56ch;">Da Reformer mañana y tarde, y conduce las clases de Yoga de los miércoles.</p>
+          <div class="t-tags mt-48">
+            <span class="tag">Yoga</span>
+            <span class="tag">Atletas</span>
+            <span class="tag">Movilidad</span>
+            <span class="tag">Iniciación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALORES -->
+  <section class="green">
+    <div class="container">
+      <div class="eyebrow light">— 04 / Filosofía</div>
+      <h2 class="h-xl mt-32" style="color: var(--cream); max-width: 22ch; line-height: 1.05;">Lo que nos une como equipo.</h2>
+
+      <div class="valores-grid">
+        <div>
+          <div class="v-num">01</div>
+          <h3 class="h-md" style="color: var(--cream);">Corrección antes que carga</h3>
+          <p class="body mt-16" style="color: rgba(242,239,230,0.7);">La técnica primero. Cada clase es una corrección activa, no una repetición. Mejor menos peso bien hecho que más peso mal puesto.</p>
+        </div>
+        <div>
+          <div class="v-num">02</div>
+          <h3 class="h-md" style="color: var(--cream);">Grupos chicos, atención real</h3>
+          <p class="body mt-16" style="color: rgba(242,239,230,0.7);">Máximo seis personas por Reformer. Para que el instructor pueda mirarte, corregirte y adaptar la clase a quien la está tomando.</p>
+        </div>
+        <div>
+          <div class="v-num">03</div>
+          <h3 class="h-md" style="color: var(--cream);">Cada cuerpo, un plan</h3>
+          <p class="body mt-16" style="color: rgba(242,239,230,0.7);">No creemos en clases idénticas. El equipo te ayuda a armar una rutina semanal que tenga sentido para tu objetivo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container">
+      <div class="cta-final">
+        <div>
+          <div class="eyebrow-row"><span class="dot"></span><span class="eyebrow dark">¿Querés conocernos?</span></div>
+          <h2 class="h-xl mt-32">Vení a probar una clase.</h2>
+          <p class="lede mt-32">Tu primera clase a precio promocional. Te asignamos al instructor que mejor se adapte a tu objetivo y tu nivel.</p>
+          <div class="row gap-16 mt-48 flex-wrap">
+            <a href={wa} target="_blank" rel="noopener" class="btn btn-primary">Reservar clase prueba</a>
+            <a href={`${base}horarios`} class="btn btn-ghost">Ver horarios</a>
+          </div>
+        </div>
+        <div class="photo green-tone" data-bg style={`aspect-ratio: 5/4; background-image: url('${photo('p01.jpg')}'); background-size: cover; background-position: center`}></div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .teacher-row { padding: 120px var(--gutter); }
+  .t-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; align-items: center; }
+  .t-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag {
+    display: inline-flex; align-items: center;
+    padding: 10px 18px;
+    border: 1px solid rgba(45,41,38,0.18);
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--dark-soft);
+  }
+
+  .valores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 64px;
+    margin-top: 80px;
+  }
+  .v-num {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    color: var(--taupe-soft);
+    margin-bottom: 16px;
+  }
+
+  .cta-final {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .flex-wrap { flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .teacher-row { padding: 64px var(--gutter); }
+    .t-grid { grid-template-columns: 1fr; gap: 48px; }
+    .valores-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 48px; }
+    .cta-final { grid-template-columns: 1fr; gap: 40px; }
+    section.alt .t-grid > .t-body { order: 2; }
+    section.alt .t-grid > .t-photo { order: 1; }
+  }
+</style>

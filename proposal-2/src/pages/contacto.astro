@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+const wa = 'https://api.whatsapp.com/send/?phone=5491171451598&text&type=phone_number&app_absent=0';
+---
+
+<Layout title="Contacto — ATTIC Pilates" description="Honduras 4822, Palermo Soho. Reservás por WhatsApp y gestionás clases por Siguefit.">
+  <Navbar active="contacto" />
+
+  <header class="page-hero">
+    <div class="container">
+      <div class="num">— Sección 06 / Contacto</div>
+      <h1 class="display">Visitanos.<br />Escribinos.</h1>
+      <p class="lede mt-48" style="max-width: 56ch;">El estudio está en Honduras 4822, en pleno corazón de Palermo Soho. Reservás tu lugar y consultás por WhatsApp; el pago se hace antes de la clase.</p>
+    </div>
+  </header>
+
+  <!-- INFO + MAP -->
+  <section style="padding: 60px var(--gutter) 120px;">
+    <div class="container">
+      <div class="c-grid">
+        <div class="c-info">
+          <div class="c-block">
+            <div class="c-label">— Dirección</div>
+            <p class="h-md mt-12">Honduras 4822</p>
+            <p class="body mt-8">Palermo Soho, Buenos Aires<br />Argentina, C1414BMP</p>
+          </div>
+          <div class="c-block">
+            <div class="c-label">— Horarios de atención</div>
+            <p class="body mt-12">Lunes a Viernes · 8:00 – 21:00<br />Sábados · 10:00 – 14:00<br />Domingos · Cerrado</p>
+          </div>
+          <div class="c-block">
+            <div class="c-label">— Reservas</div>
+            <a href="https://siguefit.com" target="_blank" rel="noopener" class="c-link">Siguefit · siguefit.com →</a>
+          </div>
+          <div class="c-block">
+            <div class="c-label">— WhatsApp</div>
+            <a href={wa} target="_blank" rel="noopener" class="c-link">+54 9 11 7145 1598 →</a>
+            <p class="meta mt-8">Reservás tu lugar por WhatsApp y abonás antes de la clase.</p>
+          </div>
+          <div class="c-block">
+            <div class="c-label">— Instagram</div>
+            <a href="https://www.instagram.com/attic.pilates/" target="_blank" rel="noopener" class="c-link">@attic.pilates ↗</a>
+          </div>
+        </div>
+
+        <div class="c-map">
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps?q=Honduras+4822+Palermo+Buenos+Aires&output=embed"
+              width="100%" height="100%"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa ATTIC Pilates · Honduras 4822">
+            </iframe>
+            <div class="map-pin-label">
+              <div class="meta">ATTIC PILATES</div>
+              <div style="font-size: 14px; margin-top: 4px;">Honduras 4822</div>
+            </div>
+            <a href="https://maps.google.com/?q=Honduras+4822+Palermo+Soho" target="_blank" rel="noopener" class="map-cta">Abrir en Google Maps ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="cream-deep">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="num">— 02 / FAQ</div>
+          <h2 class="h-lg mt-16">Preguntas frecuentes.</h2>
+        </div>
+        <p class="body" style="max-width: 56ch;">Lo más consultado antes de la primera clase.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>
+            <span>¿Necesito experiencia previa?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">No. Las clases de Reformer y Yoga son aptas para todos los niveles. El instructor adapta los ejercicios a tu condición física. Si nunca tomaste pilates, te recomendamos arrancar con la <strong>Clase prueba</strong>.</div>
+        </details>
+        <details>
+          <summary>
+            <span>¿Qué necesito llevar?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">Ropa cómoda y medias antideslizantes (también las vendemos en el estudio). Toalla y botella de agua son opcionales — tenemos para prestar.</div>
+        </details>
+        <details>
+          <summary>
+            <span>¿Puedo cancelar una clase?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">Sí, con un mínimo de <strong>12 horas de anticipación</strong> desde Siguefit. Si cancelás dentro de ese plazo o no asistís, la clase se considera tomada.</div>
+        </details>
+        <details>
+          <summary>
+            <span>¿Los packs vencen?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">Todos los packs tienen <strong>1 mes de validez</strong> desde la compra. Una vez vencidos, las clases no se recuperan.</div>
+        </details>
+        <details>
+          <summary>
+            <span>¿Hay estacionamiento?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-body">El estudio no cuenta con estacionamiento propio, pero hay estacionamientos pagos a una cuadra sobre Av. Honduras y Serrano. Se llega bien en colectivo (líneas 39, 111, 140) y subte (Línea D, Plaza Italia).</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="dark">
+    <div class="container" style="text-align: center;">
+      <h2 class="h-xl" style="color: var(--cream); max-width: 22ch; margin: 0 auto;">Te esperamos en el estudio.</h2>
+      <p class="lede mt-32" style="color: rgba(242,239,230,0.7); margin: 32px auto 0;">Honduras 4822 · Palermo Soho · Buenos Aires</p>
+      <div class="row gap-16 mt-48 cta-row">
+        <a href={wa} target="_blank" rel="noopener" class="btn" style="background: var(--cream); color: var(--dark);">Reservar clase prueba</a>
+        <a href={wa} target="_blank" rel="noopener" class="btn btn-light">Escribir por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .c-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; }
+  .c-info { display: flex; flex-direction: column; gap: 40px; padding-top: 8px; }
+  .c-block { display: flex; flex-direction: column; }
+  .c-label {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dark-green);
+    font-weight: 500;
+  }
+  .c-link {
+    font-size: 18px;
+    color: var(--dark);
+    margin-top: 12px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(45,41,38,0.2);
+    display: inline-block;
+    width: fit-content;
+    transition: border-color .2s;
+  }
+  .c-link:hover { border-color: var(--dark); }
+  .c-map { position: relative; }
+  .map-frame { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--cream-deep); min-height: 560px; }
+  .map-frame iframe { border: 0; display: block; filter: grayscale(0.35) contrast(0.95) sepia(0.08); }
+  .map-pin-label {
+    position: absolute;
+    top: calc(50% - 60px);
+    left: calc(50% + 60px);
+    background: var(--cream);
+    padding: 14px 18px;
+    border-left: 2px solid var(--dark-green);
+    box-shadow: 0 8px 24px rgba(45,41,38,0.1);
+  }
+  .map-cta {
+    position: absolute;
+    bottom: 24px; right: 24px;
+    background: var(--dark);
+    color: var(--cream);
+    padding: 14px 22px;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .map-cta:hover { background: var(--dark-green); }
+
+  .faq { display: flex; flex-direction: column; }
+  .faq details { border-bottom: 1px solid rgba(45,41,38,0.12); }
+  .faq details:first-child { border-top: 1px solid rgba(45,41,38,0.12); }
+  .faq summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    color: var(--dark);
+    transition: padding .2s;
+    gap: 24px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary:hover { padding-left: 8px; }
+  .faq-icon {
+    font-size: 24px;
+    color: var(--dark-soft);
+    font-weight: 300;
+    transition: transform .25s;
+    flex-shrink: 0;
+  }
+  .faq details[open] .faq-icon { transform: rotate(45deg); }
+  .faq-body { padding: 0 0 32px; font-size: 17px; line-height: 1.6; color: var(--dark-soft); max-width: 70ch; }
+  .faq strong { color: var(--dark); font-weight: 500; }
+
+  .cta-row { justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .c-grid { grid-template-columns: 1fr; gap: 48px; }
+    .map-pin-label { left: 24px; top: 50%; }
+    .map-frame { min-height: 420px; }
+    .faq summary { font-size: 18px; }
+  }
+</style>

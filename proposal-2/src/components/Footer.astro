@@ -1,0 +1,51 @@
+---
+const base = import.meta.env.BASE_URL;
+const year = new Date().getFullYear();
+const wa = 'https://api.whatsapp.com/send/?phone=5491171451598&text&type=phone_number&app_absent=0';
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <svg class="footer-logo" viewBox="0 0 240 160" xmlns="http://www.w3.org/2000/svg" fill="none" aria-label="Attic Pilates">
+          <text x="120" y="78" text-anchor="middle" font-family="Garet, sans-serif" font-size="68" font-weight="300" letter-spacing="11" fill="currentColor">ATTIC</text>
+          <text x="120" y="130" text-anchor="middle" font-family="Garet, sans-serif" font-size="42" font-weight="300" letter-spacing="7" fill="#B6A89A">PILATES</text>
+        </svg>
+        <p class="body mt-32" style="color: rgba(242,239,230,0.6); max-width: 36ch;">
+          Honduras 4822, Palermo Soho<br />
+          Buenos Aires, Argentina
+        </p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href={base}>Inicio</a></li>
+          <li><a href={`${base}clases`}>Clases</a></li>
+          <li><a href={`${base}horarios`}>Horarios</a></li>
+          <li><a href={`${base}equipo`}>Equipo</a></li>
+          <li><a href={`${base}precios`}>Precios</a></li>
+          <li><a href={`${base}contacto`}>Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reservas</h4>
+        <ul>
+          <li><a href="https://siguefit.com" target="_blank" rel="noopener">Siguefit ↗</a></li>
+          <li><a href={wa} target="_blank" rel="noopener">WhatsApp ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/attic.pilates/" target="_blank" rel="noopener">Instagram ↗</a></li>
+          <li><a href="https://www.tiktok.com/@attic.pilates" target="_blank" rel="noopener">TikTok ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} Attic Pilates. Todos los derechos reservados.</span>
+      <span>Honduras 4822 · Palermo Soho · Buenos Aires</span>
+    </div>
+  </div>
+</footer>

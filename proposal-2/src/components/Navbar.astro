@@ -1,0 +1,47 @@
+---
+interface Props {
+  active?: 'inicio' | 'clases' | 'horarios' | 'equipo' | 'precios' | 'contacto';
+  overHero?: boolean;
+}
+const { active = 'inicio', overHero = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const wa = 'https://api.whatsapp.com/send/?phone=5491171451598&text&type=phone_number&app_absent=0';
+const links = [
+  { key: 'inicio', label: 'Inicio', href: base },
+  { key: 'clases', label: 'Clases', href: `${base}clases` },
+  { key: 'horarios', label: 'Horarios', href: `${base}horarios` },
+  { key: 'equipo', label: 'Equipo', href: `${base}equipo` },
+  { key: 'precios', label: 'Precios', href: `${base}precios` },
+  { key: 'contacto', label: 'Contacto', href: `${base}contacto` },
+];
+---
+
+<nav class={`nav ${overHero ? 'over-hero' : ''}`}>
+  <a href={base} class="logo" aria-label="ATTIC Pilates · Inicio">
+    <img src={`${base}logo.png`} alt="Attic Pilates" class="wordmark-img" />
+  </a>
+  <div class="menu" data-menu>
+    {links.map((l) => (
+      <a href={l.href} class={active === l.key ? 'active' : ''}>{l.label}</a>
+    ))}
+  </div>
+  <a href={wa} target="_blank" rel="noopener" class="cta">
+    Reservá ya
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+      <path d="M1 9 L9 1 M3 1 H9 V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <button type="button" class="menu-toggle" aria-label="Abrir menú" data-menu-toggle>
+    <span></span>
+  </button>
+</nav>
+
+<script is:inline>
+  (() => {
+    const btn = document.querySelector('[data-menu-toggle]');
+    const menu = document.querySelector('[data-menu]');
+    if (btn && menu) {
+      btn.addEventListener('click', () => menu.classList.toggle('open'));
+    }
+  })();
+</script>

@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+const wa = 'https://api.whatsapp.com/send/?phone=5491171451598&text&type=phone_number&app_absent=0';
+---
+
+<Layout title="Precios y packs — ATTIC Pilates" description="Clases sueltas y packs mensuales de Reformer, Barre, Cadillac y Yoga. Sin permanencia.">
+  <Navbar active="precios" />
+
+  <header class="page-hero">
+    <div class="container">
+      <div class="num">— Sección 05 / Precios</div>
+      <h1 class="display">Precios<br />y packs.</h1>
+      <p class="lede mt-48" style="max-width: 56ch;">Pagás solo por lo que tomás. Sin abonos mensuales, sin permanencia. Comprás un pack, lo activás con tu primera clase, y lo usás durante el mes siguiente.</p>
+    </div>
+  </header>
+
+  <!-- INDIVIDUAL -->
+  <section style="padding: 40px var(--gutter) 80px;">
+    <div class="container">
+      <div class="eyebrow-row" style="margin-bottom: 48px;"><span class="dot"></span><span class="eyebrow dark">Clases individuales</span></div>
+      <div class="single-grid">
+        <article class="single">
+          <div class="s-head">
+            <h3 class="h-md">Clase prueba</h3>
+            <p class="meta mt-8">Tu primera clase</p>
+          </div>
+          <div class="s-price">$20.000</div>
+          <a href={wa} target="_blank" rel="noopener" class="s-btn">Reservar →</a>
+        </article>
+        <article class="single">
+          <div class="s-head">
+            <h3 class="h-md">Clase suelta</h3>
+            <p class="meta mt-8">Reformer · Barre · Yoga</p>
+          </div>
+          <div class="s-price">$24.000</div>
+          <a href={wa} target="_blank" rel="noopener" class="s-btn">Reservar →</a>
+        </article>
+        <article class="single">
+          <div class="s-head">
+            <h3 class="h-md">Clase Cadillac</h3>
+            <p class="meta mt-8">Sesión personalizada · 1 a 1</p>
+          </div>
+          <div class="s-price">$30.000</div>
+          <a href={wa} target="_blank" rel="noopener" class="s-btn">Reservar →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKS -->
+  <section class="green" style="padding: 120px var(--gutter);">
+    <div class="container">
+      <div class="section-head" style="margin-bottom: 64px;">
+        <div>
+          <div class="num" style="color: var(--taupe-soft);">— 02 / Packs</div>
+          <h2 class="h-lg mt-16" style="color: var(--cream);">Packs de clases.</h2>
+        </div>
+        <p class="body" style="max-width: 56ch; color: rgba(242,239,230,0.75);">Comprás un pack, lo usás durante un mes desde la primera clase. Sin compromiso mensual. Cuanto más grande el pack, mejor el precio por clase.</p>
+      </div>
+
+      <div class="packs-grid">
+        <article class="pack">
+          <div class="p-head">
+            <span class="p-tag">— Pack 04</span>
+            <h3 class="h-lg" style="color: var(--cream); margin-top: 16px;">4 clases</h3>
+          </div>
+          <div class="p-meta">
+            <div class="row between"><span>Precio total</span><span style="color: var(--cream);">$78.000</span></div>
+            <div class="row between"><span>Por clase</span><span style="color: var(--cream);">$19.500</span></div>
+            <div class="row between"><span>Validez</span><span style="color: var(--cream);">1 mes</span></div>
+          </div>
+          <a href={wa} target="_blank" rel="noopener" class="p-cta">Comprar pack →</a>
+        </article>
+
+        <article class="pack featured">
+          <div class="p-head">
+            <span class="p-tag p-tag-hot">— Pack 08 · Más elegido</span>
+            <h3 class="h-lg" style="color: var(--cream); margin-top: 16px;">8 clases</h3>
+          </div>
+          <div class="p-meta">
+            <div class="row between"><span>Precio total</span><span style="color: var(--cream);">$126.000</span></div>
+            <div class="row between"><span>Por clase</span><span style="color: var(--cream);">$15.750</span></div>
+            <div class="row between"><span>Validez</span><span style="color: var(--cream);">1 mes</span></div>
+          </div>
+          <a href={wa} target="_blank" rel="noopener" class="p-cta">Comprar pack →</a>
+        </article>
+
+        <article class="pack">
+          <div class="p-head">
+            <span class="p-tag">— Pack 12</span>
+            <h3 class="h-lg" style="color: var(--cream); margin-top: 16px;">12 clases</h3>
+          </div>
+          <div class="p-meta">
+            <div class="row between"><span>Precio total</span><span style="color: var(--cream);">$145.000</span></div>
+            <div class="row between"><span>Por clase</span><span style="color: var(--cream);">$12.083</span></div>
+            <div class="row between"><span>Validez</span><span style="color: var(--cream);">1 mes</span></div>
+          </div>
+          <a href={wa} target="_blank" rel="noopener" class="p-cta">Comprar pack →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section>
+    <div class="container">
+      <div class="info-grid">
+        <div>
+          <div class="eyebrow-row"><span class="dot"></span><span class="eyebrow dark">Información</span></div>
+          <h2 class="h-xl mt-32">Cómo<br />funciona.</h2>
+        </div>
+        <div>
+          <ol class="info-list">
+            <li>
+              <div class="info-num">01</div>
+              <div>
+                <h3 class="h-md">Vigencia</h3>
+                <p class="body mt-8">Los packs tienen <strong>1 mes</strong> de validez desde la fecha de compra. Pasado ese plazo, las clases no se recuperan.</p>
+              </div>
+            </li>
+            <li>
+              <div class="info-num">02</div>
+              <div>
+                <h3 class="h-md">Cancelaciones</h3>
+                <p class="body mt-8">Las cancelaciones deben realizarse <strong>al menos 12 horas antes</strong> de la clase. De lo contrario, se considera tomada.</p>
+              </div>
+            </li>
+            <li>
+              <div class="info-num">03</div>
+              <div>
+                <h3 class="h-md">Métodos de pago</h3>
+                <p class="body mt-8">Aceptamos tarjeta de débito, crédito y transferencia. Los pagos se procesan a través del sistema de reservas.</p>
+              </div>
+            </li>
+            <li>
+              <div class="info-num">04</div>
+              <div>
+                <h3 class="h-md">Reserva</h3>
+                <p class="body mt-8">El pago se coordina y se abona primero por <a href={wa} target="_blank" rel="noopener" class="underline"><strong>WhatsApp</strong></a>. Una vez confirmado, te activamos el pack y las clases se reservan desde <a href="https://siguefit.com" target="_blank" rel="noopener" class="underline">Siguefit</a> — los créditos descuentan automáticamente.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="dark">
+    <div class="container" style="text-align: center;">
+      <h2 class="h-xl" style="color: var(--cream); max-width: 22ch; margin: 0 auto;">Comprá tu pack.</h2>
+      <p class="lede mt-32" style="color: rgba(242,239,230,0.7); margin: 32px auto 0;">Pagás una sola vez, reservás clases todo el mes.</p>
+      <div class="row gap-16 mt-48 cta-row">
+        <a href={wa} target="_blank" rel="noopener" class="btn" style="background: var(--cream); color: var(--dark);">Reservar por WhatsApp ↗</a>
+        <a href="https://siguefit.com" target="_blank" rel="noopener" class="btn btn-light">Ir a Siguefit</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .single-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .single {
+    background: var(--cream-deep);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-height: 260px;
+    transition: background .25s;
+  }
+  .single:hover { background: #e3dfd1; }
+  .s-head { display: flex; flex-direction: column; }
+  .s-price { font-size: 44px; font-weight: 300; letter-spacing: -0.02em; line-height: 1; margin-top: auto; }
+  .s-btn { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dark-green); }
+  .s-btn:hover { opacity: 0.65; }
+
+  .packs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .pack {
+    background: rgba(242,239,230,0.05);
+    border: 1px solid rgba(242,239,230,0.18);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    color: rgba(242,239,230,0.75);
+  }
+  .pack.featured { background: rgba(242,239,230,0.1); border-color: rgba(242,239,230,0.4); }
+  .p-tag { font-size: 12px; letter-spacing: 0.18em; color: rgba(242,239,230,0.55); }
+  .p-tag-hot {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #c9483a; color: #fff5ee;
+    padding: 6px 12px; border-radius: 999px;
+    font-weight: 500;
+  }
+  .p-tag-hot::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: #fff5ee;
+    animation: hotPulse 1.8s infinite;
+  }
+  @keyframes hotPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255,245,238,0.7); }
+    70%  { box-shadow: 0 0 0 8px rgba(255,245,238,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,245,238,0); }
+  }
+  .p-meta { display: flex; flex-direction: column; gap: 16px; font-size: 14px; padding-top: 32px; border-top: 1px solid rgba(242,239,230,0.15); }
+  .p-cta { margin-top: auto; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream); border-top: 1px solid rgba(242,239,230,0.2); padding-top: 28px; }
+  .p-cta:hover { opacity: 0.7; }
+
+  .info-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; }
+  .info-list { list-style: none; display: flex; flex-direction: column; gap: 48px; }
+  .info-list li { display: grid; grid-template-columns: 60px 1fr; gap: 24px; padding-bottom: 48px; border-bottom: 1px solid rgba(45,41,38,0.1); }
+  .info-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .info-num { font-size: 13px; letter-spacing: 0.18em; color: var(--dark-green); padding-top: 6px; }
+  .info-list strong { color: var(--dark); font-weight: 500; }
+  .underline { text-decoration: underline; text-underline-offset: 4px; }
+
+  .cta-row { justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .single-grid { grid-template-columns: 1fr; }
+    .packs-grid { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+</style>

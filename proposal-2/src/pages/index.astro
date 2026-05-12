@@ -1,0 +1,424 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+const photo = (name: string) => `${base}photos/${name}`;
+const wa = 'https://api.whatsapp.com/send/?phone=5491171451598&text&type=phone_number&app_absent=0';
+
+const reelFrames = [
+  { src: photo('p01.jpg'), position: 'center 30%' },
+  { src: photo('p03.jpg'), position: 'center 40%' },
+  { src: photo('p04.jpg'), position: 'center 35%' },
+  { src: photo('p06.jpg'), position: 'center 45%' },
+  { src: photo('p02.jpg'), position: 'center 40%' },
+  { src: photo('p05.jpg'), position: 'center 30%' },
+];
+
+const community = [
+  { src: photo('p11.jpg'), tone: '' },
+  { src: photo('p12.jpg'), tone: 'dark-tone' },
+  { src: photo('p13.jpg'), tone: 'light-tone' },
+  { src: photo('p15.jpg'), tone: 'green-tone' },
+  { src: photo('pa.jpg'), tone: '' },
+  { src: photo('paa.jpg'), tone: 'dark-tone' },
+  { src: photo('p01.jpg'), tone: '' },
+  { src: photo('p03.jpg'), tone: 'light-tone' },
+  { src: photo('p06.jpg'), tone: '' },
+  { src: photo('p05.jpg'), tone: 'green-tone' },
+  { src: photo('cadillac.jpg'), tone: '', filter: 'sepia(0.35) saturate(0.65) brightness(1.02) contrast(1.06)' },
+  { src: photo('p07.jpg'), tone: 'light-tone' },
+  { src: photo('p08.jpg'), tone: '' },
+  { src: photo('p09.jpg'), tone: 'dark-tone' },
+  { src: photo('p10.jpg'), tone: '' },
+  { src: photo('barre.jpg'), tone: 'light-tone', filter: 'sepia(0.18) saturate(1.15) brightness(1.04) contrast(1.05)' },
+  { src: photo('yoga.jpg'), tone: '' },
+];
+---
+
+<Layout title="ATTIC Pilates — Estudio en Palermo Soho">
+  <Navbar active="inicio" overHero={true} />
+
+  <!-- HERO · REEL -->
+  <header class="hero hero-reel">
+    <div class="reel" aria-hidden="true">
+      {reelFrames.map((f, i) => (
+        <div class={`frame f${i + 1}`} style={`background-image: url('${f.src}'); background-position: ${f.position};`}></div>
+      ))}
+    </div>
+    <div class="reel-veil"></div>
+
+    <div class="content hero-reel-content">
+      <div class="col gap-32" style="max-width: 880px;">
+        <div class="eyebrow-row-light">
+          <span class="dash"></span>
+          <span class="eyebrow light">Pilates · Palermo Soho</span>
+        </div>
+        <h1 class="display display-thin">Moverte mejor,<br/>como forma de vida.</h1>
+        <p class="hero-lede">ATTIC es un estudio de pilates donde la técnica, la atención del instructor y la calidad del equipamiento se ponen al servicio de tu práctica. Reformer, Barre, Cadillac y Yoga — para hombres y mujeres.</p>
+        <div class="row gap-16 mt-16">
+          <a href={`${base}precios`} class="btn-pill btn-pill-primary">
+            Comprar
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+          </a>
+          <a href={wa} target="_blank" rel="noopener" class="btn-pill btn-pill-ghost">
+            Reservar
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="reel-meta">
+        <div class="reel-dots">
+          {reelFrames.map((_, i) => (
+            <span class={`dot${i === 0 ? ' active' : ''}`}></span>
+          ))}
+        </div>
+        <span class="eyebrow light reel-counter">01 / 06</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="tight">
+    <div class="container">
+      <div class="intro-grid">
+        <div>
+          <div class="eyebrow-row"><span class="dot"></span><span class="eyebrow dark">El estudio</span></div>
+          <h2 class="h-xl mt-32">Movimiento con intención, en el corazón de Palermo Soho.</h2>
+        </div>
+        <p class="lede">Attic nace de la idea de que el pilates no es una rutina más: es una práctica técnica, exigente y precisa. Trabajamos en grupos pequeños y con un equipo formado para que cada persona —principiante o atleta— encuentre su ritmo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCIPLINAS -->
+  <section class="cream-deep">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="num">— 02 / Disciplinas</div>
+          <h2 class="h-lg mt-16">Cuatro prácticas, una misma manera de entrenar.</h2>
+        </div>
+        <p class="body" style="max-width: 56ch;">Cada clase tiene su propósito. Te ayudamos a entender cuál se adapta mejor a tu cuerpo, tu nivel y tu objetivo — y a combinarlas si querés ir más lejos.</p>
+      </div>
+
+      <div class="disc-grid">
+        <a href={`${base}clases#reformer`} class="discipline">
+          <div class="photo dark-tone" data-bg style={`aspect-ratio: 3/4; background-image: url('${photo('p01.jpg')}'); background-size: cover; background-position: center`}></div>
+          <div class="d-info">
+            <h3 class="h-md">Reformer</h3>
+            <p class="meta">Grupo · Privado</p>
+          </div>
+        </a>
+        <a href={`${base}clases#barre`} class="discipline">
+          <div class="photo light-tone" data-bg style={`aspect-ratio: 3/4; background-image: url('${photo('barre.jpg')}'); background-size: cover; background-position: center; filter: sepia(0.18) saturate(1.15) brightness(1.04) contrast(1.05);`}></div>
+          <div class="d-info">
+            <h3 class="h-md">Barre</h3>
+            <p class="meta">Grupo</p>
+          </div>
+        </a>
+        <a href={`${base}clases#cadillac`} class="discipline">
+          <div class="photo green-tone" data-bg style={`aspect-ratio: 3/4; background-image: url('${photo('cadillac.jpg')}'); background-size: cover; background-position: 30% center; filter: sepia(0.35) saturate(0.65) brightness(1.02) contrast(1.06);`}></div>
+          <div class="d-info">
+            <h3 class="h-md">Cadillac</h3>
+            <p class="meta">Personalizado</p>
+          </div>
+        </a>
+        <a href={`${base}clases#yoga`} class="discipline">
+          <div class="photo" data-bg style={`aspect-ratio: 3/4; background-image: url('${photo('yoga.jpg')}'); background-size: cover; background-position: center`}></div>
+          <div class="d-info">
+            <h3 class="h-md">Yoga</h3>
+            <p class="meta">Grupo</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPO PREVIEW -->
+  <section>
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="num">— 04 / Equipo</div>
+          <h2 class="h-lg mt-16">Tres instructores, una misma exigencia técnica.</h2>
+        </div>
+        <a href={`${base}equipo`} class="btn btn-ghost">Ver perfiles
+          <svg class="arrow" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6 H15 M10 1 L15 6 L10 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="teach-grid">
+        <article class="teacher">
+          <div class="photo" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('p08.jpg')}'); background-size: cover; background-position: center`}></div>
+          <div class="mt-24">
+            <h3 class="h-md">Camila</h3>
+            <p class="meta mt-8">Reformer · Cadillac</p>
+          </div>
+        </article>
+        <article class="teacher">
+          <div class="photo light-tone" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('p09.jpg')}'); background-size: cover; background-position: center`}></div>
+          <div class="mt-24">
+            <h3 class="h-md">Lorena</h3>
+            <p class="meta mt-8">Reformer · Barre · Cadillac</p>
+          </div>
+        </article>
+        <article class="teacher">
+          <div class="photo dark-tone" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('p10.jpg')}'); background-size: cover; background-position: center`}></div>
+          <div class="mt-24">
+            <h3 class="h-md">Nacho</h3>
+            <p class="meta mt-8">Reformer · Yoga</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HORARIOS PREVIEW -->
+  <section class="taupe">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="num">— 05 / Horarios</div>
+          <h2 class="h-lg mt-16">Una grilla pensada para entrar y salir de la rutina.</h2>
+        </div>
+        <p class="body" style="max-width: 56ch;">Clases desde las 8:00 hasta las 20:00, de lunes a sábado. Reformer todos los días, Cadillac y Barre con horarios específicos. Reservá tu lugar con anticipación.</p>
+      </div>
+
+      <div class="mini-grid">
+        <div></div>
+        <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div>
+
+        <div class="t">8:00</div>
+        <div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell"></div>
+
+        <div class="t">10:00</div>
+        <div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div>
+
+        <div class="t">11:00</div>
+        <div class="cell"></div><div class="cell green">Cadillac</div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell on">Pilates</div>
+
+        <div class="t">17:00</div>
+        <div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell"></div>
+
+        <div class="t">18:00</div>
+        <div class="cell on">Pilates</div><div class="cell barre">Barre</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell on">Pilates</div><div class="cell"></div>
+      </div>
+
+      <div class="row between align-center mt-48 flex-wrap">
+        <span class="meta">Vista resumida · Lunes a Sábado</span>
+        <a href={`${base}horarios`} class="btn btn-ghost">Ver grilla completa
+          <svg class="arrow" viewBox="0 0 16 12" fill="none" aria-hidden="true"><path d="M1 6 H15 M10 1 L15 6 L10 11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING CTA -->
+  <section class="dark">
+    <div class="container" style="text-align: center;">
+      <div class="eyebrow light" style="margin-bottom: 40px;">— 06 / Reservá</div>
+      <h2 class="h-xl" style="color: var(--cream); max-width: 22ch; margin: 0 auto;">Tu próxima clase empieza acá.</h2>
+      <p class="lede mt-32" style="color: rgba(242,239,230,0.7); margin: 32px auto 0;">Reservá por WhatsApp y gestioná tus clases desde Siguefit. Honduras 4822, Palermo Soho.</p>
+      <div class="row gap-16 mt-48 cta-row">
+        <a href={wa} target="_blank" rel="noopener" class="btn" style="background: var(--cream); color: var(--dark);">
+          Reservar por WhatsApp
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 9 L9 1 M3 1 H9 V7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href={`${base}precios`} class="btn btn-light">Ver precios y packs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMUNIDAD -->
+  <section class="comunidad-section">
+    <div class="container">
+      <div class="section-head" style="grid-template-columns: 1fr 1fr; align-items: end;">
+        <div>
+          <div class="num">— 07 / Comunidad</div>
+          <h2 class="h-lg mt-16">Nuestra comunidad.</h2>
+        </div>
+        <p class="body" style="max-width: 48ch;">Las personas que pasan por Attic — alumnas, alumnos, instructores. La práctica, en el día a día.</p>
+      </div>
+    </div>
+    <div class="community-rail-wrap">
+      <div class="community-rail">
+        {[...community, ...community].map((c, i) => (
+          <a class="c-card" href="https://www.instagram.com/attic.pilates/" target="_blank" rel="noopener" aria-label="Attic en Instagram">
+            <div class={`photo ${c.tone}`} data-bg style={`aspect-ratio: 3/4; height: 460px; background-image: url('${c.src}'); background-size: cover; background-position: center;${c.filter ? ` filter: ${c.filter};` : ''}`}></div>
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="container">
+      <div style="display:flex; justify-content: space-between; align-items: center; padding-top: 24px;">
+        <span class="meta" style="opacity: 0.5;">→ Deslizá para ver más</span>
+        <a href="https://www.instagram.com/attic.pilates/" target="_blank" rel="noopener" class="meta" style="opacity: 0.7;">@attic.pilates ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ============ HERO REEL ============ */
+  .hero-reel { position: relative; height: 100vh; min-height: 720px; overflow: hidden; background: #1a1816; }
+  .hero-reel .reel { position: absolute; inset: 0; }
+  .hero-reel .frame {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0; animation: reelCycle 24s infinite; transform: scale(1.05);
+  }
+  .hero-reel .frame.f1 { animation-delay: 0s; }
+  .hero-reel .frame.f2 { animation-delay: -4s; }
+  .hero-reel .frame.f3 { animation-delay: -8s; }
+  .hero-reel .frame.f4 { animation-delay: -12s; }
+  .hero-reel .frame.f5 { animation-delay: -16s; }
+  .hero-reel .frame.f6 { animation-delay: -20s; }
+  @keyframes reelCycle {
+    0%    { opacity: 0; transform: scale(1.06); }
+    3%    { opacity: 1; }
+    16.6% { opacity: 1; transform: scale(1.18); }
+    19.6% { opacity: 0; }
+    100%  { opacity: 0; transform: scale(1.18); }
+  }
+  .hero-reel .reel-veil {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(20,18,16,0.55) 0%, rgba(20,18,16,0.25) 35%, rgba(20,18,16,0.65) 100%),
+      radial-gradient(80% 60% at 25% 55%, rgba(0,0,0,0.55), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-reel-content {
+    position: relative; z-index: 2;
+    height: 100%; display: flex; flex-direction: column; justify-content: center;
+    padding: 0 var(--gutter); max-width: 1600px; margin: 0 auto;
+  }
+  .hero-lede {
+    max-width: 560px;
+    color: rgba(244,241,234,0.78);
+    font-size: 17px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+  .reel-meta {
+    position: absolute; left: var(--gutter); bottom: 48px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .reel-dots { display: flex; gap: 8px; }
+  .reel-dots .dot {
+    width: 24px; height: 1px; background: rgba(244,241,234,0.3);
+    transition: background .4s;
+  }
+  .reel-dots .dot.active { background: rgba(244,241,234,0.9); }
+  .reel-counter { color: rgba(244,241,234,0.6); font-variant-numeric: tabular-nums; }
+
+  @media (max-width: 900px) {
+    .hero-reel { min-height: 620px; }
+    .hero-lede { max-width: 100%; font-size: 16px; }
+    .reel-meta { left: var(--gutter); bottom: 32px; }
+  }
+
+  /* ============ INTRO ============ */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 100px;
+    align-items: end;
+  }
+  @media (max-width: 900px) {
+    .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ============ DISCIPLINAS ============ */
+  .disc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .discipline { display: flex; flex-direction: column; gap: 20px; transition: transform .3s; }
+  .discipline:hover { transform: translateY(-4px); }
+  .d-info { display: flex; flex-direction: column; gap: 6px; }
+  @media (max-width: 900px) {
+    .disc-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ============ EQUIPO ============ */
+  .teach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 900px) {
+    .teach-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  /* ============ HORARIOS PREVIEW ============ */
+  .mini-grid {
+    display: grid;
+    grid-template-columns: 80px repeat(6, 1fr);
+    gap: 6px;
+    font-size: 13px;
+  }
+  .mini-grid > div {
+    padding: 18px 16px;
+    background: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+  .mini-grid .t { background: transparent; padding-left: 0; color: var(--dark-soft); }
+  .mini-grid .cell { background: rgba(255,255,255,0.25); }
+  .mini-grid .cell.on { background: rgba(255,255,255,0.7); color: var(--dark); }
+  .mini-grid .cell.green { background: var(--dark-green); color: var(--cream); }
+  .mini-grid .cell.barre { background: #c9a596; color: var(--dark); }
+  .flex-wrap { flex-wrap: wrap; gap: 16px; }
+  @media (max-width: 900px) {
+    .mini-grid { grid-template-columns: 60px repeat(6, minmax(64px, 1fr)); overflow-x: auto; padding-bottom: 8px; }
+    .mini-grid > div { padding: 12px 8px; font-size: 10px; }
+  }
+
+  /* ============ CTA ============ */
+  .cta-row { justify-content: center; flex-wrap: wrap; }
+
+  /* ============ COMUNIDAD ============ */
+  .comunidad-section { padding: 120px 0; overflow: hidden; }
+  .comunidad-section .container { padding: 0 var(--gutter); }
+  .community-rail-wrap { overflow: hidden; padding: 40px 0 16px; }
+  .community-rail {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    animation: railMarquee 90s linear infinite;
+  }
+  .community-rail:hover { animation-play-state: paused; }
+  @keyframes railMarquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .c-card { flex: 0 0 auto; transition: transform .3s; }
+  .c-card:hover { transform: translateY(-4px); }
+  .c-card .photo { width: 360px; }
+  @media (max-width: 900px) {
+    .c-card .photo { width: 260px; height: 340px !important; }
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const dots = document.querySelectorAll('.hero-reel .reel-dots .dot');
+    const counter = document.querySelector('.hero-reel .reel-counter');
+    if (!dots.length) return;
+    let i = 0;
+    const tick = () => {
+      dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+      if (counter) counter.textContent = String(i + 1).padStart(2, '0') + ' / 06';
+      i = (i + 1) % dots.length;
+    };
+    tick();
+    setInterval(tick, 4000);
+  })();
+</script>

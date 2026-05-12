@@ -1,0 +1,262 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+const photo = (name: string) => `${base}photos/${name}`;
+const wa = 'https://api.whatsapp.com/send/?phone=5491171451598&text&type=phone_number&app_absent=0';
+
+type Cell = { type: 'pilates' | 'cadillac' | 'barre' | 'yoga' | 'empty'; teacher?: string };
+const days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+const rows: { time: string; cells: Cell[] }[] = [
+  { time: '8:00', cells: [
+    { type: 'pilates', teacher: 'Camila' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Nacho' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Nacho' },
+    { type: 'empty' },
+  ]},
+  { time: '9:00', cells: [
+    { type: 'pilates', teacher: 'Camila' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Nacho' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Nacho' },
+    { type: 'empty' },
+  ]},
+  { time: '10:00', cells: [
+    { type: 'pilates', teacher: 'Camila' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Nacho' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Nacho' },
+    { type: 'pilates', teacher: 'Nacho' },
+  ]},
+  { time: '11:00', cells: [
+    { type: 'empty' },
+    { type: 'cadillac', teacher: 'Lorena' },
+    { type: 'empty' },
+    { type: 'empty' },
+    { type: 'empty' },
+    { type: 'pilates', teacher: 'Nacho' },
+  ]},
+  { time: '12:00', cells: [
+    { type: 'empty' }, { type: 'empty' }, { type: 'empty' }, { type: 'empty' }, { type: 'empty' },
+    { type: 'pilates', teacher: 'Nacho' },
+  ]},
+  { time: '13:00', cells: [
+    { type: 'empty' }, { type: 'empty' }, { type: 'empty' }, { type: 'empty' }, { type: 'empty' },
+    { type: 'cadillac', teacher: 'Lorena' },
+  ]},
+  { time: '16:00', cells: [
+    { type: 'empty' }, { type: 'empty' }, { type: 'empty' },
+    { type: 'cadillac', teacher: 'Camila' },
+    { type: 'empty' }, { type: 'empty' },
+  ]},
+  { time: '17:00', cells: [
+    { type: 'pilates', teacher: 'Nacho' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Camila' },
+    { type: 'empty' },
+  ]},
+  { time: '18:00', cells: [
+    { type: 'pilates', teacher: 'Nacho' },
+    { type: 'barre', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Camila' },
+    { type: 'empty' },
+  ]},
+  { time: '19:00', cells: [
+    { type: 'pilates', teacher: 'Nacho' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'yoga', teacher: 'Nacho' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Camila' },
+    { type: 'empty' },
+  ]},
+  { time: '20:00', cells: [
+    { type: 'empty' }, { type: 'empty' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'pilates', teacher: 'Lorena' },
+    { type: 'empty' }, { type: 'empty' },
+  ]},
+];
+
+const labels: Record<Cell['type'], string> = {
+  pilates: 'Pilates',
+  cadillac: 'Cadillac',
+  barre: 'Barre',
+  yoga: 'Yoga',
+  empty: '',
+};
+---
+
+<Layout title="Horarios — ATTIC Pilates" description="Grilla semanal de clases de Reformer, Cadillac, Barre y Yoga en Attic Pilates, Palermo Soho.">
+  <Navbar active="horarios" />
+
+  <header class="page-hero">
+    <div class="container">
+      <div class="num">— Sección 03 / Horarios</div>
+      <h1 class="display">Grilla<br />semanal.</h1>
+      <p class="lede mt-48" style="max-width: 56ch;">Reformer todos los días, Cadillac y Barre con horarios específicos. La grilla puede sufrir variaciones por feriados — confirmá tu reserva por WhatsApp.</p>
+    </div>
+  </header>
+
+  <!-- LEGEND -->
+  <section style="padding: 0 var(--gutter) 40px;">
+    <div class="container">
+      <div class="legend">
+        <div class="legend-item"><span class="sw sw-pilates"></span><span>Pilates</span></div>
+        <div class="legend-item"><span class="sw sw-cadillac"></span><span>Cadillac</span></div>
+        <div class="legend-item"><span class="sw sw-barre"></span><span>Barre</span></div>
+        <div class="legend-item"><span class="sw sw-yoga"></span><span>Yoga</span></div>
+        <div class="legend-item"><span class="sw sw-empty"></span><span>Sin clase</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section style="padding: 40px var(--gutter) 120px;">
+    <div class="container">
+      <div class="grid-week-wrap">
+        <div class="grid-week">
+          <div class="g-header"></div>
+          {days.map((d) => <div class="g-header">{d}</div>)}
+
+          {rows.map((row) => (
+            <>
+              <div class="g-time">{row.time}</div>
+              {row.cells.map((c) => (
+                c.type === 'empty'
+                  ? <div class="g-cell empty"></div>
+                  : (
+                    <div class={`g-cell ${c.type}`}>
+                      <span class="c-title">{labels[c.type]}</span>
+                      <span class="c-sub">{c.teacher}</span>
+                    </div>
+                  )
+              ))}
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTES + PHOTO -->
+  <section class="cream-deep">
+    <div class="container">
+      <div class="notes-grid">
+        <div>
+          <div class="eyebrow-row"><span class="dot"></span><span class="eyebrow dark">Información</span></div>
+          <h2 class="h-lg mt-32">Política de reservas.</h2>
+          <ul class="notes">
+            <li><span class="n-num">01</span><span>Primero escribinos por <a href={wa} target="_blank" rel="noopener" class="underline"><strong>WhatsApp</strong></a> para coordinar y abonar tu pack o clase.</span></li>
+            <li><span class="n-num">02</span><span>Una vez abonado, gestionás tus reservas semana a semana a través de <a href="https://siguefit.com" target="_blank" rel="noopener" class="underline">Siguefit</a>. Te creamos el usuario al confirmar el pago.</span></li>
+            <li><span class="n-num">03</span><span>Los paquetes tienen una validez de <strong>1 mes</strong> desde la compra. Pasado ese plazo, las clases no se recuperan.</span></li>
+            <li><span class="n-num">04</span><span>Las cancelaciones se realizan con al menos <strong>12 horas de anticipación</strong>. De lo contrario, la clase se considera tomada.</span></li>
+            <li><span class="n-num">05</span><span>La grilla puede sufrir modificaciones por feriados. Revisá la versión vigente antes de reservar.</span></li>
+          </ul>
+        </div>
+        <div class="photo light-tone" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('p13.jpg')}'); background-size: cover; background-position: center`}></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="dark">
+    <div class="container" style="text-align: center;">
+      <h2 class="h-xl" style="color: var(--cream); max-width: 22ch; margin: 0 auto;">Reservá tu lugar.</h2>
+      <p class="lede mt-32" style="color: rgba(242,239,230,0.7); margin: 32px auto 0;">Coordinamos por WhatsApp y el sistema te muestra los lugares disponibles en tiempo real.</p>
+      <div class="row gap-16 mt-48 cta-row">
+        <a href={wa} target="_blank" rel="noopener" class="btn" style="background: var(--cream); color: var(--dark);">Reservar por WhatsApp ↗</a>
+        <a href={`${base}precios`} class="btn btn-light">Ver precios</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .legend { display: flex; gap: 32px; flex-wrap: wrap; font-size: 13px; letter-spacing: 0.04em; color: var(--dark-soft); }
+  .legend-item { display: flex; align-items: center; gap: 10px; }
+  .sw { width: 16px; height: 16px; border-radius: 3px; }
+  .sw-pilates { background: var(--cream-deep); border: 1px solid rgba(45,41,38,0.15); }
+  .sw-cadillac { background: var(--dark-green); }
+  .sw-barre { background: #c9a596; }
+  .sw-yoga { background: var(--taupe); }
+  .sw-empty { background: transparent; border: 1px dashed rgba(45,41,38,0.25); }
+
+  .grid-week-wrap { overflow-x: auto; }
+  .grid-week {
+    display: grid;
+    grid-template-columns: 90px repeat(6, minmax(100px, 1fr));
+    gap: 6px;
+    min-width: 720px;
+  }
+  .g-header {
+    padding: 16px 12px;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--dark-soft);
+  }
+  .g-time {
+    display: flex;
+    align-items: center;
+    padding: 18px 0;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--dark);
+    font-weight: 500;
+  }
+  .g-cell {
+    padding: 18px 14px;
+    border-radius: 4px;
+    min-height: 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    background: var(--cream-deep);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .g-cell:not(.empty) { cursor: pointer; }
+  .g-cell:hover:not(.empty) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(45,41,38,0.08);
+  }
+  .g-cell.empty {
+    background: transparent;
+    border: 1px dashed rgba(45,41,38,0.15);
+  }
+  .g-cell.cadillac { background: var(--dark-green); color: var(--cream); }
+  .g-cell.barre { background: #c9a596; }
+  .g-cell.yoga { background: var(--taupe); color: var(--dark); }
+  .c-title { font-size: 15px; font-weight: 500; letter-spacing: -0.005em; }
+  .c-sub { font-size: 12px; opacity: 0.65; letter-spacing: 0.04em; }
+  .g-cell.cadillac .c-sub { opacity: 0.8; }
+
+  .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .notes { list-style: none; margin-top: 48px; display: flex; flex-direction: column; gap: 28px; }
+  .notes li { display: grid; grid-template-columns: 32px 1fr; gap: 24px; font-size: 16px; line-height: 1.55; color: var(--dark-soft); }
+  .notes strong { color: var(--dark); font-weight: 500; }
+  .n-num { font-size: 13px; letter-spacing: 0.14em; color: var(--dark-green); padding-top: 2px; }
+  .underline { text-decoration: underline; text-underline-offset: 4px; }
+  .underline strong { color: var(--dark); }
+
+  .cta-row { justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    .notes-grid { grid-template-columns: 1fr; gap: 48px; }
+    .g-cell { min-height: 60px; padding: 12px 8px; }
+    .c-title { font-size: 12px; }
+  }
+</style>

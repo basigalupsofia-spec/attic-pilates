@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const base = import.meta.env.BASE_URL;
+const photo = (name: string) => `${base}photos/${name}`;
+const wa = 'https://api.whatsapp.com/send/?phone=5491171451598&text&type=phone_number&app_absent=0';
+---
+
+<Layout title="Clases — ATTIC Pilates" description="Reformer, Barre, Cadillac y Yoga en Attic Pilates. Grupos reducidos y atención personalizada en Palermo Soho.">
+  <Navbar active="clases" />
+
+  <header class="page-hero">
+    <div class="container">
+      <div class="num">— Sección 02 / Clases</div>
+      <h1 class="display">Cuatro prácticas.<br />Una sola filosofía.</h1>
+      <p class="lede mt-48" style="max-width: 56ch;">Reformer, Barre, Cadillac y Yoga. Cada disciplina tiene su lógica propia y su forma de trabajar el cuerpo. Te ayudamos a entender cuál te conviene — o cómo combinarlas.</p>
+    </div>
+  </header>
+
+  <div class="container" style="padding: 0 var(--gutter);"><div class="divider"></div></div>
+
+  <!-- REFORMER -->
+  <section id="reformer" class="discipline-row">
+    <div class="container">
+      <div class="d-grid">
+        <div class="d-text">
+          <div class="num">— 01</div>
+          <h2 class="h-lg mt-24">Reformer</h2>
+          <p class="meta mt-16">Grupo · Privado · Todos los niveles</p>
+          <p class="body mt-32">El método signature del estudio. Trabaja sobre una máquina con resistencia ajustable que permite calibrar la dificultad al detalle. Ideal para quienes buscan fuerza, control postural y movilidad sin impacto.</p>
+          <ul class="d-points">
+            <li><span class="dot"></span>Grupos reducidos · máximo 6 alumnos</li>
+            <li><span class="dot"></span>50 minutos · clase técnica guiada</li>
+            <li><span class="dot"></span>Apto principiantes y atletas</li>
+          </ul>
+          <a href={wa} target="_blank" rel="noopener" class="btn btn-primary mt-48">Reservar Reformer
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 9 L9 1 M3 1 H9 V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="d-photo">
+          <div class="photo dark-tone" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('p01.jpg')}'); background-size: cover; background-position: center`}></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BARRE -->
+  <section id="barre" class="discipline-row">
+    <div class="container">
+      <div class="d-grid">
+        <div class="d-text">
+          <div class="num">— 02</div>
+          <h2 class="h-lg mt-24">Barre</h2>
+          <p class="meta mt-16">Grupo · Intermedio</p>
+          <p class="body mt-32">Influencia de la barra de danza, fuerza isométrica y trabajo de pequeños rangos. Tonifica miembros inferiores, glúteos y core con una intensidad sostenida y precisa.</p>
+          <ul class="d-points">
+            <li><span class="dot"></span>Grupos de hasta 8 alumnos</li>
+            <li><span class="dot"></span>45 minutos · alta intensidad controlada</li>
+            <li><span class="dot"></span>Recomendado base previa en pilates</li>
+          </ul>
+          <a href={wa} target="_blank" rel="noopener" class="btn btn-primary mt-48">Reservar Barre
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 9 L9 1 M3 1 H9 V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="d-photo">
+          <div class="photo" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('barre.jpg')}'); background-size: cover; background-position: center; filter: sepia(0.18) saturate(1.15) brightness(1.04) contrast(1.05);`}></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="padding: 0 var(--gutter);"><div class="divider"></div></div>
+
+  <!-- CADILLAC -->
+  <section id="cadillac" class="discipline-row alt">
+    <div class="container">
+      <div class="d-grid">
+        <div class="d-photo order-first">
+          <div class="photo green-tone" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('cadillac.jpg')}'); background-size: cover; background-position: 30% center; filter: sepia(0.35) saturate(0.65) brightness(1.02) contrast(1.06);`}></div>
+        </div>
+        <div class="d-text">
+          <div class="num">— 03</div>
+          <h2 class="h-lg mt-24">Cadillac</h2>
+          <p class="meta mt-16">Personalizado · 1 a 1</p>
+          <p class="body mt-32">El equipo más completo del método, trabajado en sesiones individuales. Permite intervenciones técnicas precisas: rehabilitación, postura, performance deportiva. Cada clase se diseña para el cuerpo que la toma.</p>
+          <ul class="d-points">
+            <li><span class="dot"></span>Sesión individual · 1 a 1</li>
+            <li><span class="dot"></span>55 minutos · trabajo a medida</li>
+            <li><span class="dot"></span>Ideal para necesidades específicas</li>
+          </ul>
+          <a href={wa} target="_blank" rel="noopener" class="btn btn-primary mt-48">Reservar Cadillac
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 9 L9 1 M3 1 H9 V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="padding: 0 var(--gutter);"><div class="divider"></div></div>
+
+  <!-- YOGA -->
+  <section id="yoga" class="discipline-row">
+    <div class="container">
+      <div class="d-grid">
+        <div class="d-text">
+          <div class="num">— 04</div>
+          <h2 class="h-lg mt-24">Yoga</h2>
+          <p class="meta mt-16">Grupo · Todos los niveles</p>
+          <p class="body mt-32">Una práctica de movilidad, respiración y conciencia corporal. Complemento natural del pilates: amplía rangos, descomprime la columna y baja el sistema nervioso después de semanas exigentes.</p>
+          <ul class="d-points">
+            <li><span class="dot"></span>Grupos reducidos</li>
+            <li><span class="dot"></span>60 minutos · vinyasa pausado</li>
+            <li><span class="dot"></span>Ideal post-Reformer o post-trabajo</li>
+          </ul>
+          <a href={wa} target="_blank" rel="noopener" class="btn btn-primary mt-48">Reservar Yoga
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M1 9 L9 1 M3 1 H9 V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="d-photo">
+          <div class="photo light-tone" data-bg style={`aspect-ratio: 4/5; background-image: url('${photo('yoga.jpg')}'); background-size: cover; background-position: center`}></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATIVA -->
+  <section class="cream-deep">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="num">— 05 / Comparativa</div>
+          <h2 class="h-lg mt-16">¿Cuál se adapta mejor a vos?</h2>
+        </div>
+        <p class="body" style="max-width: 56ch;">Una tabla rápida para orientarte. Si todavía dudás, escribinos por WhatsApp — te recomendamos según tu objetivo.</p>
+      </div>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Reformer</th>
+              <th>Barre</th>
+              <th>Cadillac</th>
+              <th>Yoga</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="lbl">Modalidad</td>
+              <td>Grupo / Privado</td>
+              <td>Grupo</td>
+              <td>Privado</td>
+              <td>Grupo</td>
+            </tr>
+            <tr>
+              <td class="lbl">Duración</td>
+              <td>50 min</td>
+              <td>45 min</td>
+              <td>55 min</td>
+              <td>60 min</td>
+            </tr>
+            <tr>
+              <td class="lbl">Intensidad</td>
+              <td>●●●○</td>
+              <td>●●●●</td>
+              <td>●●○○</td>
+              <td>●○○○</td>
+            </tr>
+            <tr>
+              <td class="lbl">Para principiantes</td>
+              <td>Sí</td>
+              <td>Con base</td>
+              <td>Sí</td>
+              <td>Sí</td>
+            </tr>
+            <tr>
+              <td class="lbl">Objetivo principal</td>
+              <td>Fuerza · Postura</td>
+              <td>Tono · Resistencia</td>
+              <td>A medida</td>
+              <td>Movilidad · Calma</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="dark">
+    <div class="container" style="text-align: center;">
+      <h2 class="h-xl" style="color: var(--cream); max-width: 22ch; margin: 0 auto;">¿Lista para empezar?</h2>
+      <p class="lede mt-32" style="color: rgba(242,239,230,0.7); margin: 32px auto 0;">Tu primera clase a precio promocional.</p>
+      <div class="row gap-16 mt-48 cta-row">
+        <a href={wa} target="_blank" rel="noopener" class="btn" style="background: var(--cream); color: var(--dark);">Reservar clase prueba</a>
+        <a href={`${base}precios`} class="btn btn-light">Ver precios</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .discipline-row { padding: 100px var(--gutter); }
+  .d-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+  .d-points { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+  .d-points li { display: flex; align-items: center; gap: 16px; font-size: 16px; color: var(--dark-soft); }
+  .d-points .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--dark-green); flex-shrink: 0; }
+  @media (max-width: 900px) {
+    .discipline-row { padding: 64px var(--gutter); }
+    .d-grid { grid-template-columns: 1fr; gap: 48px; }
+    .order-first { order: -1; }
+  }
+
+  .cmp-wrap { overflow-x: auto; }
+  .cmp { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 640px; }
+  .cmp th, .cmp td { padding: 22px 18px; text-align: left; border-bottom: 1px solid rgba(45,41,38,0.1); }
+  .cmp th { font-weight: 500; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dark-soft); }
+  .cmp td.lbl { font-weight: 500; color: var(--dark); }
+  .cmp tr td:first-child { width: 24%; }
+
+  .cta-row { justify-content: center; flex-wrap: wrap; }
+</style>
