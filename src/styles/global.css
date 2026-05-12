@@ -1,11 +1,7 @@
 /* ===== ATTIC PILATES — Global Styles ===== */
 
-/*
-  Tipografía: Outfit (Google Fonts) — sustituto geométrico de Garet.
-  Cuando tengas los archivos de Garet, reemplazá el @import y
-  cambiá --font-sans a 'Garet', Outfit, sans-serif.
-*/
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+/* Tipografía Garet (Fontshare) — la pidieron en el discovery */
+@import url('https://api.fontshare.com/v2/css?f[]=garet@300,400,500,600,700,800&display=swap');
 
 :root {
   /* Paleta oficial Attic Pilates */
@@ -25,16 +21,16 @@
   --color-white:       #FFFFFF;
 
   /* Tipografía */
-  --font-sans: 'Outfit', sans-serif;
+  --font-sans: 'Garet', 'Outfit', sans-serif;
 
   /* Espaciado */
   --space-xs:  0.5rem;
   --space-sm:  1rem;
   --space-md:  1.5rem;
-  --space-lg:  2.5rem;
-  --space-xl:  4rem;
-  --space-2xl: 6rem;
-  --space-3xl: 8rem;
+  --space-lg:  2rem;
+  --space-xl:  3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 5rem;
 
   /* Layout */
   --max-width:       1200px;

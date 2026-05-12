@@ -5,7 +5,7 @@ const base = import.meta.env.BASE_URL;
 <nav class="navbar" id="navbar">
   <div class="navbar-inner container">
     <a href={`${base}`} class="navbar-logo">
-      <img src="https://res.cloudinary.com/dot4vmp1c/image/upload/f_auto,q_auto,w_80/attic-pilates/logo" alt="Attic Pilates" class="logo-img" />
+      <img src={`${base}logo.png`} alt="Attic Pilates" class="logo-img" />
       <div class="logo-text">
         <span class="logo-name">ATTIC</span>
         <span class="logo-sub">PILATES</span>
@@ -13,11 +13,11 @@ const base = import.meta.env.BASE_URL;
     </a>
 
     <ul class="navbar-links">
-      <li><a href="#experiencia">Experiencia</a></li>
       <li><a href="#clases">Clases</a></li>
       <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#precios">Packs</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
     </ul>
 
     <div class="navbar-actions">
@@ -28,7 +28,7 @@ const base = import.meta.env.BASE_URL;
           <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
         </svg>
       </a>
-      <a href="#horarios" class="btn btn-primary btn-nav">Reservar</a>
+      <a href="#precios" class="btn btn-primary btn-nav">Reservar</a>
     </div>
 
     <button class="hamburger" id="hamburger" aria-label="Abrir menú">
@@ -40,12 +40,12 @@ const base = import.meta.env.BASE_URL;
 
   <div class="mobile-menu" id="mobile-menu">
     <ul>
-      <li><a href="#experiencia">Experiencia</a></li>
       <li><a href="#clases">Clases</a></li>
       <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#precios">Packs</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-      <li><a href="#horarios" class="btn btn-primary" style="margin-top: 1rem; justify-content: center;">Reservar</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+      <li><a href="#precios" class="btn btn-primary" style="margin-top: 1rem; justify-content: center;">Reservar</a></li>
     </ul>
   </div>
 </nav>

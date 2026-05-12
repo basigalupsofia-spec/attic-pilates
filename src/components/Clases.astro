@@ -6,19 +6,14 @@ const clases = [
     icon: '01',
   },
   {
-    title: 'Barre',
-    description: 'Clases paradas frente a la barra, combinando movimientos de ballet con ejercicios de fuerza y Pilates. Trabaja glúteos, piernas y core con mucha repetición y poca carga. Sin experiencia en danza requerida.',
+    title: 'Cadillac',
+    description: 'El equipo más completo del Pilates: una cama con barras, resortes y poleas que permite trabajar en planos y ángulos imposibles en el suelo. Sesión privada y personalizada, enfocada en tus objetivos específicos.',
     icon: '02',
   },
   {
-    title: 'Yoga',
-    description: 'Práctica de posturas, respiración y conciencia corporal. Mejora la flexibilidad, reduce el estrés y complementa cualquier rutina de entrenamiento. Ideal como contrapeso a entrenamientos de alta intensidad.',
+    title: 'Barre',
+    description: 'Clases paradas frente a la barra, combinando movimientos de ballet con ejercicios de fuerza y Pilates. Trabaja glúteos, piernas y core con mucha repetición y poca carga. Sin experiencia en danza requerida.',
     icon: '03',
-  },
-  {
-    title: 'Cadillac',
-    description: 'El equipo más completo del Pilates: una cama con barras, resortes y poleas que permite trabajar en planos y ángulos imposibles en el suelo. Sesión privada y personalizada, enfocada en tus objetivos específicos.',
-    icon: '04',
   },
 ];
 ---
@@ -62,7 +57,7 @@ const clases = [
 
   .clases-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     border: 1px solid rgba(45, 41, 38, 0.1);
     border-radius: var(--border-radius-lg);
@@ -72,16 +67,11 @@ const clases = [
   .clase-card {
     padding: var(--space-lg);
     border-right: 1px solid rgba(45, 41, 38, 0.1);
-    border-bottom: 1px solid rgba(45, 41, 38, 0.1);
     transition: background var(--transition);
   }
 
-  .clase-card:nth-child(even) {
+  .clase-card:last-child {
     border-right: none;
-  }
-
-  .clase-card:nth-last-child(-n+2) {
-    border-bottom: none;
   }
 
   .clase-card:hover {
@@ -123,16 +113,13 @@ const clases = [
     gap: 0.75rem;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     .clases-grid {
       grid-template-columns: 1fr;
     }
 
     .clase-card {
       border-right: none;
-    }
-
-    .clase-card:nth-last-child(-n+2) {
       border-bottom: 1px solid rgba(45, 41, 38, 0.1);
     }
 

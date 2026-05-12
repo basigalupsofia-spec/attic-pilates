@@ -1,0 +1,95 @@
+---
+const mapsUrl = 'https://maps.google.com/?q=Honduras+4822+Palermo+Buenos+Aires';
+const embedSrc = 'https://maps.google.com/maps?q=Honduras+4822+Palermo+Buenos+Aires&t=&z=16&ie=UTF8&iwloc=&output=embed';
+---
+
+<section class="mapa section" id="ubicacion">
+  <div class="container">
+    <div class="mapa-header">
+      <p class="subtitle">Cómo llegar</p>
+      <h2>Honduras 4822<br /><em>Palermo Soho</em></h2>
+      <a href={mapsUrl} target="_blank" rel="noopener" class="mapa-link">
+        Abrir en Google Maps
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="mapa-wrapper">
+    <iframe
+      src={embedSrc}
+      title="Mapa Attic Pilates — Honduras 4822, Palermo Soho"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen
+    ></iframe>
+  </div>
+</section>
+
+<style>
+  .mapa-header {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .mapa-header .subtitle {
+    justify-content: center;
+  }
+
+  .mapa-header .subtitle::before {
+    display: none;
+  }
+
+  .mapa-header h2 {
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+  }
+
+  .mapa-header h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--color-taupe);
+  }
+
+  .mapa-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-dark);
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: gap var(--transition);
+  }
+
+  .mapa-link:hover {
+    gap: 0.7rem;
+  }
+
+  .mapa-wrapper {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+  }
+
+  .mapa-wrapper iframe {
+    width: 100%;
+    height: 420px;
+    border: 0;
+    border-radius: var(--border-radius-lg);
+    filter: grayscale(0.25) contrast(1.02);
+    transition: filter var(--transition);
+  }
+
+  .mapa-wrapper iframe:hover {
+    filter: grayscale(0) contrast(1);
+  }
+
+  @media (max-width: 768px) {
+    .mapa-wrapper iframe {
+      height: 320px;
+    }
+  }
+</style>
